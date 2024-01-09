@@ -11,6 +11,7 @@
 
 ## General Info
 
+
 ### About the Project
 
 KeyFinder was a game that I created with Java back during the end of 2022 and during the start of 2023. The project took approximately 3 months to fully complete due to a busy school schedule, but in March of 2023 I made the last official changes.
@@ -19,9 +20,11 @@ Towards the end of the project, while conversing with my Computer Programming 12
 
 The creation of this game was an exercise in object-oriented design as well as a test of my knowledge of programming concepts such as recursion.
 
+
 ### Requirements
 
 Java is required to be able to run this project. Download java from [here](https://www.java.com/en/download/).
+
 
 ### What to do
 
@@ -34,10 +37,15 @@ Once you reach the final level and unlock the last chest ![alt text](./res/objec
 
 you will have successfully completed the game. Congratulations! From here you are free to play again or quit the game by pressing the 'esc' key.
 
+If you want more information, read the documentation that I wrote for this game [here](./KeyFinder%20Design%20Document).
+
+
 ## Technologies
 
 - Java
 - BeepBox (for the music)
+
+
 
 ## Contents
 
