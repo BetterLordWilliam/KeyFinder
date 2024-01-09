@@ -10,6 +10,8 @@
 - [Technologies](#technologies)
 - [Contents](#contents)
 
+<br/><br/>
+
 ## General Info
 
 ### About the Project
@@ -43,10 +45,14 @@ you will have successfully completed the game. Congratulations! From here you ar
 
 If you want more information, feel free to read the documentation that I wrote for this game [here](./KeyFinder%20Design%20Document.pdf).
 
+<br/><br/>
+
 ## Technologies
 
 - Java
 - BeepBox (for the music)
+
+<br/><br/>
 
 ## Contents
 
