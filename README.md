@@ -1,5 +1,7 @@
 # KeyFinder - Key hunting game <img src="./res/player&#47;movement/Player_D1.png" width="25" />
 
+<br/><br/>
+
 ## Readme Contents
 
 - [General info](#general-info)
