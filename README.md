@@ -5,6 +5,7 @@
 - [General info](#general-info)
   - [About the project](#about-the-project)
   - [Requirements](#requirements)
+  - [How to Run](#How-to-Run)
   - [What to do](#what-to-do)
 - [Technologies](#technologies)
 - [Contents](#contents)
@@ -22,6 +23,12 @@ The creation of this game was an exercise in object-oriented design as well as a
 ### Requirements
 
 Java is required to be able to run this project. Download java from [here](https://www.java.com/en/download/).
+
+### How to Run
+
+This is very easy! So long as you have Java installed, simply download this folder and run the provided jar file give the name '2DJavaGame SUBMISSION-SC.jar'
+
+Enjoy!
 
 ### What to do
 
