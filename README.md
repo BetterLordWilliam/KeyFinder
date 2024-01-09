@@ -1,8 +1,8 @@
 # KeyFinder - Key hunting game
 
-- (General info)[# General Info]
-- (Technologies)[# Technologies]
-- (Contents)[# Contents]
+- (General info)[#general Info]
+- (Technologies)[#technologies]
+- (Contents)[#contents]
 
 # General Info
 
