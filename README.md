@@ -21,7 +21,7 @@ The creation of this game was an exercise in object-oriented design as well as a
 
 ### Requirements
 
-Java is required to be able to run this project. Download java from (here)[https://www.java.com/en/download/].
+Java is required to be able to run this project. Download java from [here](https://www.java.com/en/download/).
 
 ### What to do
 
