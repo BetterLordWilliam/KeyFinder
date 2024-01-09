@@ -1,8 +1,11 @@
 # KeyFinder - Key hunting game
 
-- (General info)[#general Info]
-- (Technologies)[#technologies]
-- (Contents)[#contents]
+## Readme Contents
+
+- [General info](#generalinfo)
+  - [About the project](#abouttheproject)
+- [Technologies](#technologies)
+- [Contents](#contents)
 
 ## General Info
 
