@@ -30,7 +30,9 @@ In the KeyFinder game you are the key finder, a character who must collect keys 
 Key example:
 ![bkey](./res/objects/B_Key.png)![rkey](./res/objects/R_Key.png)![ykey](./res/objects/Y_Key.png)
 
-Once you reach the final level and unlock the last chest ![alt text](./res/objects/ChestClosed.png)
+Once you reach the final level and unlock the last chest ![alt text](./res/objects/ChestClosed.png),
+
+you will have successfully completed the game. Congratulations! From here you are free to play again or quit the game by pressing the 'esc' key.
 
 ## Technologies
 
