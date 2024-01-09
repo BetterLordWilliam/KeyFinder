@@ -2,8 +2,10 @@
 
 ## Readme Contents
 
-- [General info](#generalinfo)
-  - [About the project](#abouttheproject)
+- [General info](#general-info)
+  - [About the project](#about-the-project)
+  - [Requirements](#requirements)
+  - [What to do](#what-to-do)
 - [Technologies](#technologies)
 - [Contents](#contents)
 
@@ -21,7 +23,7 @@ The creation of this game was an exercise in object-oriented design as well as a
 
 Java is required to be able to run this project. Download java from (here)[https://www.java.com/en/download/].
 
-### What-to-do
+### What to do
 
 ## Technologies
 
