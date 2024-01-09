@@ -9,7 +9,6 @@
   - [How to Run](#How-to-Run)
   - [What to do](#what-to-do)
 - [Technologies](#technologies)
-- [Contents](#contents)
 
 <br/><br/>
 
@@ -52,7 +51,3 @@ If you want more information, feel free to read the documentation that I wrote f
 - BeepBox (for the music)
 
 <br/><br/>
-
-## Contents
-
-
