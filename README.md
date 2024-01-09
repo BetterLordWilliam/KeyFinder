@@ -1,4 +1,4 @@
-# KeyFinder - Key hunting game ![alt text](./res/player&#47;movement/Player_D1.png)
+# KeyFinder - Key hunting game <img src="./res/player&#47;movement/Player_D1.png" width="200" /
 
 ## Readme Contents
 
