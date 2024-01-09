@@ -6,7 +6,6 @@
 
 - [General info](#general-info)
   - [About the project](#about-the-project)
-  - [Requirements](#requirements)
   - [How to Run](#How-to-Run)
   - [What to do](#what-to-do)
 - [Technologies](#technologies)
@@ -24,15 +23,13 @@ Towards the end of the project, while conversing with my Computer Programming 12
 
 The creation of this game was an exercise in object-oriented design as well as a test of my knowledge of programming concepts such as recursion.
 
-### Requirements
-
-Java is required to be able to run this project. Download java from [here](https://www.java.com/en/download/).
-
 ### How to Run
 
 This is very easy! So long as you have Java installed, simply download this folder and run the [provided jar](./2DJavaGame%20SUBMISSION-SC.jar) file give the name '2DJavaGame SUBMISSION-SC.jar'
 
 Enjoy!
+
+*Java is required to be able to run this project. Download java from [here](https://www.java.com/en/download/).*
 
 ### What to do
 
