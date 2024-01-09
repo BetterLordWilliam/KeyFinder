@@ -34,7 +34,7 @@ Once you reach the final level and unlock the last chest ![alt text](./res/objec
 
 you will have successfully completed the game. Congratulations! From here you are free to play again or quit the game by pressing the 'esc' key.
 
-If you want more information, read the documentation that I wrote for this game [here]('./KeyFinder+Design+Document').
+If you want more information, read the documentation that I wrote for this game [here](./KeyFinder%20Design%20Document.pdf).
 
 ## Technologies
 
