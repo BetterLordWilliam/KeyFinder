@@ -25,10 +25,12 @@ Java is required to be able to run this project. Download java from [here](https
 
 ### What to do
 
-In the KeyFinder game you are the key finder, a character who must collect keys to open locked doors and access the final purple chest of each level. There are five levels in total each containing three to four different keys. 
+In the KeyFinder game you are the key finder, a character who must collect keys to open locked doors and access the final purple chest of each level. There are four levels in total each containing three to four different keys. 
 
 Key example:
-![alt text](./res/objects/B_Key.png)![alt text](./res/objects/R_Key.png)![alt text](./res/objects/Y_Key.png)
+![bkey](./res/objects/B_Key.png)![rkey](./res/objects/R_Key.png)![ykey](./res/objects/Y_Key.png)
+
+Once you reach the final level and unlock the last chest ![alt text](./res/objects/ChestClosed.png)
 
 ## Technologies
 
@@ -36,3 +38,5 @@ Key example:
 - BeepBox (for the music)
 
 ## Contents
+
+
