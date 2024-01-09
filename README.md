@@ -26,7 +26,7 @@ Java is required to be able to run this project. Download java from [here](https
 
 ### How to Run
 
-This is very easy! So long as you have Java installed, simply download this folder and run the provided jar file give the name '2DJavaGame SUBMISSION-SC.jar'
+This is very easy! So long as you have Java installed, simply download this folder and run the [provided jar](./2DJavaGame%20SUBMISSION-SC.jar) file give the name '2DJavaGame SUBMISSION-SC.jar'
 
 Enjoy!
 
