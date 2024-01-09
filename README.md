@@ -17,3 +17,5 @@ The creation of this game was an exercise in object-oriented design as well as a
 
 # Technologies
 
+- Java
+- BeepBox (for the music)
