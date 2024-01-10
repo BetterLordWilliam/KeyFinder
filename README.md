@@ -164,7 +164,7 @@ src content:
 |
 ├── map                                                  # Folder containing java classes for maps
 |
-└───── Map.java                                                # Base map code
+└───── Map.java                                                # Base map code. Renders objects (based on current map).
 └───── TestMap.java                                            # Code for the test map
 └───── World01.java                                            # Code for map #1
 └───── World02.java                                            # Code for map #2
@@ -173,6 +173,8 @@ src content:
 |
 ├── object                                               # Folder containing java classes for objects
 |
+└───── Tile.java                                               # Base tile code
+└───── TileManager.java                                        # Code for the awesome tile manager
 |
 └── tile                                                 # Folder containing java classes for tiles
 
