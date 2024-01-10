@@ -31,17 +31,14 @@ Enjoy!
 
 ### What to do
 
-Controls:
+In the KeyFinder game you are the key finder, a character who must collect keys to open locked doors and access the final purple chest of each level. There are four levels in total each containing three to four different keys. 
+
+![bkey](./res/objects/B_Key.png)![rkey](./res/objects/R_Key.png)![ykey](./res/objects/Y_Key.png)![pkey](./res/objects/P_Key.png)
 
 To control the player, simply use the WASD keys. The player has the ability to sprint, this can be done by pressing the space key while moving. At anytime, the game can be quit by pressing the escape key. 
 To see these controls ingame, press the 'r' key.
 
 ![keys](./githubstuff/keys.png)
-
-In the KeyFinder game you are the key finder, a character who must collect keys to open locked doors and access the final purple chest of each level. There are four levels in total each containing three to four different keys. 
-
-Key example:
-![bkey](./res/objects/B_Key.png)![rkey](./res/objects/R_Key.png)![ykey](./res/objects/Y_Key.png)
 
 The levels are labrynthian in nature, inspired by the old-school gameplay to be found in titles such as Wolfenstein and Doom.
 Unfortunately, there are no enemies to defeat in KeyFinder, the only contest is the one going on inside your mind as you navigate the levels eagerly seaking keys.
