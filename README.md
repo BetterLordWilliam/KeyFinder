@@ -104,6 +104,17 @@ res contents:
 └───── Y_Key.png                                               # Yellow key graphic
 |
 ├── player/movement                                      # Folder containing player graphics
+|
+└───── Player_D1.png                                           # Player down sprite 1
+└───── Player_D2.png                                           # Player down sprite 2
+└───── Player_IDL.png                                          # Player idle sprite
+└───── Player_L1.png                                           # Player left sprite 1
+└───── Player_L2.png                                           # Player left sprite 2
+└───── Player_R1.png                                           # Player right sprite 1
+└───── Player_R2.png                                           # Player right sprite 2
+└───── Player_U1.png                                           # Player up sprite 1
+└───── Player_U2.png                                           # Player up sprite 2
+|
 ├── sound                                                # Folder containing sound
 └── tiles                                                # Folder containing tile graphcis
 
