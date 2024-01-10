@@ -53,12 +53,21 @@ Top Level of Project:
 ├── githubstuff                                          # Folder containing GitHub related information
 ├── res                                                  # Folder containing graphics
 ├── src                                                  # Folder containing source code
-├── 2DJavaGame SUBMISSIOn-SC.jar                         # Folder containing executable jar file
-├── InstructorFeedback.pdf                               # Folder containing instructors feedback
-├── KeyFinder Design Document.pdf                        # Folder containing documentation
-├── NOTE.txt                                             # Folder containing note for scholarship committee
+├── 2DJavaGame SUBMISSIOn-SC.jar                         # Executable jar file
+├── InstructorFeedback.pdf                               # Instructors feedback
+├── KeyFinder Design Document.pdf                        # Documentation
+├── NOTE.txt                                             # Note for scholarship committee
 └── README.md                                            # This!
 
+res contents:
+├── UI                                                   # Folder containing UI graphics
+├── maps                                                 # Folder containing map text data
+├── objects                                              # Folder containing object graphics
+├── player/movement                                      # Folder containing player graphics
+├── sound                                                # Folder containing sound
+└── tiles                                                # Folder containing tile graphcis
+
+src content:
 
 
 ```
