@@ -61,6 +61,16 @@ Top Level of Project:
 
 res contents:
 ├── UI                                                   # Folder containing UI graphics
+|
+└───── Text                                              # Folder containing fonts
+└───── Key.png                                           # Blank key image
+└───── KeyFinderUI.png                                   # Key image container
+└───── KeyFinderUI.psd                                   # psd for key image container
+└───── ShowBoxClosed.png                                 # Controls container closed
+└───── ShowBoxClosed.psd                                 # psd for controls container closed
+└───── ShowBoxOpen.png                                   # Controls container opened
+└───── SpeedIcon.png                                     # Sprint icon
+|
 ├── maps                                                 # Folder containing map text data
 ├── objects                                              # Folder containing object graphics
 ├── player/movement                                      # Folder containing player graphics
