@@ -116,6 +116,16 @@ res contents:
 └───── Player_U2.png                                           # Player up sprite 2
 |
 ├── sound                                                # Folder containing sound
+|
+└───── ORG                                                     # Origional ogg files
+└───── DoorOpen.wav                                            # Door open sound
+└───── EndLevel.wav                                            # End level wav sound effect
+└───── Error.wav                                               # Error sound effect
+└───── FoorSteps.wav                                           # Footsteps sound effect
+└───── Key.wav                                                 # Key pickup sound effect
+└───── MenuSong.wav                                            # Called menu wav, but it's actually the song that plays at the end of the game
+└───── note.txt                                                # Contains information about the music creation
+|
 └── tiles                                                # Folder containing tile graphcis
 
 src content:
