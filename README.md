@@ -70,7 +70,7 @@ Your map should end up looking something like the screenshot below. Keep in mind
 
 <img src="./githubstuff/Example_map.png" height="650"/>
 
-Next create a new subclass of the Map class (it can be called whatever you want it to be, but naming conventions are a nice organizational touch), set the mapSizeX and mapSizeY to be the number of columns and rows the map has, and define the player’s start X and start Y values.
+Next create a new subclass of the Map class (it can be called whatever you want it to be, but naming conventions are a nice organizational touch), set the mapSizeX and mapSizeY to be the number of columns and rows the map has (assing the word height and world width by multiplying the mapSizeX and mapSizeY by the tile size modifier variable), and define the player’s start X and start Y values.
 
 <img src="./githubstuff/Createnewmap2.png" height="350"/><img src="./githubstuff/NewMapBasic.png" height="350"/>
 
