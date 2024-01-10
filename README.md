@@ -86,6 +86,23 @@ res contents:
 └───── world04.txt                                             # Map #4
 |
 ├── objects                                              # Folder containing object graphics
+|
+└───── Data                                                    # Folder containing photoshop psd files
+└───── B_Door.png                                              # Blue door graphic
+└───── B_Key.png                                               # Blue key graphic
+└───── Bullet.png                                              # Unused asset
+└───── ChestClosed.png                                         # Chest closed graphic
+└───── ChestOpen.png                                           # Chest open graphic
+└───── Door.png                                                # Door closed graphic
+└───── DoorOpened.png                                          # Door opened graphic
+└───── Key.png                                                 # Gray key (blank template)
+└───── P_ChestClosed.png                                       # End chest closed graphic
+└───── P_Key.png                                               # Purple key graphic
+└───── R_Door.png                                              # Red door graphic
+└───── R_Key.png                                               # Red key graphic
+└───── Y_Door.png                                              # Yellow door graphic
+└───── Y_Key.png                                               # Yellow key graphic
+|
 ├── player/movement                                      # Folder containing player graphics
 ├── sound                                                # Folder containing sound
 └── tiles                                                # Folder containing tile graphcis
