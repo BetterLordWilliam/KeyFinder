@@ -81,7 +81,7 @@ It is within the setObject method of a map that the various objects the player w
 
 The last steps are to specify the resetGame() and nextLevel() functions. You may also need to define the level which will send the player to your new level. For instance, if you wanted to add this level after the final level of the original game you would edit the World04.java file to send the player to NewMap.java upon level completion (through the nextLevel() function). You would also need to set isEnd to be false for World04.java, and to be true for NewMap.java.
 
-![logic](./githubstuff/last%20logic.png)
+![logic](./githubstuff/last%20logic.png)![settofalse](./githubstuff/settofalse.png)
 
 ## Technologies
 
