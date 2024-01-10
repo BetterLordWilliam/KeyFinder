@@ -139,6 +139,12 @@ res contents:
 └───── Dirt.png                                                # Dirt png graphic
 └───── Grass.png                                               # Grass png graphic
 └───── KnightStatue.png                                        # Knight statue png graphic
+└───── Lilypad.png                                             # Lilypad on water png graphic
+└───── Tree.png                                                # Tree png graphic
+└───── Wall.png                                                # Stone wall png graphic
+└───── Water.png                                               # Water png graphic
+└───── Wood.png                                                # Wood floor png graphic
+└───── bound.png                                               # Out-of-bounds png graphic
 
 src content:
 
