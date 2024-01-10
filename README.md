@@ -61,6 +61,10 @@ First thing is first, we need to create a txt file that tells the game exactly w
 
 ![whatmapstomake](./githubstuff/size_guide.png)
 
+Next, this file should be of the format .txt and inside it should contain numbers between 0-8. These numbers correspond to the type of tile that you want to draw at a given position.
+
+
+
 ## Technologies
 
 - Java
