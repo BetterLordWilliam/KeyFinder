@@ -164,6 +164,12 @@ src content:
 |
 ├── map                                                  # Folder containing java classes for maps
 |
+└───── Map.java                                                # Base map code
+└───── TestMap.java                                            # Code for the test map
+└───── World01.java                                            # Code for map #1
+└───── World02.java                                            # Code for map #2
+└───── World03.java                                            # Code for map #3
+└───── World04.java                                            # Code for map #4
 |
 ├── object                                               # Folder containing java classes for objects
 |
