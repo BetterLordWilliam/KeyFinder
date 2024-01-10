@@ -69,7 +69,9 @@ Your map should end up looking something like the screenshot below. Keep in mind
 
 <img src="./githubstuff/Example_map.png" height="650"/>
 
-Now we need to add a new map class, which can simply be done by mimicing the following code.
+Next create a new subclass of the Map class (it can be called whatever you want it to be, but naming conventions are a nice organizational touch), set the mapSizeX and mapSizeY to be the number of columns and rows the map has, and define the player’s start X and start Y values.
+
+
 
 ## Technologies
 
