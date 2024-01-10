@@ -133,6 +133,12 @@ res contents:
 └───── note.txt                                                # Contains information about the music creation
 |
 └── tiles                                                # Folder containing tile graphcis
+|
+└───── data                                                    # Folder containing psd documents for tile graphics
+└───── BannerWall.png                                          # Banner wall png graphic
+└───── Dirt.png                                                # Dirt png graphic
+└───── Grass.png                                               # Grass png graphic
+└───── KnightStatue.png                                        # Knight statue png graphic
 
 src content:
 
