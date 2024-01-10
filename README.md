@@ -21,6 +21,9 @@ The creation of this game was an exercise in object-oriented design as well as a
 
 This is very easy! So long as you have Java installed, simply download this folder and run the [provided jar](./2DJavaGame%20SUBMISSION-SC.jar) file give the name '2DJavaGame SUBMISSION-SC.jar'
 
+This is what that might look like inside of your downloaded folder:
+![downloadedimage](./githubstuff/JarFileScreenshot.png)
+
 Enjoy!
 
 *Java is required to be able to run this project. Download java from [here](https://www.java.com/en/download/).*
