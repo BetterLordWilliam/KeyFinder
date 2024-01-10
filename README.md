@@ -31,6 +31,13 @@ Enjoy!
 
 ### What to do
 
+Controls:
+
+To control the player, simply use the WASD keys. The player has the ability to sprint, this can be done by pressing the space key while moving. At anytime, the game can be quit by pressing the escape key. 
+To see these controls ingame, press the 'r' key.
+
+![keys](./githubstuff/keys.png)
+
 In the KeyFinder game you are the key finder, a character who must collect keys to open locked doors and access the final purple chest of each level. There are four levels in total each containing three to four different keys. 
 
 Key example:
@@ -41,9 +48,7 @@ Unfortunately, there are no enemies to defeat in KeyFinder, the only contest is 
 
 ![levelexample](./githubstuff/LevelExample.png)
 
-Once you reach the final level and unlock the last chest ![alt text](./res/objects/ChestClosed.png),
-
-you will have successfully completed the game. Congratulations! From here you are free to play again or quit the game by pressing the 'esc' key.
+Once you reach the final level and unlock the last chest ![alt text](./res/objects/ChestClosed.png), you will have successfully completed the game. Congratulations! From here you are free to play again or quit the game by pressing the 'esc' key.
 
 *If you want more information, feel free to read the documentation that I wrote for this game [here](./KeyFinder%20Design%20Document.pdf).*
 
