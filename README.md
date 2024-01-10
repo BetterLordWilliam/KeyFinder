@@ -45,7 +45,7 @@ Unfortunately, there are no enemies to defeat in KeyFinder, the only contest is 
 
 ![levelexample](./githubstuff/LevelExample.png)
 
-Once you reach the final level and unlock the last chest ![alt text](./res/objects/ChestClosed.png), you will have successfully completed the game. Congratulations! From here you are free to play again or quit the game by pressing the 'esc' key.
+Once you reach the final level and unlock the last chest ![alt text](./res/objects/ChestClosed.png), you will have successfully completed the game. Congratulations! From here you are free to play again by pressing 'enter' or quit the game by pressing the 'esc' key.
 
 *If you want more information, feel free to read the documentation that I wrote for this game [here](./KeyFinder%20Design%20Document.pdf).*
 
