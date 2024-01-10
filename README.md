@@ -77,6 +77,8 @@ It is within the setObject method of a map that the various objects the player w
 
 ![objects](./githubstuff/objecttypesexample.png)
 
+*colours, 0 = yellow, 1 = blue, 2 = red, purple = 3. For doors, colour 999 means the door has no colour.*
+
 ## Technologies
 
 - Java
