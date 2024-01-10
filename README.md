@@ -63,7 +63,7 @@ First thing is first, we need to create a txt file that tells the game exactly w
 
 Next, this file should be of the format .txt and inside it should contain numbers between 0-8. These numbers correspond to the type of tile that you want to draw at a given position.
 
-<img src="./githubstuff/createnewmap1.png" height="450"/><img src="./githubstuff/tilelegend.png" height="450" />
+<img src="./githubstuff/createnewmap1.png" height="350"/><img src="./githubstuff/tilelegend.png" height="350" />
 
 Your map should end up looking something like the screenshot below. Keep in mind that collisions happen on water tiles 2, 3, 5, 6, 7.
 
