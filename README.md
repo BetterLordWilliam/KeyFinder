@@ -62,14 +62,20 @@ Top Level of Project:
 res contents:
 ├── UI                                                   # Folder containing UI graphics
 |
-└───── Text                                              # Folder containing fonts
-└───── Key.png                                           # Blank key image
-└───── KeyFinderUI.png                                   # Key image container
-└───── KeyFinderUI.psd                                   # psd for key image container
-└───── ShowBoxClosed.png                                 # Controls container closed
-└───── ShowBoxClosed.psd                                 # psd for controls container closed
-└───── ShowBoxOpen.png                                   # Controls container opened
-└───── SpeedIcon.png                                     # Sprint icon
+└────| Text                                                    # Folder containing fonts
+|    |
+|    └───── ARCADECLASSIC.TTF                                        # ttf font used
+|    └───── FFFFORWA.TTF                                             # ttf font
+|    └───── pizzadudedotdk.txt                                       # ttf font
+|    └───── read_me.txt                                              # Read me text file copntaining font license
+|
+└───── Key.png                                                 # Blank key image
+└───── KeyFinderUI.png                                         # Key image container
+└───── KeyFinderUI.psd                                         # psd for key image container
+└───── ShowBoxClosed.png                                       # Controls container closed
+└───── ShowBoxClosed.psd                                       # psd for controls container closed
+└───── ShowBoxOpen.png                                         # Controls container opened
+└───── SpeedIcon.png                                           # Sprint icon
 |
 ├── maps                                                 # Folder containing map text data
 ├── objects                                              # Folder containing object graphics
