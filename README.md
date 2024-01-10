@@ -14,6 +14,7 @@ The creation of this game was an exercise in object-oriented design as well as a
   - [How to Run](#How-to-Run)
   - [What to do](#what-to-do)
 - [Technologies](#technologies)
+- [Contents](#contents)
 
 ## General Info
 
