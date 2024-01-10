@@ -79,6 +79,8 @@ It is within the setObject method of a map that the various objects the player w
 
 *colours, 0 = yellow, 1 = blue, 2 = red, purple = 3. For doors, colour 999 means the door has no colour.*
 
+The last steps are to specify the resetGame() and nextLevel() functions. You may also need to define the level which will send the player to your new level. For instance, if you wanted to add this level after the final level of the original game you would edit the World04.java file to send the player to NewMap.java upon level completion (through the nextLevel() function).
+
 ## Technologies
 
 - Java
