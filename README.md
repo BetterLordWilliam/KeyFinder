@@ -65,9 +65,11 @@ Next, this file should be of the format .txt and inside it should contain number
 
 <img src="./githubstuff/createnewmap1.png" height="450"/><img src="./githubstuff/tilelegend.png" height="450" />
 
-Your map should end up looking something like this. Keep in mind that collisions happen on water tiles 2, 3, 5, 6, 7.
+Your map should end up looking something like the screenshot below. Keep in mind that collisions happen on water tiles 2, 3, 5, 6, 7.
 
 <img src="./githubstuff/Example_map.png" height="650"/>
+
+Now we need to add a new map class, which can simply be done by mimicing the following code.
 
 ## Technologies
 
