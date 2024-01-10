@@ -13,6 +13,7 @@ The creation of this game was an exercise in object-oriented design as well as a
 - [General info](#general-info)
   - [How to Run](#How-to-Run)
   - [What to do](#what-to-do)
+  - [Add a Map](#adding-a-level)
 - [Technologies](#technologies)
 - [Contents](#contents)
 
@@ -53,7 +54,7 @@ Once you reach the final level and unlock the last chest ![alt text](./res/objec
 
 <hr></hr>
 
-### Adding A Level
+### Adding a Level
 
 One of the purposes of this project was to successfully implement an object oriented paradigm. Being that this was the case, one of my goals was to make the addition of levels easier! Let's do that now.
 
@@ -81,7 +82,11 @@ It is within the setObject method of a map that the various objects the player w
 
 The last steps are to specify the resetGame() and nextLevel() functions. You may also need to define the level which will send the player to your new level. For instance, if you wanted to add this level after the final level of the original game you would edit the World04.java file to send the player to NewMap.java upon level completion (through the nextLevel() function). You would also need to set isEnd to be false for World04.java, and to be true for NewMap.java.
 
-![logic](./githubstuff/last%20logic.png)
+<img src="./githubstuff/last%20logic.png" height="250" /> <img src="./githubstuff/settofalse.png" height="250"/>
+
+And there you have it, decently simple, and you've made your own map. Please look at the game's code if you want an even more detailed insight into how maps work in KeyFinder.
+
+<hr></hr>
 
 ## Technologies
 
