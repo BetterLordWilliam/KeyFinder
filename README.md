@@ -78,6 +78,13 @@ res contents:
 └───── SpeedIcon.png                                           # Sprint icon
 |
 ├── maps                                                 # Folder containing map text data
+|
+└───── testMap.txt                                             # Map created for testing purposes
+└───── world01.txt                                             # Map #1
+└───── world02.txt                                             # Map #2
+└───── world03.txt                                             # Map #3
+└───── world04.txt                                             # Map #4
+|
 ├── objects                                              # Folder containing object graphics
 ├── player/movement                                      # Folder containing player graphics
 ├── sound                                                # Folder containing sound
