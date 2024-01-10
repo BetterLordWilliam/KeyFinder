@@ -49,6 +49,15 @@ you will have successfully completed the game. Congratulations! From here you ar
 ## Contents
 
 ```
+Top Level of Project:
+├── githubstuff                                          # Folder containing GitHub related information
+├── res                                                  # Folder containing graphics
+├── src                                                  # Folder containing source code
+├── 2DJavaGame SUBMISSIOn-SC.jar                         # Folder containing executable jar file
+├── InstructorFeedback.pdf                               # Folder containing instructors feedback
+├── KeyFinder Design Document.pdf                        # Folder containing documentation
+├── NOTE.txt                                             # Folder containing note for scholarship committee
+└── README.md                                            # This!
 
 
 
