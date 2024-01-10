@@ -147,6 +147,28 @@ res contents:
 └───── bound.png                                               # Out-of-bounds png graphic
 
 src content:
+├── 1-OXPS                                               # Folder containing build process artifacts
+├── entity                                               # Folder containing java classes for entities
+|
+└───── Entity.java                                             # Code for an entity
+└───── Player.java                                             # Code for the player entity
+|
+├── main                                                 # Folder containing java classes for game's core
+|
+└───── CollisionDetection.java                                 # Code for collision detection
+└───── GamePanel.java                                          # CORE of the game
+└───── KeyHandler.java                                         # Code for input handling
+└───── Main.java                                               # Drives the program :)
+└───── Sound.java                                              # Code for handling the playing of sound
+└───── UI.java                                                 # Code for handling the state of the UI
+|
+├── map                                                  # Folder containing java classes for maps
+|
+|
+├── object                                               # Folder containing java classes for objects
+|
+|
+└── tile                                                 # Folder containing java classes for tiles
 
 
 ```
