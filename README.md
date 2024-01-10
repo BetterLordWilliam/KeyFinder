@@ -86,6 +86,8 @@ The last steps are to specify the resetGame() and nextLevel() functions. You may
 
 And there you have it, decently simple, and you've made your own map. Please look at the game's code if you want an even more detailed insight into how maps work in KeyFinder.
 
+<hr></hr>
+
 ## Technologies
 
 - Java
