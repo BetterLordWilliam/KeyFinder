@@ -49,6 +49,10 @@ Once you reach the final level and unlock the last chest ![alt text](./res/objec
 
 *If you want more information, feel free to read the documentation that I wrote for this game [here](./KeyFinder%20Design%20Document.pdf).*
 
+### Adding A Level
+
+One of the purposes of this project was to successfully implement an object oriented paradigm. Being that this was the case, one of my goals was to make the addition of levels easier! Let's do that now.
+
 ## Technologies
 
 - Java
