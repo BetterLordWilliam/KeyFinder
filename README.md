@@ -13,6 +13,7 @@ The creation of this game was an exercise in object-oriented design as well as a
 - [General info](#general-info)
   - [How to Run](#How-to-Run)
   - [What to do](#what-to-do)
+  - [Add a Map](#adding-a-level)
 - [Technologies](#technologies)
 - [Contents](#contents)
 
@@ -53,7 +54,7 @@ Once you reach the final level and unlock the last chest ![alt text](./res/objec
 
 <hr></hr>
 
-### Adding A Level
+### Adding a Level
 
 One of the purposes of this project was to successfully implement an object oriented paradigm. Being that this was the case, one of my goals was to make the addition of levels easier! Let's do that now.
 
