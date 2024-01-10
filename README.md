@@ -83,6 +83,8 @@ The last steps are to specify the resetGame() and nextLevel() functions. You may
 
 <img src="./githubstuff/last%20logic.png" height="250" /> <img src="./githubstuff/settofalse.png" height="250"/>
 
+And there you have it, decently simple, and you've made your own map. Please look at the game's code if you want an even more detailed insight into how maps work in KeyFinder.
+
 ## Technologies
 
 - Java
