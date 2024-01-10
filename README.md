@@ -1,22 +1,21 @@
 # KeyFinder - Key hunting game <img src="./res/player&#47;movement/Player_D1.png" width="25" />
 
-## Readme Contents
-
-- [General info](#general-info)
-  - [About the project](#about-the-project)
-  - [How to Run](#How-to-Run)
-  - [What to do](#what-to-do)
-- [Technologies](#technologies)
-
-## General Info
-
-### About the Project
+## About the Project
 
 KeyFinder was a game that I created with Java back during the end of 2022 and during the start of 2023. The project took approximately 3 months to fully complete due to a busy school schedule, but in March of 2023 I made the last official changes.
 
 Towards the end of the project, while conversing with my Computer Programming 12 instructor, he suggested that I submit this project not only as a final project for his course, but also to the District Authority for the chance of winning $1250. After some anxious waiting, I heard back from the District Authority with good news. KeyFinder and its documentation had secured me the scholarship!
 
 The creation of this game was an exercise in object-oriented design as well as a test of my knowledge of programming concepts such as recursion.
+
+## Readme Contents
+
+- [General info](#general-info)
+  - [How to Run](#How-to-Run)
+  - [What to do](#what-to-do)
+- [Technologies](#technologies)
+
+## General Info
 
 ### How to Run
 
