@@ -57,6 +57,8 @@ Once you reach the final level and unlock the last chest ![alt text](./res/objec
 
 One of the purposes of this project was to successfully implement an object oriented paradigm. Being that this was the case, one of my goals was to make the addition of levels easier! Let's do that now.
 
+First thing is first, we need to create a txt file that tells the game exactly what tiles to draw. This is determined by scanning the contents of a text file using the Scanner class, tiles are delimited by white space. The lengths of each row and column must be the same (rectangular), you cannot have any weird shaped maps because the tile manager class was created to read rectangular maps.
+
 ## Technologies
 
 - Java
