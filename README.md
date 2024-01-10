@@ -75,7 +75,7 @@ Next create a new subclass of the Map class (it can be called whatever you want 
 
 It is within the setObject method of a map that the various objects the player will encounter are created and placed. Each map sets its objects using the setObject method which is called through the GamePanel class, it is through this method that the various doors and keys can be placed at specific coordinates on the map. Make sure that each object has a unique index and you'll be set.
 
-![objects](./githubstuff/objecttypeexample.png)
+![objects](./githubstuff/objecttypesexample.png)
 
 ## Technologies
 
