@@ -54,40 +54,6 @@ Once you reach the final level and unlock the last chest ![alt text](./res/objec
 
 <hr></hr>
 
-### Adding a Level
-
-One of the purposes of this project was to successfully implement an object oriented paradigm. Being that this was the case, one of my goals was to make the addition of levels easier! Let's do that now.
-
-First thing is first, we need to create a txt file that tells the game exactly what tiles to draw. This is determined by scanning the contents of a text file using the Scanner class, tiles are delimited by white space. The lengths of each row and column must be the same (rectangular), you cannot have any weird shaped maps because the tile manager class was created to read rectangular maps.
-
-![whatmapstomake](./githubstuff/size_yes.png)
-
-Next, this file should be of the format .txt and inside it should contain numbers between 0-8. These numbers correspond to the type of tile that you want to draw at a given position.
-
-<img src="./githubstuff/createnewmap1.png" height="350"/><img src="./githubstuff/tilelegend.png" height="350" />
-
-Your map should end up looking something like the screenshot below. Keep in mind that collisions happen on tiles 2, 3, 5, 6, 7.
-
-<img src="./githubstuff/Example_map.png" height="650"/>
-
-Next create a new subclass of the Map class (it can be called whatever you want it to be, but naming conventions are a nice organizational touch), set the mapSizeX and mapSizeY to be the number of columns and rows the map has (assign the word height and world width by multiplying the mapSizeX and mapSizeY by the tile size modifier variable), and define the player’s start X and start Y values.
-
-<img src="./githubstuff/Createnewmap2.png" height="350"/><img src="./githubstuff/NewMapBasic.png" height="350"/>
-
-It is within the setObject method of a map that the various objects the player will encounter are created and placed. Each map sets its objects using the setObject method which is called through the GamePanel class, it is through this method that the various doors and keys can be placed at specific coordinates on the map. Make sure that each object has a unique index and you'll be set.
-
-![objects](./githubstuff/objecttypesexample.png)
-
-*colours, 0 = yellow, 1 = blue, 2 = red, purple = 3. For doors, colour 999 means the door has no colour.*
-
-The last steps are to specify the resetGame() and nextLevel() functions. You may also need to define the level which will send the player to your new level. For instance, if you wanted to add this level after the final level of the original game you would edit the World04.java file to send the player to NewMap.java upon level completion (through the nextLevel() function). You would also need to set isEnd to be false for World04.java, and to be true for NewMap.java.
-
-<img src="./githubstuff/last%20logic.png" height="250" /> <img src="./githubstuff/settofalse.png" height="250"/>
-
-And there you have it, decently simple, and you've made your own map. Please look at the game's code if you want an even more detailed insight into how maps work in KeyFinder.
-
-<hr></hr>
-
 ## Technologies
 
 - Java
