@@ -11,5 +11,5 @@ instructorFeedback.pdf
 "KeyFinder Design Document.pdf"
 
 # Old Code Backups
-./src/1-OXPS
-./src/1-OXPS/*
+src/1-OXPS
+src/1-OXPS/*
