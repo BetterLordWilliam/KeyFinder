@@ -21,15 +21,16 @@ public class Main {
 		window.setResizable(false);
 		window.setTitle("KeyFinder");
 		
-		GamePanel gp = new GamePanel();
-		window.add(gp);
+		GamePanel gp = new GamePanel();               // Define the GamePanel (canvas)
+		GameManager gm = new GameManager(gp);         // Define the GameManager (Arbiter of logic)
+		window.add(gp);                               // Add GamePanel to the JFrame (window)
 		
-		window.pack(); // causes window size to fit to the game panel
+		window.pack();                                // causes window size to fit to the game panel
 		
 		window.setLocationRelativeTo(null);
 		window.setVisible(true);
 		
 		// Start the game
-		gp.startGameThread();
+		gm.startGameThread();                         // Tell the GameManager to start the game
 	}
 }

@@ -8,9 +8,13 @@ import java.awt.Dimension;
 import javax.swing.JPanel;
 
 /**
- * GamePanel: The panel where the game happens
+ * GamePanel:       The panel where the game happens
+ * 
+ * @author          Will Otterbein
+ * @version         2024-1
  */
-public class GamePanel extends JPanel implements Runnable {
+@SuppressWarnings("serial")                 // Don't want to
+public class GamePanel extends JPanel {
 	
 	// TILE SIZE
 	private final int og_tile_size = 16; 	// 16 x 16, pixels
@@ -23,12 +27,6 @@ public class GamePanel extends JPanel implements Runnable {
 	private int screenWidth = tileSize * max_screen_col;
 	private int screenHeight = tileSize * max_screen_row;
 	
-	// THREAD INFO
-	private final int fps = 60;
-	private Thread gameThread;
-	
-	// GAME OBJECTS
-	
 	/**
 	 * no-arg constructor
 	 */
@@ -37,53 +35,6 @@ public class GamePanel extends JPanel implements Runnable {
 		this.setBackground(Color.black);
 		this.setDoubleBuffered(true);		// this does
 		this.setFocusable(true);
-	}
-	
-	/**
-	 * startGameThread:		begin KeyFinder game thread
-	 */
-	public void startGameThread() {
-		gameThread = new Thread(this);
-		gameThread.start();
-	}
-	
-	/**
-	 * game thread entry.
-	 * panel update logic, use frames to draw at 60fps.
-	 */
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		double drawInteveral = 1000000000 / fps;
-		double delta = 0;
-		long lastTime = System.nanoTime();
-		long currentTime;
-		long timer = 0;
-		
-		while (gameThread != null) {
-			// game time
-			currentTime = System.nanoTime();
-			delta += (currentTime - lastTime) / drawInteveral;
-			timer += (currentTime - lastTime);
-			lastTime = currentTime;
-			
-			if (delta >= 1) {
-				update();
-				repaint();
-				delta--;
-			}
-			if (timer >= 1000000000) {
-				timer = 0;
-			}
-		}
-	}
-	
-	
-	/**
-	 * update:				allow the entites to perform their logic
-	 */
-	void update() {
-		
 	}
 	
 	/**
