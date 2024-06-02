@@ -19,11 +19,12 @@ public class Main {
 		JFrame window = new JFrame();
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setResizable(false);
+		// test
 		window.setTitle("KeyFinder");
 		
 		GamePanel gp = new GamePanel();               // Define the GamePanel (canvas)
 		GameManager gm = new GameManager(gp);         // Define the GameManager (Arbiter of logic)
-		window.add(gp);                               // Add GamePanel to the JFrame (window)
+		window.add(gp);                               // ADD GamePanel to the JFrame (window)
 		
 		window.pack();                                // causes window size to fit to the game panel
 		

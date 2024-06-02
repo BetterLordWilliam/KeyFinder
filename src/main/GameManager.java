@@ -3,6 +3,8 @@ package src.main;
 
 /**
  * GameManager:     Controls the game, initiates states, etc.
+ *
+ * The goal here is to use a state-based managment system.
  * 
  * @author          Will Otterbein
  * @version         2024-1

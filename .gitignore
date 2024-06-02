@@ -9,6 +9,8 @@
 # Old School-Related files
 instructorFeedback.pdf
 "KeyFinder Design Document.pdf"
+school_related
+school_related/*
 
 # Old Code Backups
 src/1-OXPS
