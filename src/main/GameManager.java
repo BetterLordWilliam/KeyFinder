@@ -14,7 +14,8 @@ public class GameManager implements Runnable {
     private Thread gameTread;
     
     // GAME OBJECTS
-    // KeyHandler, AudioHandler, etc.
+    private MainMenu mm = new MainMenu();	// Create the MainMenu state object
+    private Game gm = new Game();			// Create the Game state object
     
     // THREAD INFO
     private final int fps = 60;
@@ -22,8 +23,8 @@ public class GameManager implements Runnable {
     
     public GameManager(GamePanel gp) {
         this.gp = gp;       // Connect the GamePanel
+        gp.setState(mm);
     }
-    
 
     /**
      * startGameThread:     begin KeyFinder game thread

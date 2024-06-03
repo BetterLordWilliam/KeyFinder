@@ -4,3 +4,6 @@
 /KeyManager.class
 /SoundManager.class
 /UIManager.class
+/MainMenu.class
+/Game.class
+/State.class

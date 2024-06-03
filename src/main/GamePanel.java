@@ -13,8 +13,12 @@ import javax.swing.JPanel;
  * @author          Will Otterbein
  * @version         2024-1
  */
-@SuppressWarnings("serial")                 // Don't want to
 public class GamePanel extends JPanel {
+	
+	/**
+	 * this is recommended
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	// TILE SIZE
 	private final int og_tile_size = 16; 	// 16 x 16, pixels
@@ -27,6 +31,8 @@ public class GamePanel extends JPanel {
 	private int screenWidth = tileSize * max_screen_col;
 	private int screenHeight = tileSize * max_screen_row;
 	
+	private State currentState = null;
+	
 	/**
 	 * no-arg constructor
 	 */
@@ -36,22 +42,12 @@ public class GamePanel extends JPanel {
 		this.setDoubleBuffered(true);		// this does
 		this.setFocusable(true);
 	}
-	
-	/**
-	 * paintComponent:		paint the entities and objects
-	 * @param g				graphics object
-	 */
-	public void paintComponent(Graphics g) {
-		// Draws the aspects of the game in order
-	    // 1 the map
-	    // 2 the objects
-	    // 3 the player
-	    // 4 the UI
-		
-	    super.paintComponent(g);
-	    Graphics2D g2 = (Graphics2D)g;
 
-	    g2.dispose();
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);			// window (JFrame)
+		Graphics2D g2 = (Graphics2D)g;		// Turn g into g2, graphcis 2D
+		
+		currentState.paint(g2);				// Paint current state
 	}
 	
 	/**
@@ -61,6 +57,15 @@ public class GamePanel extends JPanel {
 	 */
 	public int getTileSize() {
 		return tileSize;
+	}
+	
+	/**
+	 * setState:		sets the current game state
+	 * 
+	 * @param state
+	 */
+	public void setState(State state) {
+		currentState = state;				// Tell the panel what the state is
 	}
 	
 	/**
