@@ -1,18 +1,41 @@
 package src.main;
 
-import java.awt.*;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
 
-public class MainMenu implements State {
+import javax.swing.JPanel;
+
+/**
+ * GamePanel:       The panel where the game happens
+ * 
+ * @author          Will Otterbein
+ * @version         2024-1
+ */
+public class MainMenu extends JPanel implements State {
 	/**
-	 * MainMenu:		Main menu of the game
-	 * 
-	 * testing the setup of the MainMenu
+     * required because this is a JPanel
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
+	 * no-arg constructor
 	 */
+	public MainMenu () {
+		this.setPreferredSize(new Dimension(Main.screenWidth, Main.screenHeight));
+		this.setBackground(Color.black);
+		this.setDoubleBuffered(true);		// this does
+		this.setFocusable(true);
+		setupMenu();
+	}
 	
-	@Override
-	public void paint(Graphics2D g2) {
-		g2.drawString("Test string", 10, 10);
-	
-		// to be continued
+	/**
+	 * setupMenu:      add all the necessary components for the MainMenu
+	 */
+	private void setupMenu() {
+	      JLabel test = new JLabel("This is the MainMenu");
+	      this.add(test);
 	}
 }
