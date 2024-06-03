@@ -1,5 +1,7 @@
 package src.main;
 
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -29,45 +31,49 @@ public class Main {
     
     // WINDOW RELATED OBJECTS 
     // (the actual frame of the game and the current panel pointer)
-    private static JFrame WINDOW = null;
-    private static JPanel CURRENT_PANEL = null;
+    private static JFrame WINDOW = new JFrame();
+    private static State CURRENT_PANEL = null;
     
     // KEYFINDER GAME RELATED PANELS  (basically states)
-    private static JPanel MAIN_MENU = new MainMenu();            // instance of MainMenu state (JPanel)
-    private static JPanel GAME = new Game();                     // Instance of GAME state (JPanel)
+    public static final State MAIN_MENU = new MainMenu();            // instance of MainMenu state (JPanel)
+    public static final State GAME = new Game();                     // Instance of GAME state (JPanel)
 	
 	/**
 	 * setPanelToGAME:         changes CURRENT_PANEL to GAME.
 	 */
-	public static void setPanelToGAME() {
-	    CURRENT_PANEL = GAME;
+	public static void setState(State newState) {
+		WINDOW.getContentPane().removeAll();
+	    CURRENT_PANEL = newState;
+	    CURRENT_PANEL.setup();
+	    WINDOW.getContentPane().add((JPanel) CURRENT_PANEL);
+        WINDOW.pack();
+        WINDOW.setVisible(true);
 	}
-	
-	/**
-	 * setPanelToMainMenu:     changes CURRENT_PANEL to MAIN_MENU
-	 */
-	public static void setPanelToMainMenu() {
-	    CURRENT_PANEL = MAIN_MENU;
-	}
-	
+	    
+    /**
+     * terminate:		kill the KeyFinder process
+     * 
+     * testing purposes
+     */
+    public static void terminate() {
+    	System.exit(0);
+    }
+    
     /**
      * main:        program entry
      * 
      * @param args
      */
     public static void main(String[] args) { 
-        setPanelToMainMenu();                                // Default start
-        
-        WINDOW = new JFrame();
+    	// Basic window setup
         WINDOW.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        WINDOW.setMaximumSize(new Dimension(screenWidth, screenHeight));
+        WINDOW.setMinimumSize(new Dimension(screenWidth, screenHeight));
         WINDOW.setResizable(false);
-        // test
+        WINDOW.setLocationRelativeTo(null);
+        WINDOW.getContentPane().setLayout(null);	// default layout set to null
         WINDOW.setTitle("KeyFinder");
         
-        WINDOW.getContentPane().add(CURRENT_PANEL);           // Add the default state of the GAME (Main Menu)
-        WINDOW.pack();                                        // causes WINDOW size to fit to the GAME panel
-        
-        WINDOW.setLocationRelativeTo(null);
-        WINDOW.setVisible(true);
+        setState(MAIN_MENU);						// Enter the main menu
     }
 }

@@ -1,11 +1,21 @@
 package src.main;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import javax.swing.Action;
+import javax.swing.AbstractAction;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.KeyStroke;
+import javax.swing.border.LineBorder;
 
 public class Game extends JPanel implements Runnable, State {
     /**
@@ -16,18 +26,48 @@ public class Game extends JPanel implements Runnable, State {
     // THREAD INFO
     private final int fps = 60;             // I'm not sure why I am saying this, but frames per second
     private Thread gameThread;
-
+    
     public Game() {
-        this.setPreferredSize(new Dimension(Main.screenWidth, Main.screenHeight));
-        this.setBackground(Color.red);
-        this.setDoubleBuffered(true);       // this does
+        this.setMaximumSize(new Dimension(Main.screenWidth, Main.screenHeight));
+        this.setBounds(0,0,Main.screenWidth, Main.screenHeight);
+        this.setBackground(Color.black);
+        this.setDoubleBuffered(true);       // this does...
         this.setFocusable(true);
-        test();                             // for testing state management
+        this.setRequestFocusEnabled(true);
+        this.setLayout(new BorderLayout());
+    }
+        
+    /**
+     * setup:
+     * """ invoke the game thread
+     * setup the default menu components for Game. """
+     */
+    @Override
+	public void setup() {
+        this.grabFocus();        
+        
+        // Key handling
+        this.addKeyListener(new KeyAdapter() {
+        	public void keyPressed(KeyEvent e) {
+        		System.out.println("pressed");
+        	}
+        }); // doesn't work, likely out of focus
+    	startGameThread();							// Game start
+	}
+    
+    /**
+     * paused:			stop the game thread, pause menu.
+     */
+    public void paused() {
+    	System.out.println("Game is paused");
+    	Main.setState(Main.MAIN_MENU);				// for now,  esc -> back to mm
     }
     
-    private void test() {
-        JLabel test = new JLabel("This is the Game state");
-        this.add(test);
+    /**
+     * unpaused:		resume gameThread, kill pause menu.
+     */
+    public void unpaused() {
+    	System.out.println("Game is resumed");
     }
     
     /**
@@ -74,6 +114,7 @@ public class Game extends JPanel implements Runnable, State {
      */
     void update() {
         // System.out.println("This is a frame");
+    	// System.out.println(KeyManager.escPressed);
     }
 
     /**
@@ -81,7 +122,7 @@ public class Game extends JPanel implements Runnable, State {
      * 
      * @param g2            Graphics2D, will get from paintComponent method
      */
-    public void paintComponent(Graphics2D g2) {
+    public void paintComponent(Graphics g) {
         // TODO Auto-generated method stub
         // Will draw GAME objects and stuff here.
         // Draws the aspects of the game in order
@@ -89,8 +130,9 @@ public class Game extends JPanel implements Runnable, State {
         // 2 the objects
         // 3 the player
         // 4 the UI
-        super.paintComponent(g2);   // window
-
+    	Graphics2D g2 = (Graphics2D)g;
+        super.paintComponent(g2);   			// window
+        
         g2.dispose();
     }
 }

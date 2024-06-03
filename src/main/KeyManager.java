@@ -10,19 +10,12 @@ import java.awt.event.KeyListener;
  * @version         2024-1
  */
 public class KeyManager implements KeyListener {
-    public boolean upPressed, downPressed, leftPressed, rightPressed, 
+    public static boolean upPressed, downPressed, leftPressed, rightPressed, 
     showCollisionBox, sprint, enterPressed, escPressed, showControlBox;     // Don't think there is a better way
-    
-    /**
-     * KeyManager:      no-arg constructor
-     */
-    public KeyManager() {
-    }
 
     @Override
     public void keyTyped(KeyEvent e) {
         // TODO Auto-generated method stub
-        
     }
 
     @Override
