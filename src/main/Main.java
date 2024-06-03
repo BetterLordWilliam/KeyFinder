@@ -49,7 +49,7 @@ public class Main {
 	public static void setPanelToMainMenu() {
 	    CURRENT_PANEL = MAIN_MENU;
 	}
-    
+	
     /**
      * main:        program entry
      * 
