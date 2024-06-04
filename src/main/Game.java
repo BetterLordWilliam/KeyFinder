@@ -2,8 +2,6 @@ package src.main;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import javax.swing.Action;
-import javax.swing.AbstractAction;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -16,6 +14,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 import javax.swing.border.LineBorder;
+import javax.swing.Action;
+import javax.swing.JComponent;
+import javax.swing.AbstractAction;
 
 public class Game extends JPanel implements Runnable, State {
     /**
@@ -28,12 +29,30 @@ public class Game extends JPanel implements Runnable, State {
     private Thread gameThread;
     
     public Game() {
-        this.setMaximumSize(new Dimension(Main.screenWidth, Main.screenHeight));
+        this.setPreferredSize(new Dimension(Main.screenWidth, Main.screenHeight));
         this.setBackground(Color.black);
         this.setFocusable(true);
         this.setRequestFocusEnabled(true);
     }
         
+    private void setKeyBindings() {
+        Action esc = new AbstractAction() {
+            private static final long serialVersionUID = 1L;
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO Auto-generated method stub
+                paused();
+            }
+        };
+
+        this.getInputMap(
+            JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+            KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "ESCAPE"
+        );
+        this.getActionMap().put("ESCAPE", esc);
+    }
+    
     /**
      * setup:
      * """ invoke the game thread
@@ -42,7 +61,13 @@ public class Game extends JPanel implements Runnable, State {
     @Override
 	public void setup() {
         this.grabFocus();
+        this.requestFocusInWindow();
+        this.requestFocus();
         
+        JLabel test = new JLabel("Test");
+        this.add(test, BorderLayout.CENTER);
+        
+        setKeyBindings();      // set the bindings 
     	startGameThread();     // start the thread
 	}
     
@@ -123,6 +148,8 @@ public class Game extends JPanel implements Runnable, State {
         // 4 the UI
     	Graphics2D g2 = (Graphics2D)g;
         super.paintComponent(g2);   			// window
+        
+        g2.drawRect(10,10, 100, 100);
         
         g2.dispose();
     }

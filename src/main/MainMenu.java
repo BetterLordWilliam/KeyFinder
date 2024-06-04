@@ -37,7 +37,7 @@ public class MainMenu extends JPanel implements ActionListener, State {
 	 * no-arg constructor
 	 */
 	public MainMenu () {
-        this.setMaximumSize(new Dimension(Main.screenWidth, Main.screenHeight));
+        this.setPreferredSize(new Dimension(Main.screenWidth, Main.screenHeight));
         this.setBackground(Color.black);
         this.setFocusable(true); 
         this.setRequestFocusEnabled(true);
@@ -45,12 +45,12 @@ public class MainMenu extends JPanel implements ActionListener, State {
 	
 	@Override
 	public void setup() {
+	    this.removeAll();
         this.grabFocus();
        
 		JPanel smaller = new JPanel();
 	    smaller.setBorder(new TitledBorder("Main Menu"));
 	    smaller.setBackground(Color.black);
-	    smaller.setLayout(new BoxLayout(smaller, BoxLayout.Y_AXIS));
 	   
 	    // Main Menu container components
 	    JButton start = new JButton("Start");
@@ -59,29 +59,24 @@ public class MainMenu extends JPanel implements ActionListener, State {
 	    	Main.setState(Main.GAME);			// Begin
 	    });
 	    start.setFocusable(false);
-	    
 	    JButton settings = new JButton("Settings");
 	    settings.setFocusable(false);
 	    settings.setEnabled(false);
 	    JButton controls = new JButton("Controls");
 	    controls.setFocusable(false);
 	    controls.setEnabled(false);
-	    
 	    JButton quit = new JButton("quit");
 	    quit.addActionListener(e -> {
 	    	Main.terminate();
 	    });
 	    quit.setFocusable(false);
-	    
 	    smaller.add(start);
 	    smaller.add(controls);
 	    smaller.add(settings);
 	    smaller.add(quit);
 	    
 	    // Add to this panel
-	    this.add(smaller, BorderLayout.CENTER);
-	    this.setAlignmentX(CENTER_ALIGNMENT);
-	    this.setAlignmentY(CENTER_ALIGNMENT);
+	    this.add(smaller);
 	}
 
     @Override

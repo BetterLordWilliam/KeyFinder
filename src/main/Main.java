@@ -69,8 +69,7 @@ public class Main {
     public static void main(String[] args) { 
     	// Basic window setup
         WINDOW.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        WINDOW.setMaximumSize(new Dimension(screenWidth, screenHeight));
-        WINDOW.setMinimumSize(new Dimension(screenWidth, screenHeight));
+        WINDOW.setPreferredSize(new Dimension(screenWidth, screenHeight));
         WINDOW.setResizable(false);
         WINDOW.setLocationRelativeTo(null);
         WINDOW.setTitle("KeyFinder");
