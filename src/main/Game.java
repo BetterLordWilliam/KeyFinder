@@ -29,12 +29,9 @@ public class Game extends JPanel implements Runnable, State {
     
     public Game() {
         this.setMaximumSize(new Dimension(Main.screenWidth, Main.screenHeight));
-        this.setBounds(0,0,Main.screenWidth, Main.screenHeight);
         this.setBackground(Color.black);
-        this.setDoubleBuffered(true);       // this does...
         this.setFocusable(true);
         this.setRequestFocusEnabled(true);
-        this.setLayout(new BorderLayout());
     }
         
     /**
@@ -44,15 +41,9 @@ public class Game extends JPanel implements Runnable, State {
      */
     @Override
 	public void setup() {
-        this.grabFocus();        
+        this.grabFocus();
         
-        // Key handling
-        this.addKeyListener(new KeyAdapter() {
-        	public void keyPressed(KeyEvent e) {
-        		System.out.println("pressed");
-        	}
-        }); // doesn't work, likely out of focus
-    	startGameThread();							// Game start
+    	startGameThread();     // start the thread
 	}
     
     /**
@@ -60,7 +51,7 @@ public class Game extends JPanel implements Runnable, State {
      */
     public void paused() {
     	System.out.println("Game is paused");
-    	Main.setState(Main.MAIN_MENU);				// for now,  esc -> back to mm
+    	Main.setState(Main.MAIN_MENU);
     }
     
     /**

@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -16,6 +17,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JPanel;
 
@@ -36,12 +38,9 @@ public class MainMenu extends JPanel implements ActionListener, State {
 	 */
 	public MainMenu () {
         this.setMaximumSize(new Dimension(Main.screenWidth, Main.screenHeight));
-        this.setBounds(0,0,Main.screenWidth, Main.screenHeight);
         this.setBackground(Color.black);
         this.setFocusable(true); 
         this.setRequestFocusEnabled(true);
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        	// Shows contents in a single row / column        
 	}
 	
 	@Override
@@ -80,13 +79,14 @@ public class MainMenu extends JPanel implements ActionListener, State {
 	    smaller.add(quit);
 	    
 	    // Add to this panel
-	    this.add(smaller);
+	    this.add(smaller, BorderLayout.CENTER);
 	    this.setAlignmentX(CENTER_ALIGNMENT);
 	    this.setAlignmentY(CENTER_ALIGNMENT);
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-	}
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
+        
+    }
 }

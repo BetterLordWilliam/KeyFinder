@@ -1,5 +1,7 @@
 package src.main;
 
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
@@ -45,8 +47,8 @@ public class Main {
 		WINDOW.getContentPane().removeAll();
 	    CURRENT_PANEL = newState;
 	    CURRENT_PANEL.setup();
-	    WINDOW.getContentPane().add((JPanel) CURRENT_PANEL);
-        WINDOW.pack();
+	    WINDOW.getContentPane().add((JPanel) CURRENT_PANEL, BorderLayout.CENTER);
+	    WINDOW.pack();
         WINDOW.setVisible(true);
 	}
 	    
@@ -71,9 +73,7 @@ public class Main {
         WINDOW.setMinimumSize(new Dimension(screenWidth, screenHeight));
         WINDOW.setResizable(false);
         WINDOW.setLocationRelativeTo(null);
-        WINDOW.getContentPane().setLayout(null);	// default layout set to null
         WINDOW.setTitle("KeyFinder");
-        
         setState(MAIN_MENU);						// Enter the main menu
     }
 }
