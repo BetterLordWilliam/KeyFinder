@@ -32,7 +32,7 @@ public class MainMenu extends JPanel implements ActionListener, State {
      * required because this is a JPanel
      */
     private static final long serialVersionUID = 1L;
-
+    
     /**
 	 * no-arg constructor
 	 */
@@ -41,44 +41,59 @@ public class MainMenu extends JPanel implements ActionListener, State {
         this.setBackground(Color.black);
         this.setFocusable(true); 
         this.setRequestFocusEnabled(true);
+        createUI();
 	}
 	
+	/**
+	 * createUI:       draw the parts of the UI.
+	 */
+	private void createUI() {
+	    JPanel smaller = new JPanel();
+        smaller.setBorder(new TitledBorder("Main Menu"));
+        smaller.setBackground(Color.black);
+       
+        // Main Menu container components
+        JButton start = new JButton("Start");
+        start.addActionListener(e -> {
+            System.out.println("Start");
+            Main.setState(Main.GAME);           // Begin
+        });
+        start.setFocusable(false);
+        JButton settings = new JButton("Settings");
+        settings.setFocusable(false);
+        settings.setEnabled(false);
+        JButton controls = new JButton("Controls");
+        controls.setFocusable(false);
+        controls.setEnabled(false);
+        JButton quit = new JButton("quit");
+        quit.addActionListener(e -> {
+            Main.terminate();
+        });
+        quit.setFocusable(false);
+        smaller.add(start);
+        smaller.add(controls);
+        smaller.add(settings);
+        smaller.add(quit);
+        
+        // Add to this panel
+        this.add(smaller);
+	}
+	
+	/**
+	 * setup:          set focus, createUI and prepare this state
+	 */
 	@Override
 	public void setup() {
 	    this.removeAll();
         this.grabFocus();
-       
-		JPanel smaller = new JPanel();
-	    smaller.setBorder(new TitledBorder("Main Menu"));
-	    smaller.setBackground(Color.black);
-	   
-	    // Main Menu container components
-	    JButton start = new JButton("Start");
-	    start.addActionListener(e -> {
-	    	System.out.println("Start");
-	    	Main.setState(Main.GAME);			// Begin
-	    });
-	    start.setFocusable(false);
-	    JButton settings = new JButton("Settings");
-	    settings.setFocusable(false);
-	    settings.setEnabled(false);
-	    JButton controls = new JButton("Controls");
-	    controls.setFocusable(false);
-	    controls.setEnabled(false);
-	    JButton quit = new JButton("quit");
-	    quit.addActionListener(e -> {
-	    	Main.terminate();
-	    });
-	    quit.setFocusable(false);
-	    smaller.add(start);
-	    smaller.add(controls);
-	    smaller.add(settings);
-	    smaller.add(quit);
-	    
-	    // Add to this panel
-	    this.add(smaller);
+        createUI();
 	}
-
+	
+	/**
+	 * actionPerformed:    required method
+	 * 
+	 * @param e            ActionEvent, event (but we use lambda).
+	 */
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub

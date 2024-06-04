@@ -28,6 +28,9 @@ public class Game extends JPanel implements Runnable, State {
     private final int fps = 60;             // I'm not sure why I am saying this, but frames per second
     private Thread gameThread;
     
+    // UI Parts
+    private JPanel pausedMenu = new JPanel();
+    
     public Game() {
         this.setPreferredSize(new Dimension(Main.screenWidth, Main.screenHeight));
         this.setBackground(Color.black);
@@ -35,6 +38,9 @@ public class Game extends JPanel implements Runnable, State {
         this.setRequestFocusEnabled(true);
     }
         
+    /**
+     * setKeyBindings:      setup the bindings required for the Game
+     */
     private void setKeyBindings() {
         Action esc = new AbstractAction() {
             private static final long serialVersionUID = 1L;
@@ -75,15 +81,15 @@ public class Game extends JPanel implements Runnable, State {
      * paused:			stop the game thread, pause menu.
      */
     public void paused() {
-    	System.out.println("Game is paused");
-    	Main.setState(Main.MAIN_MENU);
+        Main.setState(Main.MAIN_MENU);
+        gameThread = null;
     }
     
     /**
      * unpaused:		resume gameThread, kill pause menu.
      */
     public void unpaused() {
-    	System.out.println("Game is resumed");
+    	gameThread.start();
     }
     
     /**
@@ -148,8 +154,6 @@ public class Game extends JPanel implements Runnable, State {
         // 4 the UI
     	Graphics2D g2 = (Graphics2D)g;
         super.paintComponent(g2);   			// window
-        
-        g2.drawRect(10,10, 100, 100);
         
         g2.dispose();
     }

@@ -39,15 +39,18 @@ public class Main {
     // KEYFINDER GAME RELATED PANELS  (basically states)
     public static final State MAIN_MENU = new MainMenu();            // instance of MainMenu state (JPanel)
     public static final State GAME = new Game();                     // Instance of GAME state (JPanel)
-	
+    
 	/**
 	 * setPanelToGAME:         changes CURRENT_PANEL to GAME.
 	 */
 	public static void setState(State newState) {
 		WINDOW.getContentPane().removeAll();
-	    CURRENT_PANEL = newState;
+		WINDOW.repaint();
+	    
+		CURRENT_PANEL = newState;
 	    CURRENT_PANEL.setup();
-	    WINDOW.getContentPane().add((JPanel) CURRENT_PANEL, BorderLayout.CENTER);
+	    
+	    WINDOW.getContentPane().add((JPanel) CURRENT_PANEL);
 	    WINDOW.pack();
         WINDOW.setVisible(true);
 	}
@@ -71,6 +74,8 @@ public class Main {
         WINDOW.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         WINDOW.setPreferredSize(new Dimension(screenWidth, screenHeight));
         WINDOW.setResizable(false);
+        WINDOW.pack();
+        WINDOW.setVisible(true);
         WINDOW.setLocationRelativeTo(null);
         WINDOW.setTitle("KeyFinder");
         setState(MAIN_MENU);						// Enter the main menu
