@@ -113,7 +113,7 @@ public class MainMenu extends JPanel implements ActionListener, State {
 	}
 	
 	/**
-	 * createUI:       draw the parts of the UI.
+	 * createUI:       createsUI elements, right now MainMenu elements
 	 */
 	private void createUI() {
 		// Menu panel
@@ -130,12 +130,12 @@ public class MainMenu extends JPanel implements ActionListener, State {
         
         // Add menu panel parts to menu panel
         gb_constraints.gridwidth = GridBagConstraints.REMAINDER;	// End of row
+        gb_constraints.weighty = 1.0;								// Padding after the title
         gb.setConstraints(menuTitle, gb_constraints); 				// Add title
         gb_constraints.weightx = 0.0;								// Reset to default constraints
         gb.setConstraints(menuBox, gb_constraints);					// Add box with buttons
         
         smaller.add(menuTitle);
-        smaller.add(Box.createRigidArea(new Dimension(0,20)));		// Padding between the title and buttons
         smaller.add(menuBox);
         
         // Add to this main_menu panel
