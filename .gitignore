@@ -15,3 +15,8 @@ school_related/*
 # Old Code Backups
 src/1-OXPS
 src/1-OXPS/*
+
+# Ignore .class files, not sure how many levels this will require
+*.class
+*/*.class
+*/*/*.class

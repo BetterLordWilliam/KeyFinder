@@ -28,9 +28,6 @@ public class Game extends JPanel implements Runnable, State {
     private final int fps = 60;             // I'm not sure why I am saying this, but frames per second
     private Thread gameThread;
     
-    // UI Parts
-    private JPanel pausedMenu = new JPanel();
-    
     public Game() {
         this.setPreferredSize(new Dimension(Main.screenWidth, Main.screenHeight));
         this.setBackground(Color.black);
