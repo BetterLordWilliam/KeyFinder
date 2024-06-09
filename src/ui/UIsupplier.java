@@ -1,0 +1,101 @@
+package src.ui;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.event.ActionListener;
+import java.util.List;
+
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+/**
+ * UIsupplier		Supplies customised UI components for KeyFinder.
+ * 
+ * @author			Will Otterbein
+ * @version 		2024-1
+ */
+public class UIsupplier {
+	
+	/**
+	 * setComponentBgFg:	sets the foreground and background of component
+	 * 
+	 * Apply the settings in the ColorApplier or default settings
+	 * 
+	 * @param jc			JComponenet, the componenet we are applying colors to
+	 * @param ca			ColorApplier, the color applier with custom color settings
+	 */
+	private static void setComponentColors(JComponent jc, 
+			ComponentApplier<JComponent> ca) {
+		if (ca != null) {
+			ca.apply(jc);							// Use the ColorApplier interface to apply foreground, background
+		} else {									// Apply default colors
+			jc.setForeground(Color.white);
+			jc.setBackground(Color.darkGray);
+			jc.setBorder(BorderFactory.createEtchedBorder(1));
+		}
+	}
+	
+	/**
+	 * createMenuButton		creates a menu button with.
+	 * 
+	 * @param buttonName	buttonName,		the title of the button
+	 * @param l				ActionListener, the action the button will perform
+	 * @param ca			AppearanceApplier, the settings to apply to the component appearance
+	 * @return
+	 */
+	public static JComponent createMenuButton(String buttonName, ActionListener l, 
+			ComponentApplier<JComponent> ca) {
+		JButton newButton = new JButton(buttonName);
+		
+		// Styles
+		newButton.setFocusable(false);				// disables outline around button text
+		setComponentColors(newButton, ca);
+		
+		// Button actions
+		if (l != null)
+			newButton.addActionListener(l);		// Pass the action listener
+		else
+			newButton.setEnabled(false);		// Disabled the button if null action
+		
+		return newButton;
+	}
+	
+	/**
+	 * createMenuTitle		creates main menu title
+	 * 
+	 * @return JLabel		menuTitle component
+	 */
+	public static JComponent createMenuTitle(String title, 
+			ComponentApplier<JComponent> ca) {
+		JLabel menuTitle = new JLabel(title);
+		setComponentColors(menuTitle, ca);
+		
+		return menuTitle;
+	}
+	
+	/**
+	 * createMenuBox:		create the buttons of the main menu
+	 * 
+	 * @param buttonList	ArrayList<JButton>, list of buttons
+	 * @return menuBox		Box, contains menu buttons
+	 */
+	public static JComponent createMenuBox(List<JComponent> buttons) {
+        Box menuBox = new Box(BoxLayout.Y_AXIS);
+        
+        // Add to the box with paddings
+        for (JComponent jb : buttons) {
+        	JPanel buttonPanel = new JPanel(new BorderLayout());
+        	buttonPanel.add(jb);
+        	menuBox.add(buttonPanel);
+        	menuBox.add(Box.createRigidArea(new Dimension(0,10)));
+        }
+	
+        return menuBox;
+	}
+}
