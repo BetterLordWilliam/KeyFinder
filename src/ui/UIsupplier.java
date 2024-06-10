@@ -98,7 +98,7 @@ public class UIsupplier {
         		menuBox.add(Box.createRigidArea(new Dimension(0,10)));
         	count++;
         }
-	
+        
         return menuBox;
 	}
 }

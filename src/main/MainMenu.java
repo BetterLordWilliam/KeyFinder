@@ -56,6 +56,7 @@ public class MainMenu extends JPanel implements ActionListener, State {
         this.setFocusable(true);
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setRequestFocusEnabled(true);
+        this.setVisible(false);
         createUI();
 	}
 	

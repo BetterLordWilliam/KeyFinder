@@ -1,5 +1,6 @@
 package src.main;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -17,6 +18,7 @@ import javax.swing.KeyStroke;
 import src.ui.UIsupplier;
 
 import javax.swing.Action;
+import javax.swing.BoxLayout;
 import javax.swing.JComponent;
 import javax.swing.AbstractAction;
 
@@ -30,13 +32,17 @@ public class Game extends JPanel implements Runnable, State {
     private final int fps = 60;             // I'm not sure why I am saying this, but frames per second
     private Thread gameThread;
     
-    // PAUSED MENU
-    private final JPopupMenu paused = new JPopupMenu();
-    
+   	// PAUSED MENU
+    private final JPanel paused = new JPanel();
+    private final Dimension pausedPanelDim_max = new Dimension(100,90);
+    private final Dimension pausedPanelDim_min = new Dimension(100,60);
+    private final Dimension pausedPanelDim_preferred = pausedPanelDim_min;	// Preferred dimension is min
+
     // PAUSED MENU BUTTONS
     private List<JComponent> pausedButtons = new ArrayList<>(Arrays.asList(
     		UIsupplier.createMenuButton("Resume Game", 			// Restart the game thread, hide paused
     			e -> {unpaused();}, null),
+    		UIsupplier.createMenuButton("Save Game", null ,null),
     		UIsupplier.createMenuButton("Quit to Title", 		// Quit to the title
     			e -> {
     				paused.setVisible(false);
@@ -51,11 +57,12 @@ public class Game extends JPanel implements Runnable, State {
         this.setBackground(Color.black);
         this.setFocusable(true);
         this.setRequestFocusEnabled(true);
-    
+        this.setVisible(false);
+        this.setLayout(null);
+        this.add(paused);
+        
         createPausedUI();
         createUI();
-        
-        this.add(paused);
     }
     
     /**
@@ -63,10 +70,11 @@ public class Game extends JPanel implements Runnable, State {
      */
     private void createPausedUI() {
         JComponent pausedMenu = UIsupplier.createMenuBox(pausedButtons);
-       
+        
         paused.add(pausedMenu);
+        paused.setSize(pausedPanelDim_max);
         paused.setBackground(Color.gray);
-        paused.pack();
+        paused.setVisible(false);
     }
     
     /**
@@ -87,6 +95,47 @@ public class Game extends JPanel implements Runnable, State {
         setKeyBindings();      // set the bindings 
     	startGameThread();     // start the thread
 	}
+   
+    /**
+     * paused:			stops gamethread and shows pause menu
+     */
+    private void paused() {
+    	gameThread = null;
+    	paused.setLocation(
+    	    ((Main.screenWidth - paused.getWidth())/2),
+        	((Main.screenHeight - paused.getHeight())/2));
+        paused.setVisible(true);
+    }
+    
+    /**
+     * unpaused:		resumes gamethread and hides pause menu
+     */
+    private void unpaused() {
+		startGameThread();
+    	paused.setVisible(false);
+    }
+    
+   /**
+     * setKeyBindings:      setup the bindings required for the Game
+     */
+    private void setKeyBindings() {
+    	
+    	// Pause the game on "esc" key being pressed
+        Action esc = new AbstractAction() {
+            private static final long serialVersionUID = 1L;
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO Auto-generated method stub
+            	paused();
+            }
+        };
+
+        this.getInputMap(
+            JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+            KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "ESCAPE"
+        );
+        this.getActionMap().put("ESCAPE", esc);
+    }
     
     /**
      * startGameThread:     begin KeyFinder game thread
@@ -126,52 +175,12 @@ public class Game extends JPanel implements Runnable, State {
             }
         }
     }
-   
-    /**
-     * paused:			stops gamethread and shows pause menu
-     */
-    private void paused() {
-    	gameThread = null;
-    	paused.setLocation(
-    	    (this.getLocationOnScreen().x + (Main.screenWidth - paused.getWidth())/2),
-        	(this.getLocationOnScreen().y + (Main.screenHeight - paused.getHeight())/2));
-        paused.setVisible(true);
-    }
-    
-    /**
-     * unpaused:		resumes gamethread and hides pause menu
-     */
-    private void unpaused() {
-		startGameThread();
-    	paused.setVisible(false);
-    }
-    
-   /**
-     * setKeyBindings:      setup the bindings required for the Game
-     */
-    private void setKeyBindings() {
-    	
-    	// Pause the game on "esc" key being pressed
-        Action esc = new AbstractAction() {
-            private static final long serialVersionUID = 1L;
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-            	paused();
-            }
-        };
-
-        this.getInputMap(
-            JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-            KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "ESCAPE"
-        );
-        this.getActionMap().put("ESCAPE", esc);
-    }
     
     /**
      * update:              allow the entites to perform their logic
      */
     void update() {
+    	System.out.println("Frame");
     }
 
     /**
