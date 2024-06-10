@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
+
 import java.util.List;
 
 import javax.swing.BorderFactory;
@@ -21,6 +22,12 @@ import javax.swing.JPanel;
  * @version 		2024-1
  */
 public class UIsupplier {
+	
+	// COMPONENT SIZES
+	private static final int MENU_BUTTON_HEIGHT = 30;		// Buttons have max 30px height
+	
+	// PADDINGS
+	public static final Dimension PADDING_SMALL = new Dimension(0,10);
 	
 	/**
 	 * setComponentBgFg:	sets the foreground and background of component
@@ -95,9 +102,18 @@ public class UIsupplier {
         	buttonPanel.add(jb);
         	menuBox.add(buttonPanel);
         	if (count < total) 
-        		menuBox.add(Box.createRigidArea(new Dimension(0,10)));
+        		menuBox.add(Box.createRigidArea(PADDING_SMALL));
         	count++;
         }
+        
+        // Minimum required height
+        menuBox.setSize(100, MENU_BUTTON_HEIGHT * count);
+        
+        /*
+        System.out.printf("Width: %d\nHeight: %d\n",
+        		menuBox.getWidth(),
+        		menuBox.getHeight());
+        */
         
         return menuBox;
 	}

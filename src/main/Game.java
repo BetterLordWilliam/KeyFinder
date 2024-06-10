@@ -1,6 +1,5 @@
 package src.main;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -12,15 +11,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
 import javax.swing.KeyStroke;
-
-import src.ui.UIsupplier;
-
 import javax.swing.Action;
-import javax.swing.BoxLayout;
 import javax.swing.JComponent;
 import javax.swing.AbstractAction;
+
+import src.ui.UIsupplier;
 
 public class Game extends JPanel implements Runnable, State {
     /**
@@ -34,9 +30,6 @@ public class Game extends JPanel implements Runnable, State {
     
    	// PAUSED MENU
     private final JPanel paused = new JPanel();
-    private final Dimension pausedPanelDim_max = new Dimension(100,90);
-    private final Dimension pausedPanelDim_min = new Dimension(100,60);
-    private final Dimension pausedPanelDim_preferred = pausedPanelDim_min;	// Preferred dimension is min
 
     // PAUSED MENU BUTTONS
     private List<JComponent> pausedButtons = new ArrayList<>(Arrays.asList(
@@ -53,6 +46,7 @@ public class Game extends JPanel implements Runnable, State {
      * no-arg constructor
      */
     public Game() {
+    	// Settings for the pane
         this.setPreferredSize(new Dimension(Main.screenWidth, Main.screenHeight));
         this.setBackground(Color.black);
         this.setFocusable(true);
@@ -72,7 +66,10 @@ public class Game extends JPanel implements Runnable, State {
         JComponent pausedMenu = UIsupplier.createMenuBox(pausedButtons);
         
         paused.add(pausedMenu);
-        paused.setSize(pausedPanelDim_max);
+        paused.setSize(new Dimension(
+    		pausedMenu.getWidth(),
+    		pausedMenu.getHeight()
+		));
         paused.setBackground(Color.gray);
         paused.setVisible(false);
     }
