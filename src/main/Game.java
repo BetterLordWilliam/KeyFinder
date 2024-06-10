@@ -116,17 +116,16 @@ public class Game extends JPanel implements Runnable, State {
      * setKeyBindings:      setup the bindings required for the Game
      */
     private void setKeyBindings() {
-    	
     	// Pause the game on "esc" key being pressed
         Action esc = new AbstractAction() {
             private static final long serialVersionUID = 1L;
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
             	paused();
             }
         };
-
+        
+        // Configure the input map
         this.getInputMap(
             JComponent.WHEN_IN_FOCUSED_WINDOW).put(
             KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "ESCAPE"
