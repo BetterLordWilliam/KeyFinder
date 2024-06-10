@@ -56,6 +56,7 @@ public class MainMenu extends JPanel implements ActionListener, State {
         this.setFocusable(true);
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setRequestFocusEnabled(true);
+        createUI();
 	}
 	
 	/**
@@ -98,9 +99,8 @@ public class MainMenu extends JPanel implements ActionListener, State {
 	 */
 	@Override
 	public void setup() {
-	    this.removeAll();
+		this.setVisible(true);
         this.grabFocus();
-        createUI();
 	}
 	
 	/**

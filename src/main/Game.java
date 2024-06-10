@@ -1,19 +1,21 @@
 package src.main;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.KeyStroke;
-import javax.swing.border.LineBorder;
+
+import src.ui.UIsupplier;
+
 import javax.swing.Action;
 import javax.swing.JComponent;
 import javax.swing.AbstractAction;
@@ -23,38 +25,54 @@ public class Game extends JPanel implements Runnable, State {
      * required because this is a JPanel
      */
     private static final long serialVersionUID = 1L;
-    
+   
     // THREAD INFO
     private final int fps = 60;             // I'm not sure why I am saying this, but frames per second
     private Thread gameThread;
     
+    // PAUSED MENU
+    private final JPopupMenu paused = new JPopupMenu();
+    
+    // PAUSED MENU BUTTONS
+    private List<JComponent> pausedButtons = new ArrayList<>(Arrays.asList(
+    		UIsupplier.createMenuButton("Resume Game", 			// Restart the game thread, hide paused
+    			e -> {unpaused();}, null),
+    		UIsupplier.createMenuButton("Quit to Title", 		// Quit to the title
+    			e -> {
+    				paused.setVisible(false);
+    				Main.setState(Main.MAIN_MENU);}, null)
+    ));
+    
+    /**
+     * no-arg constructor
+     */
     public Game() {
         this.setPreferredSize(new Dimension(Main.screenWidth, Main.screenHeight));
         this.setBackground(Color.black);
         this.setFocusable(true);
         this.setRequestFocusEnabled(true);
-    }
+    
+        createPausedUI();
+        createUI();
         
-    /**
-     * setKeyBindings:      setup the bindings required for the Game
-     */
-    private void setKeyBindings() {
-        Action esc = new AbstractAction() {
-            private static final long serialVersionUID = 1L;
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                paused();
-            }
-        };
-
-        this.getInputMap(
-            JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-            KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "ESCAPE"
-        );
-        this.getActionMap().put("ESCAPE", esc);
+        this.add(paused);
     }
+    
+    /**
+     * createPausedUI:		create the UI for the paused menu.
+     */
+    private void createPausedUI() {
+        JComponent pausedMenu = UIsupplier.createMenuBox(pausedButtons);
+       
+        paused.add(pausedMenu);
+        paused.setBackground(Color.gray);
+        paused.pack();
+    }
+    
+    /**
+     * createUI:		create the UI for the game.
+     */
+    private void createUI() {}
     
     /**
      * setup:
@@ -63,36 +81,17 @@ public class Game extends JPanel implements Runnable, State {
      */
     @Override
 	public void setup() {
-        this.grabFocus();
-        this.requestFocusInWindow();
-        this.requestFocus();
-        
-        JLabel test = new JLabel("Test");
-        this.add(test, BorderLayout.CENTER);
-        
+    	this.setVisible(true);
+    	this.grabFocus();
+    	
         setKeyBindings();      // set the bindings 
     	startGameThread();     // start the thread
 	}
     
     /**
-     * paused:			stop the game thread, pause menu.
-     */
-    public void paused() {
-        Main.setState(Main.MAIN_MENU);
-        gameThread = null;
-    }
-    
-    /**
-     * unpaused:		resume gameThread, kill pause menu.
-     */
-    public void unpaused() {
-    	gameThread.start();
-    }
-    
-    /**
      * startGameThread:     begin KeyFinder game thread
      */
-    public void startGameThread() {
+    private void startGameThread() {
         gameThread = new Thread(this);
         gameThread.start();
     }
@@ -127,13 +126,52 @@ public class Game extends JPanel implements Runnable, State {
             }
         }
     }
+   
+    /**
+     * paused:			stops gamethread and shows pause menu
+     */
+    private void paused() {
+    	gameThread = null;
+    	paused.setLocation(
+    	    (this.getLocationOnScreen().x + (Main.screenWidth - paused.getWidth())/2),
+        	(this.getLocationOnScreen().y + (Main.screenHeight - paused.getHeight())/2));
+        paused.setVisible(true);
+    }
+    
+    /**
+     * unpaused:		resumes gamethread and hides pause menu
+     */
+    private void unpaused() {
+		startGameThread();
+    	paused.setVisible(false);
+    }
+    
+   /**
+     * setKeyBindings:      setup the bindings required for the Game
+     */
+    private void setKeyBindings() {
+    	
+    	// Pause the game on "esc" key being pressed
+        Action esc = new AbstractAction() {
+            private static final long serialVersionUID = 1L;
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO Auto-generated method stub
+            	paused();
+            }
+        };
+
+        this.getInputMap(
+            JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+            KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "ESCAPE"
+        );
+        this.getActionMap().put("ESCAPE", esc);
+    }
     
     /**
      * update:              allow the entites to perform their logic
      */
     void update() {
-        // System.out.println("This is a frame");
-    	// System.out.println(KeyManager.escPressed);
     }
 
     /**

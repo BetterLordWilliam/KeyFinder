@@ -51,6 +51,7 @@ public class Main {
 	    WINDOW.getContentPane().add((JPanel) CURRENT_PANEL);
 	    WINDOW.pack();
         WINDOW.setVisible(true);
+        WINDOW.revalidate();
 	}
 	    
     /**

@@ -75,7 +75,6 @@ public class UIsupplier {
 			ComponentApplier<JComponent> ca) {
 		JLabel menuTitle = new JLabel(title);
 		setComponentColors(menuTitle, ca);
-		
 		return menuTitle;
 	}
 	
@@ -87,13 +86,17 @@ public class UIsupplier {
 	 */
 	public static JComponent createMenuBox(List<JComponent> buttons) {
         Box menuBox = new Box(BoxLayout.Y_AXIS);
+        int total = buttons.size() - 1;
+        int count = 0;
         
         // Add to the box with paddings
         for (JComponent jb : buttons) {
         	JPanel buttonPanel = new JPanel(new BorderLayout());
         	buttonPanel.add(jb);
         	menuBox.add(buttonPanel);
-        	menuBox.add(Box.createRigidArea(new Dimension(0,10)));
+        	if (count < total) 
+        		menuBox.add(Box.createRigidArea(new Dimension(0,10)));
+        	count++;
         }
 	
         return menuBox;
