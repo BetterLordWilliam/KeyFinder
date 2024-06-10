@@ -43,7 +43,6 @@ public class Main {
 	 */
 	public static void setState(State newState) {
 		WINDOW.getContentPane().removeAll();
-		WINDOW.repaint();
 	    
 		CURRENT_PANEL = newState;
 	    CURRENT_PANEL.setup();
@@ -52,6 +51,7 @@ public class Main {
 	    WINDOW.pack();
         WINDOW.setVisible(true);
         WINDOW.revalidate();
+		WINDOW.repaint();
 	}
 	    
     /**
