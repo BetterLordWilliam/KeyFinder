@@ -10,8 +10,8 @@ import src.main.Main;
 public class FontSupplier {
 	
 	// FONT REFERENCES
-	public static Font MENU_FONT;
-	public static Font MENU_FONT_LARGE;
+	public static Font menuFont;
+	public static Font menuFontLarge;
 
 	/**
 	 * loadFont:		retrieve font
@@ -30,7 +30,7 @@ public class FontSupplier {
 	 */
 	public static void loadFonts() {
 		try {
-			MENU_FONT_LARGE = loadFont("/res/UI/Text/FFFFORWA.TTF", Font.TRUETYPE_FONT, 36f);
+			menuFontLarge = loadFont("/res/UI/Text/FFFFORWA.TTF", Font.TRUETYPE_FONT, 36f);
 		} catch (FontFormatException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

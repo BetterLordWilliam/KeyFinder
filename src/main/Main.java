@@ -19,39 +19,39 @@ import javax.swing.JPanel;
  */
 public class Main {
     // TILE SIZE (accessible elsewhere)
-    public static final int og_tile_size = 16;    // 16 x 16, pixels
-    public static final int size_mod = 4;
-    public static int tileSize = size_mod * og_tile_size;
+    public static final int OG_TILE_SIZE = 16;    // 16 x 16, pixels
+    public static final int SIZE_MOD = 4;
+    public static int tileSize = SIZE_MOD * OG_TILE_SIZE;
     
-    // WINDOW SIZE (accessible elsewhere)
-    public static final int max_screen_col = 16;
-    public static final int max_screen_row = 12;
-    public static int screenWidth = tileSize * max_screen_col;
-    public static int screenHeight = tileSize * max_screen_row;
+    // window SIZE (accessible elsewhere)
+    public static final int MAX_SCREEN_COL = 16;
+    public static final int MAX_SCREEN_ROW = 12;
+    public static int screenWidth = tileSize * MAX_SCREEN_COL;
+    public static int screenHeight = tileSize * MAX_SCREEN_ROW;
     
-    // WINDOW RELATED OBJECTS 
+    // window RELATED OBJECTS 
     // (the actual frame of the game and the current panel pointer)
-    private static JFrame WINDOW = new JFrame();
-    private static State CURRENT_PANEL = null;
+    private static JFrame window = new JFrame();
+    private static State currentPanel = null;
     
     // KEYFINDER GAME RELATED PANELS  (basically states)
     public static final State MAIN_MENU = new MainMenu();            // instance of MainMenu state (JPanel)
     public static final State GAME = new Game();                     // Instance of GAME state (JPanel)
     
 	/**
-	 * setPanelToGAME:         changes CURRENT_PANEL to GAME.
+	 * setPanelToGAME:         changes currentPanel to GAME.
 	 */
 	public static void setState(State newState) {
-		WINDOW.getContentPane().removeAll();
+		window.getContentPane().removeAll();
 	    
-		CURRENT_PANEL = newState;
-	    CURRENT_PANEL.setup();
+		currentPanel = newState;
+	    currentPanel.setup();
 	    
-	    WINDOW.getContentPane().add((JPanel) CURRENT_PANEL);
-	    WINDOW.pack();
-        WINDOW.setVisible(true);
-        WINDOW.revalidate();
-		WINDOW.repaint();
+	    window.getContentPane().add((JPanel) currentPanel);
+	    window.pack();
+        window.setVisible(true);
+        window.revalidate();
+		window.repaint();
 	}
 	    
     /**
@@ -70,13 +70,13 @@ public class Main {
      */
     public static void main(String[] args) { 
     	// Basic window setup
-        WINDOW.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        WINDOW.setPreferredSize(new Dimension(screenWidth, screenHeight));
-        WINDOW.setResizable(false);
-        WINDOW.pack();
-        WINDOW.setVisible(true);
-        WINDOW.setLocationRelativeTo(null);
-        WINDOW.setTitle("KeyFinder");
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setPreferredSize(new Dimension(screenWidth, screenHeight));
+        window.setResizable(false);
+        window.pack();
+        window.setVisible(true);
+        window.setLocationRelativeTo(null);
+        window.setTitle("KeyFinder");
         setState(MAIN_MENU);						// Enter the main menu
     }
 }

@@ -25,7 +25,7 @@ public class Game extends JPanel implements Runnable, State {
     private static final long serialVersionUID = 1L;
    
     // THREAD INFO
-    private final int fps = 60;             // I'm not sure why I am saying this, but frames per second
+    private final int FPS = 60;             // I'm not sure why I am saying this, but frames per second
     private Thread gameThread;
     
    	// PAUSED MENU
@@ -143,12 +143,12 @@ public class Game extends JPanel implements Runnable, State {
     
     /**
      * game thread entry.
-     * panel update logic, use frames to draw at 60fps.
+     * panel update logic, use frames to draw at 60FPS.
      */
     @Override
     public void run() {
         // TODO Auto-generated method stub
-        double drawInteveral = 1000000000 / fps;
+        double drawInteveral = 1000000000 / FPS;
         double delta = 0;
         long lastTime = System.nanoTime();
         long currentTime;

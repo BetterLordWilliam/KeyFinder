@@ -69,7 +69,7 @@ public class MainMenu extends JPanel implements ActionListener, State {
         JComponent menuTitle = UIsupplier.createMenuTitle("KeyFinder", 
         	(mt) -> {
         	mt.setForeground(Color.white);
-        	mt.setFont(FontSupplier.MENU_FONT_LARGE);});
+        	mt.setFont(FontSupplier.menuFontLarge);});
         JComponent menuBox = UIsupplier.createMenuBox(menuButtons);
        
 		// Menu panel creation
