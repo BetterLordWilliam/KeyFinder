@@ -29,7 +29,6 @@ public class FontSupplier {
 	 * loadFonts:		read the fonts from the system
 	 */
 	public static void loadFonts() {
-		System.out.println("Here");
 		try {
 			MENU_FONT_LARGE = loadFont("/res/UI/Text/FFFFORWA.TTF", Font.TRUETYPE_FONT, 36f);
 		} catch (FontFormatException | IOException e) {

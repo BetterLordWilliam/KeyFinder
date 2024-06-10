@@ -34,12 +34,12 @@ public class Game extends JPanel implements Runnable, State {
     // PAUSED MENU BUTTONS
     private List<JComponent> pausedButtons = new ArrayList<>(Arrays.asList(
     		UIsupplier.createMenuButton("Resume Game", 			// Restart the game thread, hide paused
-    			e -> {unpaused();}, null),
+    			(e) -> {unpaused();}, null),
     		UIsupplier.createMenuButton("Save Game", null ,null),
     		UIsupplier.createMenuButton("Quit to Title", 		// Quit to the title
-    			e -> {
-    				paused.setVisible(false);
-    				Main.setState(Main.MAIN_MENU);}, null)
+    			(e) -> {
+				paused.setVisible(false);
+				Main.setState(Main.MAIN_MENU);}, null)
     ));
     
     /**

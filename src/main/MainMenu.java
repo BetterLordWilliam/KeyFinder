@@ -36,12 +36,12 @@ public class MainMenu extends JPanel implements ActionListener, State {
 	// Creates the Buttons for the menu
 	private List<JComponent> menuButtons = new ArrayList<>(Arrays.asList(
 			UIsupplier.createMenuButton("Start", 
-					(e) -> {Main.setState(Main.GAME);}, null),
+				(e) -> {Main.setState(Main.GAME);}, null),
 			UIsupplier.createMenuButton("Load", null, null),
 			UIsupplier.createMenuButton("Settings", null, null),
 			UIsupplier.createMenuButton("Controls", null, null),
 			UIsupplier.createMenuButton("Quit", 
-					(e) -> {Main.terminate();}, null)
+				(e) -> {Main.terminate();}, null)
 	));
     
     /**
