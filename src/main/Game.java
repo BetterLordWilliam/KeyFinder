@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -147,7 +148,6 @@ public class Game extends JPanel implements Runnable, State {
      */
     @Override
     public void run() {
-        // TODO Auto-generated method stub
         double drawInteveral = 1000000000 / FPS;
         double delta = 0;
         long lastTime = System.nanoTime();
@@ -185,7 +185,6 @@ public class Game extends JPanel implements Runnable, State {
      * @param g2            Graphics2D, will get from paintComponent method
      */
     public void paintComponent(Graphics g) {
-        // TODO Auto-generated method stub
         // Will draw GAME objects and stuff here.
         // Draws the aspects of the game in order
         // 1 the map
