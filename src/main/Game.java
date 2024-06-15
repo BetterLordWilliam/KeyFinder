@@ -6,14 +6,17 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.JComponent;
+
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
+import javax.swing.Action;
+import javax.swing.JComponent;
+import javax.swing.AbstractAction;
+
 import src.ui.UIsupplier;
 
 public class Game extends JPanel implements Runnable, State {
@@ -30,7 +33,7 @@ public class Game extends JPanel implements Runnable, State {
     private final JPanel paused = new JPanel();
 
     // PAUSED MENU BUTTONS
-    private final List<JComponent> pausedButtons = new ArrayList<>(Arrays.asList(
+    private List<JComponent> pausedButtons = new ArrayList<>(Arrays.asList(
     		UIsupplier.createMenuButton("Resume Game", 			// Restart the game thread, hide paused
     			(e) -> {unpaused();}, null),
     		UIsupplier.createMenuButton("Save Game", null ,null),
@@ -181,7 +184,6 @@ public class Game extends JPanel implements Runnable, State {
      * 
      * @param g2            Graphics2D, will get from paintComponent method
      */
-    @Override
     public void paintComponent(Graphics g) {
         // Will draw GAME objects and stuff here.
         // Draws the aspects of the game in order
