@@ -9,8 +9,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import src.ui.FontSupplier;
@@ -53,11 +51,11 @@ public class MainMenu extends JPanel implements ActionListener, State {
         this.setPreferredSize(new Dimension(Main.screenWidth, Main.screenHeight));
         this.setBackground(Color.black);
         this.setFocusable(true);
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setRequestFocusEnabled(true);
         this.setVisible(false);
-        
-        createUI();
+		this.setLayout(gb);
+
+		createUI();
 	}
 	
 	/**
@@ -65,7 +63,7 @@ public class MainMenu extends JPanel implements ActionListener, State {
 	 */
 	private void createUI() {
 		// Create menu components
-        JComponent menuTitle = UIsupplier.createMenuTitle("KeyFinder", 
+        JComponent menuTitle = UIsupplier.createMessage("KeyFinder", 
         	(mt) -> {
         	mt.setForeground(Color.white);
         	mt.setFont(FontSupplier.menuFontLarge);});
@@ -87,12 +85,8 @@ public class MainMenu extends JPanel implements ActionListener, State {
         // Add the components to the menu panel
         menuPanel.add(menuTitle);
         menuPanel.add(menuBox);
-        
-		this.add(Box.createVerticalGlue());		// Center vertically
-		this.add(Box.createHorizontalGlue());	// Center horizontally
+
 		this.add(menuPanel);
-		this.add(Box.createVerticalGlue());
-		this.add(Box.createHorizontalGlue());
 	}
 	
 	/**

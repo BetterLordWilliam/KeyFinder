@@ -4,9 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
-
 import java.util.List;
-
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -72,19 +70,21 @@ public class UIsupplier {
 		
 		return newButton;
 	}
-	
+
 	/**
-	 * createMenuTitle		creates main menu title
+	 * createMessage:		Creates a text message
 	 * 
-	 * @return JLabel		menuTitle component
+	 * @param contents		String, message contents
+	 * @param ca			ComponentApplier, customised appreance
+	 * @return				text, JComponent
 	 */
-	public static JComponent createMenuTitle(String title, 
+	public static JComponent createMessage(String contents,
 			ComponentApplier<JComponent> ca) {
-		JLabel menuTitle = new JLabel(title);
-		setComponentColors(menuTitle, ca);
-		return menuTitle;
+		JLabel text = new JLabel(contents);
+		setComponentColors(text, ca);
+		return text;
 	}
-	
+
 	/**
 	 * createMenuBox:		create the buttons of the main menu
 	 * 

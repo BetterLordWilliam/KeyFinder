@@ -4,6 +4,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -11,6 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
@@ -26,8 +30,13 @@ public class Game extends JPanel implements Runnable, State {
     private final int FPS = 60;             // I'm not sure why I am saying this, but frames per second
     private Thread gameThread;
     
+    // GAME PANEL
+    private final GridBagLayout gb = new GridBagLayout();
+    private final GridBagConstraints gb_constraints = new GridBagConstraints();
+
    	// PAUSED MENU
     private final JPanel paused = new JPanel();
+    private final JPanel gameMessages = new JPanel();
 
     // PAUSED MENU BUTTONS
     private final List<JComponent> pausedButtons = new ArrayList<>(Arrays.asList(
@@ -50,33 +59,36 @@ public class Game extends JPanel implements Runnable, State {
         this.setFocusable(true);
         this.setRequestFocusEnabled(true);
         this.setVisible(false);
-        this.setLayout(null);
-        this.add(paused);
-        
-        createPausedUI();
+        this.setLayout(gb);
+
         createUI();
-    }
-    
-    /**
-     * createPausedUI:		create the UI for the paused menu.
-     */
-    private void createPausedUI() {
-        JComponent pausedMenu = UIsupplier.createMenuBox(pausedButtons);
-        
-        paused.add(pausedMenu);
-        paused.setSize(new Dimension(
-    		pausedMenu.getWidth(),
-    		pausedMenu.getHeight()
-		));
-        paused.setBackground(Color.gray);
-        paused.setVisible(false);
     }
     
     /**
      * createUI:		create the UI for the game.
      */
-    private void createUI() {}
-    
+    private void createUI() {
+        // Configure paused menu box 
+        JComponent pausedMenu = UIsupplier.createMenuBox(pausedButtons);
+        gb_constraints.ipadx = 10;
+        gb_constraints.ipady = 10;
+        gb.setConstraints(pausedMenu, gb_constraints);
+        
+        // Configure the layout of the paused panel
+        paused.setLayout(gb);
+        paused.setBackground(Color.gray);
+        paused.setBorder(BorderFactory.createEtchedBorder(Color.darkGray, Color.gray));
+        paused.setVisible(false);
+        gb_constraints.ipadx = 10;
+        gb_constraints.ipady = 10;
+        gb.setConstraints(paused, gb_constraints);
+
+        // Add components to paused
+        paused.add(pausedMenu);
+
+        this.add(paused);
+    }
+
     /**
      * setup:
      * """ invoke the game thread
@@ -96,9 +108,6 @@ public class Game extends JPanel implements Runnable, State {
      */
     private void paused() {
     	gameThread = null;
-    	paused.setLocation(
-    	    ((Main.screenWidth - paused.getWidth())/2),
-        	((Main.screenHeight - paused.getHeight())/2));
         paused.setVisible(true);
     }
     
@@ -183,15 +192,21 @@ public class Game extends JPanel implements Runnable, State {
      */
     @Override
     public void paintComponent(Graphics g) {
-        // Will draw GAME objects and stuff here.
-        // Draws the aspects of the game in order
-        // 1 the map
-        // 2 the objects
-        // 3 the player
-        // 4 the UI
     	Graphics2D g2 = (Graphics2D)g;
-        super.paintComponent(g2);   			// window
-        
+        super.paintComponent(g2);
+       
+        // Testing the layering of graphics drawing vs menu drawing.
+        Rectangle test = new Rectangle(100, 100, 400, 400);
+        Rectangle test1 = new Rectangle(100, 600, 400, 100);
+
+        g2.setColor(Color.red);
+        g2.fill(test);
+        g2.draw(test);
+
+        g2.setColor(Color.yellow);
+        g2.fill(test1);
+        g2.draw(test1);
+
         g2.dispose();
     }
 }
