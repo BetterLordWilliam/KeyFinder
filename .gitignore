@@ -6,6 +6,11 @@
 .vscode
 .vscode/*
 
+# VIM
+*~
+*.swp
+*.swo
+
 # Old School-Related files
 instructorFeedback.pdf
 "KeyFinder Design Document.pdf"
