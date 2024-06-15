@@ -1,7 +1,6 @@
 package src.main;
 
 import java.awt.Dimension;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -19,19 +18,19 @@ import javax.swing.JPanel;
  */
 public class Main {
     // TILE SIZE (accessible elsewhere)
-    public static final int OG_TILE_SIZE = 16;    // 16 x 16, pixels
-    public static final int SIZE_MOD = 4;
-    public static int tileSize = SIZE_MOD * OG_TILE_SIZE;
+    private static final int OG_TILE_SIZE = 16;    // 16 x 16, pixels
+    private static final int SIZE_MOD = 4;
+    public static final int TILE_SIZE = SIZE_MOD * OG_TILE_SIZE;
     
     // window SIZE (accessible elsewhere)
     public static final int MAX_SCREEN_COL = 16;
     public static final int MAX_SCREEN_ROW = 12;
-    public static int screenWidth = tileSize * MAX_SCREEN_COL;
-    public static int screenHeight = tileSize * MAX_SCREEN_ROW;
+    public static int screenWidth = TILE_SIZE * MAX_SCREEN_COL;
+    public static int screenHeight = TILE_SIZE * MAX_SCREEN_ROW;
     
     // window RELATED OBJECTS 
     // (the actual frame of the game and the current panel pointer)
-    private static JFrame window = new JFrame();
+    private static final JFrame window = new JFrame();
     private static State currentPanel = null;
     
     // KEYFINDER GAME RELATED PANELS  (basically states)
@@ -52,8 +51,8 @@ public class Main {
         window.setVisible(true);
         window.revalidate();
 		window.repaint();
-	}
-	    
+	} 
+
     /**
      * terminate:		kill the KeyFinder process
      * 

@@ -1,10 +1,5 @@
 package src.main;
 
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -14,9 +9,13 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
 import src.ui.FontSupplier;
 import src.ui.UIsupplier;
+
 
 /**
  * GamePanel:       The panel where the game happens
@@ -30,11 +29,11 @@ public class MainMenu extends JPanel implements ActionListener, State {
      */
     private static final long serialVersionUID = 1L;
     
-    private GridBagLayout gb = new GridBagLayout();
-    private GridBagConstraints gb_constraints = new GridBagConstraints();
+    private final GridBagLayout gb = new GridBagLayout();
+    private final GridBagConstraints gb_constraints = new GridBagConstraints();
 
 	// Creates the Buttons for the menu
-	private List<JComponent> menuButtons = new ArrayList<>(Arrays.asList(
+	private final List<JComponent> menuButtons = new ArrayList<>(Arrays.asList(
 			UIsupplier.createMenuButton("Start", 
 				(e) -> {Main.setState(Main.GAME);}, null),
 			UIsupplier.createMenuButton("Load", null, null),
@@ -111,7 +110,5 @@ public class MainMenu extends JPanel implements ActionListener, State {
 	 * @param e            ActionEvent, event (but we use lambda).
 	 */
     @Override
-    public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-    }
+    public void actionPerformed(ActionEvent e) {}
 }
