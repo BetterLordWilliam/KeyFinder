@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -36,7 +37,6 @@ public class Game extends JPanel implements Runnable, State {
 
    	// PAUSED MENU
     private final JPanel paused = new JPanel();
-    private final JPanel gameMessages = new JPanel();
 
     // PAUSED MENU BUTTONS
     private final List<JComponent> pausedButtons = new ArrayList<>(Arrays.asList(
@@ -59,7 +59,7 @@ public class Game extends JPanel implements Runnable, State {
         this.setFocusable(true);
         this.setRequestFocusEnabled(true);
         this.setVisible(false);
-        this.setLayout(gb);
+        this.setLayout(new GridLayout(1,1));
 
         createUI();
     }
