@@ -1,5 +1,7 @@
 package src.entity;
 
-public abstract class Entity {
-	
+import src.main.Paintable;
+
+public abstract class Entity implements Paintable {
+    public abstract void update();
 }

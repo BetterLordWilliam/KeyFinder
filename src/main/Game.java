@@ -1,13 +1,10 @@
 package src.main;
 
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -19,24 +16,29 @@ import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
+import src.map.EpisodeManager;
 import src.ui.UIsupplier;
 
-public class Game extends JPanel implements Runnable, State {
+/**
+ * Game:        State where the game happens
+ * 
+ * @author      Will Otterbein
+ * @version     2024-1
+ */
+public class Game extends JPanel implements State {
     /**
      * required because this is a JPanel
      */
     private static final long serialVersionUID = 1L;
    
-    // THREAD INFO
-    private final int FPS = 60;             // I'm not sure why I am saying this, but frames per second
-    private Thread gameThread;
-    
-    // GAME PANEL
+    // GAME OBJECTS
     private final GridBagLayout gb = new GridBagLayout();
     private final GridBagConstraints gb_constraints = new GridBagConstraints();
 
-   	// PAUSED MENU
+    private final EpisodeManager episodeManager = new EpisodeManager();
     private final JPanel paused = new JPanel();
+    private final JPanel game = new GamePanel(episodeManager);
+    private final GameThread gameThread = new GameThread(game, episodeManager);
 
     // PAUSED MENU BUTTONS
     private final List<JComponent> pausedButtons = new ArrayList<>(Arrays.asList(
@@ -46,6 +48,7 @@ public class Game extends JPanel implements Runnable, State {
     		UIsupplier.createMenuButton("Quit to Title", 		// Quit to the title
     			(e) -> {
 				paused.setVisible(false);
+                gameThread.stopGameThread();
 				Main.setState(Main.MAIN_MENU);}, null)
     ));
     
@@ -59,7 +62,7 @@ public class Game extends JPanel implements Runnable, State {
         this.setFocusable(true);
         this.setRequestFocusEnabled(true);
         this.setVisible(false);
-        this.setLayout(new GridLayout(1,1));
+        this.setLayout(new CardLayout());
 
         createUI();
     }
@@ -70,23 +73,30 @@ public class Game extends JPanel implements Runnable, State {
     private void createUI() {
         // Configure paused menu box 
         JComponent pausedMenu = UIsupplier.createMenuBox(pausedButtons);
+        pausedMenu.setBorder(BorderFactory.createEtchedBorder(Color.darkGray, Color.gray));
         gb_constraints.ipadx = 10;
         gb_constraints.ipady = 10;
         gb.setConstraints(pausedMenu, gb_constraints);
-        
-        // Configure the layout of the paused panel
-        paused.setLayout(gb);
-        paused.setBackground(Color.gray);
-        paused.setBorder(BorderFactory.createEtchedBorder(Color.darkGray, Color.gray));
-        paused.setVisible(false);
-        gb_constraints.ipadx = 10;
-        gb_constraints.ipady = 10;
-        gb.setConstraints(paused, gb_constraints);
+        pausedMenu.setBackground(Color.gray);
 
         // Add components to paused
         paused.add(pausedMenu);
 
-        this.add(paused);
+        // Configure the layout of the paused panel
+        paused.setLayout(gb);
+        paused.setBackground(new Color(0,0,0,0));
+        gb_constraints.ipadx = 10;
+        gb_constraints.ipady = 10;
+        gb.setConstraints(paused, gb_constraints);
+        paused.setVisible(false);
+
+        // Configure the layout of the game panel
+        game.setLayout(gb);
+        game.setBackground(Color.black);
+        game.setVisible(false);
+
+        add(game, "GAME");
+        add(paused, "PAUSED");
     }
 
     /**
@@ -100,23 +110,23 @@ public class Game extends JPanel implements Runnable, State {
     	this.grabFocus();
     	
         setKeyBindings();      // set the bindings 
-    	startGameThread();     // start the thread
+    	gameThread.startGameThread();     // start the thread
 	}
    
     /**
      * paused:			stops gamethread and shows pause menu
      */
     private void paused() {
-    	gameThread = null;
-        paused.setVisible(true);
+        ((CardLayout)this.getLayout()).show(this, "PAUSED");
+    	gameThread.stopGameThread();
     }
     
     /**
      * unpaused:		resumes gamethread and hides pause menu
      */
     private void unpaused() {
-		startGameThread();
-    	paused.setVisible(false);
+        ((CardLayout)this.getLayout()).show(this, "GAME");
+		gameThread.startGameThread();
     }
     
    /**
@@ -138,75 +148,5 @@ public class Game extends JPanel implements Runnable, State {
             KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "ESCAPE"
         );
         this.getActionMap().put("ESCAPE", esc);
-    }
-    
-    /**
-     * startGameThread:     begin KeyFinder game thread
-     */
-    private void startGameThread() {
-        gameThread = new Thread(this);
-        gameThread.start();
-    }
-    
-    /**
-     * game thread entry.
-     * panel update logic, use frames to draw at 60FPS.
-     */
-    @Override
-    public void run() {
-        double drawInteveral = 1000000000 / FPS;
-        double delta = 0;
-        long lastTime = System.nanoTime();
-        long currentTime;
-        long timer = 0;
-        
-        while (gameThread != null) {
-            // game time
-            currentTime = System.nanoTime();
-            delta += (currentTime - lastTime) / drawInteveral;
-            timer += (currentTime - lastTime);
-            lastTime = currentTime;
-            
-            if (delta >= 1) {
-                update();
-                repaint();
-                delta--;
-            }
-            if (timer >= 1000000000) {
-                timer = 0;
-            }
-        }
-    }
-    
-    /**
-     * update:              allow the entites to perform their logic
-     */
-    void update() {
-    	System.out.println("Frame");
-    }
-
-    /**
-     * paint:               Used to redraw the game tiles, objects and entities
-     * 
-     * @param g2            Graphics2D, will get from paintComponent method
-     */
-    @Override
-    public void paintComponent(Graphics g) {
-    	Graphics2D g2 = (Graphics2D)g;
-        super.paintComponent(g2);
-       
-        // Testing the layering of graphics drawing vs menu drawing.
-        Rectangle test = new Rectangle(100, 100, 400, 400);
-        Rectangle test1 = new Rectangle(100, 600, 400, 100);
-
-        g2.setColor(Color.red);
-        g2.fill(test);
-        g2.draw(test);
-
-        g2.setColor(Color.yellow);
-        g2.fill(test1);
-        g2.draw(test1);
-
-        g2.dispose();
     }
 }
