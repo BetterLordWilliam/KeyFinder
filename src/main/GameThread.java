@@ -75,7 +75,7 @@ public class GameThread implements Runnable {
                 if (thing != null)
                     thing.update();
         }
-        System.out.println("Frame");
+        // System.out.println("Frame");
     }
 
     /**

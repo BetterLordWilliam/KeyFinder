@@ -32,6 +32,7 @@ public class GamePanel <Ptr extends Paintable> extends JPanel  {
         super.paintComponent(g2);   			// window
 
         // Testing the layering of graphics drawing vs menu drawing.
+        /*
         Rectangle test = new Rectangle(100, 100, 400, 400);
         Rectangle test1 = new Rectangle(100, 600, 400, 100);
 
@@ -42,7 +43,8 @@ public class GamePanel <Ptr extends Paintable> extends JPanel  {
         g2.setColor(Color.yellow);
         g2.fill(test1);
         g2.draw(test1);
-
+        */
+        
         // Gather the lists of items to paint
         @SuppressWarnings("unchecked")
         List<List<Ptr>> megaList = new LinkedList<>(Arrays.asList(
@@ -61,7 +63,6 @@ public class GamePanel <Ptr extends Paintable> extends JPanel  {
                 }
             }
         }
-
 
         g2.dispose();
     }

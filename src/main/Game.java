@@ -74,10 +74,7 @@ public class Game extends JPanel implements State {
         // Configure paused menu box 
         JComponent pausedMenu = UIsupplier.createMenuBox(pausedButtons);
         pausedMenu.setBorder(BorderFactory.createEtchedBorder(Color.darkGray, Color.gray));
-        gb_constraints.ipadx = 10;
-        gb_constraints.ipady = 10;
         gb.setConstraints(pausedMenu, gb_constraints);
-        pausedMenu.setBackground(Color.gray);
 
         // Add components to paused
         paused.add(pausedMenu);
@@ -109,8 +106,9 @@ public class Game extends JPanel implements State {
     	this.setVisible(true);
     	this.grabFocus();
     	
-        setKeyBindings();      // set the bindings 
-    	gameThread.startGameThread();     // start the thread
+        setKeyBindings();      				// set the bindings 
+        episodeManager.startEpisode();		// Begin the current episode
+    	gameThread.startGameThread();     	// start the thread
 	}
    
     /**

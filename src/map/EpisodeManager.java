@@ -27,10 +27,10 @@ public class EpisodeManager {
      * linkMaps:        adds all the game maps to a list (LinkedList)
     */ 
     private void linkMaps() {
-        maps.add(new Map("map01", "../../res/maps/world1.txt"));
-        maps.add(new Map("map02", "../../res/maps/world2.txt"));
-        maps.add(new Map("map03", "../../res/maps/world3.txt"));
-        maps.add(new Map("map04", "../../res/maps/world4.txt"));
+        maps.add(new Map("map01", "res/maps/world01.txt"));
+        maps.add(new Map("map02", "res/maps/world02.txt"));
+        maps.add(new Map("map03", "res/maps/world03.txt"));
+        maps.add(new Map("map04", "res/maps/world04.txt"));
     }
 
     /**
@@ -69,6 +69,8 @@ public class EpisodeManager {
      * startEpisode:                begins current episode at first map
      */
     public void startEpisode() {
-
+    	currentMap = maps.getFirst();			// retrieve the first level of the episode
+    	
+    	currentMap.loadMap();
     }
 }

@@ -108,6 +108,7 @@ public class UIsupplier {
         
         // Minimum required height
         menuBox.setSize(100, MENU_BUTTON_HEIGHT * count);
+        menuBox.setBackground(Color.darkGray);
         
         /*
         System.out.printf("Width: %d\nHeight: %d\n",
