@@ -22,13 +22,13 @@ public class Main {
     private static final int SIZE_MOD = 4;
     public static final int TILE_SIZE = SIZE_MOD * OG_TILE_SIZE;
     
-    // window SIZE (accessible elsewhere)
+    // WINDOW SIZE (accessible elsewhere)
     public static final int MAX_SCREEN_COL = 16;
     public static final int MAX_SCREEN_ROW = 12;
     public static int screenWidth = TILE_SIZE * MAX_SCREEN_COL;
     public static int screenHeight = TILE_SIZE * MAX_SCREEN_ROW;
     
-    // window RELATED OBJECTS 
+    // WINDOW RELATED OBJECTS 
     // (the actual frame of the game and the current panel pointer)
     private static final JFrame window = new JFrame();
     private static State currentPanel = null;
@@ -38,7 +38,7 @@ public class Main {
     public static final State GAME = new Game();                     // Instance of GAME state (JPanel)
     
 	/**
-	 * setPanelToGAME:         changes currentPanel to GAME.
+	 * setState:         changes currentPanel to GAME.
 	 */
 	public static void setState(State newState) {
 		window.getContentPane().removeAll();

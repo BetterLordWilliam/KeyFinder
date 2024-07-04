@@ -16,7 +16,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
-import src.map.EpisodeManager;
+import src.map.Episode;
 import src.ui.UIsupplier;
 
 /**
@@ -27,7 +27,7 @@ import src.ui.UIsupplier;
  */
 public class Game extends JPanel implements State {
     /**
-     * required because this is a JPanel
+     * required because this is a JPanel.
      */
     private static final long serialVersionUID = 1L;
    
@@ -35,10 +35,10 @@ public class Game extends JPanel implements State {
     private final GridBagLayout gb = new GridBagLayout();
     private final GridBagConstraints gb_constraints = new GridBagConstraints();
 
-    private final EpisodeManager episodeManager = new EpisodeManager();
+    private final Episode Episode = new Episode(null);
     private final JPanel paused = new JPanel();
-    private final JPanel game = new GamePanel(episodeManager);
-    private final GameThread gameThread = new GameThread(game, episodeManager);
+    private final JPanel game = new GamePanel<Paintable>(Episode);
+    private final GameThread gameThread = new GameThread(game, Episode);
 
     // PAUSED MENU BUTTONS
     private final List<JComponent> pausedButtons = new ArrayList<>(Arrays.asList(
@@ -100,9 +100,8 @@ public class Game extends JPanel implements State {
     }
 
     /**
-     * setup:
-     * """ invoke the game thread
-     * setup the default menu components for Game. """
+     * setup:	invoke the game thread
+     * 			setup the default menu components for Game.
      */
     @Override
 	public void setup() {

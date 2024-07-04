@@ -3,7 +3,7 @@ package src.main;
 import java.util.List;
 import javax.swing.JPanel;
 import src.entity.Entity;
-import src.map.EpisodeManager;
+import src.map.Episode;
 
 /**
  * GameThread:      The thread which will update and repaint during game execution.abstract 
@@ -17,19 +17,19 @@ public class GameThread implements Runnable {
     private Thread gameThread = new Thread();
 
     // CONNECTIONS
-    private JPanel rootPanel = null;                    // Where to draw things
-    private EpisodeManager episodeManager = null;       // What to draw, what to update
+    private JPanel rootPanel = null;        // Where to draw things
+    private Episode Episode = null;       	// What to draw, what to update
 
     /**
      * constructor, requires that you supply pointers to the root panel
-     * as well as the episodeManager where entity data will come from.
+     * as well as the Episode where entity data will come from.
      * 
      * @param rootPanel         JPanel, where graphical items are to be drawn
-     * @param episodeManager    EpisodeManager, where the list of entities is to be retrieved
+     * @param Episode    Episode, where the list of entities is to be retrieved
      */
-    public GameThread(JPanel rootPanel, EpisodeManager episodeManager) {
-        this.rootPanel = rootPanel;
-        this.episodeManager = episodeManager;
+    public GameThread(JPanel rootPanel, Episode Episode) {
+		this.rootPanel = rootPanel;					// Get panel reference from Game
+        this.Episode = Episode;				// Get Episode reference from Game
     }
 
     /**
@@ -42,12 +42,12 @@ public class GameThread implements Runnable {
     }
 
     /**
-     * setEpisodeManager:       establishes pointer to the episode manager.
+     * setEpisode:       establishes pointer to the episode manager.
      * 
-     * @param episodeManager
+     * @param Episode
      */
-    public void setEpisodeManager(EpisodeManager episodeManager) {
-        this.episodeManager = episodeManager;
+    public void setEpisode(Episode Episode) {
+        this.Episode = Episode;
     }
 
     /**
@@ -69,13 +69,15 @@ public class GameThread implements Runnable {
      * update:              called once per-frame.
      */
     public void update() {
-        List<Entity> entities = episodeManager.getCurrentLevelEntities();
-        if (entities != null) {
-            for (Entity thing : entities)
-                if (thing != null)
-                    thing.update();
+    	List<Entity> eList;			// eList reference
+    	
+        if (Episode.getCurrentMap() != null 
+        		&& (eList = Episode.getCurrentMap().getEntities()) != null){
+			for (Entity thing : eList)
+				if (thing != null)
+					thing.update();
         }
-        System.out.println("Frame");
+        // System.out.println("Frame");
     }
 
     /**
@@ -98,7 +100,7 @@ public class GameThread implements Runnable {
             lastTime = currentTime;
             
             if (delta >= 1) {
-                if (rootPanel != null && episodeManager != null) {
+                if (rootPanel != null && Episode != null) {
                     update();
                     rootPanel.repaint();
                 }
