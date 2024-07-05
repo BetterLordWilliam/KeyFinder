@@ -7,6 +7,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.function.Consumer;
+
 import src.main.Main;
 
 import static src.map.FileFlagConstants.NAME;
@@ -45,7 +47,22 @@ public class Episode {
     		e.printStackTrace();
     		Main.terminate();
     	}
-		startEpisode();													// Temporary episode start, need to create episode selector
+    }
+   
+    /**
+     * loadPaths:		loads the paths for the episode's maps. Creates them as files.
+     * 
+     * @param br			BufferedReader, the reader for the episode
+     * @param stopString	String, the string that serves as the flag for when to stop reading
+     * @param load			LoaderSimple<String>, the simple loader which is used to
+     * @throws IOException
+     */
+    private void loadPaths(BufferedReader br, String stopString,
+    		LoaderSimple<String> load) throws IOException {
+    	String line;
+    	while (!((line = br.readLine()).contains(stopString))) {
+    		load.loadFunctionSimple(line);
+    	}
     }
     
     /**
@@ -55,24 +72,26 @@ public class Episode {
      */
     private void loadEpisode() throws IOException {
     	BufferedReader br = null;
-    	int mapList = 0;
     	
     	try {
-    		br = new BufferedReader(new FileReader(episodeData));
-    		String line = br.readLine();
-    		
-    		while (line != null) {
-    			if (line != null && line.equals(MAP_PATHS_END))
-    				mapList = 0;
-    			if (mapList == 1)
-    				maps.add(new Map(new File(line)));
-    			if (line != null && line.equals(MAP_PATHS_START))
-    				mapList = 1;
-    			episodeName = (line != null && line.contains(NAME)) 
-    					? line.split(":")[1].trim() : episodeName;			// Extract the value of name
-    			episodeDescription = (line != null && line.contains(DESCRIPTION)) 
-    					? line.split(":")[1].trim() : episodeDescription;	// Extract the value of description
-    			line = br.readLine();						// Advance to next line
+    		br = new BufferedReader(new FileReader(episodeData), 256);
+    		String line;
+    		while ((line = br.readLine()) != null) {
+			    /*
+				 * Following loadPaths methods use the LoaderSimple functional 
+    			 * interface method loadFunctionSimple in their lambda expressions.
+    			 * This might be considered overkill for this particular application.
+    			 */
+    			if (line.contains(MAP_PATHS_START)) {
+					loadPaths(br, MAP_PATHS_END,								// Initialize the map Files
+    					(path) -> { maps.add(new Map(new File(path))); });
+					
+    			} else {
+					episodeName = (line != null && line.contains(NAME)) 
+							? line.split(":")[1].trim() : episodeName;			// Extract the value of name
+					episodeDescription = (line != null && line.contains(DESCRIPTION)) 
+							? line.split(":")[1].trim() : episodeDescription;	// Extract the value of description
+    			}
     		}
     		
     	} catch (FileNotFoundException e) {
@@ -100,12 +119,28 @@ public class Episode {
     /**
      * loadNextMap:			loads the next map.
      */
-    public void loadAmap() {
+    public void loadNextMap() {
     	if (mapIndex >= mapIndexCap) {
     		System.out.println("End");
-    		Main.terminate();				// End the game at last level for know.
+    		mapIndex = 0;
+    		Main.setState(Main.MAIN_MENU);				// End the game at last level for know.
+    		return;
     	}
     	currentMap = maps.get(mapIndex);
+    	try {
+    		currentMap.loadMap();
+    	} catch (IOException e) {
+    		System.err.println("Cannot load map");
+    		e.printStackTrace();
+    		Main.terminate();
+    	}
+    	mapIndex++;
+    }
+    
+    /**
+     * reloadMap:			reloads the current map.
+     */
+    public void reloadMap() {
     	try {
     		currentMap.loadMap();
     	} catch (IOException e) {
@@ -120,7 +155,8 @@ public class Episode {
      * startEpisode:                begins current episode at first map
      */
     public void startEpisode() {
-    	currentMap = maps.get(0);
-    	loadAmap();
+    	mapIndex = 0;
+    	currentMap = maps.get(mapIndex);
+    	reloadMap();
     }
 }

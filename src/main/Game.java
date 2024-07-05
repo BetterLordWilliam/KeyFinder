@@ -108,8 +108,9 @@ public class Game extends JPanel implements State {
     	this.setVisible(true);
     	this.grabFocus();
     	
-        setKeyBindings();      // set the bindings 
-    	gameThread.startGameThread();     // start the thread
+        setKeyBindings();      				// set the bindings 
+        Episode.startEpisode();				// start the episode
+    	gameThread.startGameThread();     	// start the thread
 	}
    
     /**

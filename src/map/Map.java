@@ -1,9 +1,12 @@
 package src.map;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 import src.entity.Entity;
 import src.main.Main;
 import src.object.SObject;
@@ -33,7 +36,6 @@ public class Map {
     private String mapName = null;
     private String mapDescription = null;
     private File mapData = new File("./res/maps/world01.txt");			// Default to map
-    private Map currentMap = null;
     
     /**
      * Map:     constructs a map
@@ -77,22 +79,68 @@ public class Map {
     	return mapEntities;
     }
     
-    private void loadTiles() {
-    	
-    }
-    
-    private void loadObjects() {
-    	
-    }
-    
-    private void loadEntities() {
-    	
+    /**
+     * loadStuff:			loads stuff, tiles, objects or entities.
+     * 
+     * @param br			BufferedReader, should be currently reading the file
+     * @param stopString	String, flag that marks the end of the loading process
+     * @param loader		Loader, interface used for loading either tiles, objects or entities
+     * @throws IOException
+     */
+    private void loadStuff(BufferedReader br, String stopString,
+    		Loader<String, Integer, Integer> loader) throws IOException {
+    	int posX = 0, posY = 0;
+    	String line;
+    	while (!((line = br.readLine()).contains(stopString))) {
+    		String[] lits = line.split(" ");
+    		for (String s : lits) {
+    			loader.loadFunction(s, posX, posY);
+    			posX++;
+    		}
+    		posY++;
+    	}
     }
     
     /**
      * loadMap:  populates Tile, Objects and Entities lists.
+     * 
+     * @throws IOException
      */
     public void loadMap() throws IOException {
+    	BufferedReader br = null;
     	
+    	try {
+    		br = new BufferedReader(new FileReader(mapData), 256);
+    		String line;
+    		while ((line = br.readLine())!= null) {
+    			/*
+				 * Following loadStuff methods use the Loader functional 
+    			 * interface method loadFunction in their lambda expressions
+    			 */
+    			if (line.contains(MAP_TILE_START)) {
+    				loadStuff(br, MAP_TILE_END, (string, posx, posy) -> {				// Initializes map Tiles
+    					mapTiles.add(Tile.TileMaker.makeTile(string, posx, posy));});
+    			} else if (line.contains(MAP_OBJECT_START)) {
+    				loadStuff(br, MAP_OBJECT_END, (string, posx, posy) -> {				// Initializes map SObjects
+						mapObjects.add(SObject.SObjectMaker.makeSObject(string, posx, posy));});
+    			} else if (line.contains(MAP_ENTITY_START)) {
+    				loadStuff(br, MAP_ENTITY_END, (string, posx, posy) -> {				// Initializes map Entities
+    					mapEntities.add(Entity.EntityMaker.makeEntity(string, posx, posy));});
+    				
+    			} else {
+					mapName = (line != null && line.contains(NAME)) 
+							? line.split(":")[1].trim() : mapName;			// Extract the value of name
+					mapDescription = (line != null && line.contains(DESCRIPTION)) 
+							? line.split(":")[1].trim() : mapDescription;	// Extract the value of description
+    			}
+    		}
+    		
+    	} catch (IOException e) {
+    		System.err.println("An error occured while loading the map.");
+    		e.printStackTrace();
+    		Main.terminate();
+    	} finally {
+    		br.close();
+    	}
     }
 }
