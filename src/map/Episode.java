@@ -7,7 +7,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.function.Consumer;
 
 import src.main.Main;
 
@@ -34,7 +33,9 @@ public class Episode {
     private String episodeDescription = null;
     
     /**
-     * no-arg constructor
+     * Episode:				constructs an Episode.
+     * 
+     * @param episodeData	File, file with the episode data
      */
     public Episode(File episodeData) {
     	if (episodeData != null)
