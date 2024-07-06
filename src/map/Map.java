@@ -35,7 +35,7 @@ public class Map {
 
     private String mapName = null;
     private String mapDescription = null;
-    private File mapData = new File("./res/maps/world01.txt");			// Default to map
+    private File mapData = new File(".\\res\\maps\\world01.txt");			// Default to map
     
     /**
      * Map:     constructs a map
@@ -92,7 +92,7 @@ public class Map {
     	int posX = 0, posY = 0;
     	String line;
     	while (!((line = br.readLine()).contains(stopString))) {
-    		String[] lits = line.split(" ");
+    		String[] lits = line.split(",");
     		for (String s : lits) {
     			loader.loadFunction(s, posX, posY);
     			posX++;

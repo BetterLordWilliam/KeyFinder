@@ -28,7 +28,7 @@ public class Episode {
 	// EPISODE OBJECTS
 	private List<Map> maps = new LinkedList<>(); 
     private Map currentMap = null;
-    private File episodeData = new File("./res/episodes/episode1.txt");		// Default to the first episode
+    private File episodeData = new File(".\\res\\episodes\\episode1.txt");		// Default to the first episode
     private String episodeName = null;
     private String episodeDescription = null;
     
@@ -89,9 +89,9 @@ public class Episode {
 					
     			} else {
 					episodeName = (line != null && line.contains(NAME)) 
-							? line.split(":")[1].trim() : episodeName;			// Extract the value of name
+							? line.split(":")[1] : episodeName;			// Extract the value of name
 					episodeDescription = (line != null && line.contains(DESCRIPTION)) 
-							? line.split(":")[1].trim() : episodeDescription;	// Extract the value of description
+							? line.split(":")[1] : episodeDescription;	// Extract the value of description
     			}
     		}
     		
