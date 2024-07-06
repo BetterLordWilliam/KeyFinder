@@ -14,18 +14,18 @@ public class FileFlagConstants {
 	public FileFlagConstants() {}
 	
 	// GENERIC FLAGS
-	public static final String NAME = "_name:";
-	public static final String DESCRIPTION = "_description:";
+	public static final String NAME = "name";
+	public static final String DESCRIPTION = "description";
 	
 	// EPISODE SPECIFIC FILE FLAGS
-	public static final String MAP_PATHS_START = "_map_paths_start";
-	public static final String MAP_PATHS_END = "_map_paths_end";
+	public static final String MAP_PATHS_START = "mapPathsStart";
+	public static final String MAP_PATHS_END = "mapPathsEnd";
 	
 	// MAP SPECIFIC FILE FLAGS
-	public static final String MAP_TILE_START = "_map_tiles";
-	public static final String MAP_TILE_END = "_map_tiles_end";
-	public static final String MAP_ENTITY_START = "_map_entities";
-	public static final String MAP_ENTITY_END = "_map_entities_end";
-	public static final String MAP_OBJECT_START = "_map_objects";
-	public static final String MAP_OBJECT_END = "_map_objects_end";
+	public static final String MAP_TILE_START = "mapTiles";
+	public static final String MAP_TILE_END = "mapTilesEnd";
+	public static final String MAP_ENTITY_START = "mapEntities";
+	public static final String MAP_ENTITY_END = "mapEntitiesEnd";
+	public static final String MAP_OBJECT_START = "mapObjects";
+	public static final String MAP_OBJECT_END = "mapObjectsEnd";
 }

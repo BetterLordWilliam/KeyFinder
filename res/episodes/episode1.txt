@@ -1,8 +1,8 @@
-_name: Episode_1
-_description: A collection of the 5 original KeyFinder levels.
-_map_paths_start
-./res/maps/world01.txt
-./res/maps/world02.txt
-./res/maps/world03.txt
-./res/maps/world04.txt
-_map_paths_end
+name:Episode One
+description:A collection of the 5 original KeyFinder levels.
+mapPathsStart
+.\\res\\maps\\world01.txt
+.\\res\\maps\\world02.txt
+.\\res\\maps\\world03.txt
+.\\res\\maps\\world04.txt
+mapPathsEnd

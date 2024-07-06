@@ -95,6 +95,9 @@ public class Episode {
     			}
     		}
     		
+    		System.out.printf("name: %s\n", episodeName);
+    		System.out.printf("description: %s\n", episodeDescription);
+    		
     	} catch (FileNotFoundException e) {
     		System.err.println("An exception occured while loading the episode (likely incorrect episode path): ");
     		e.printStackTrace();

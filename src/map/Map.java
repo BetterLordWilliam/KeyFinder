@@ -92,12 +92,14 @@ public class Map {
     	int posX = 0, posY = 0;
     	String line;
     	while (!((line = br.readLine()).contains(stopString))) {
-    		String[] lits = line.split(",");
+    		String[] lits = line.split(",");	// Split items along comma (csv-like assumed)
     		for (String s : lits) {
+    			System.out.print(s);
     			loader.loadFunction(s, posX, posY);
     			posX++;
     		}
     		posY++;
+    		System.out.print('\n');
     	}
     }
     
@@ -134,6 +136,9 @@ public class Map {
 							? line.split(":")[1].trim() : mapDescription;	// Extract the value of description
     			}
     		}
+    		
+    		System.out.printf("name: %s\n", mapName);
+    		System.out.printf("description: %s\n", mapDescription);
     		
     	} catch (IOException e) {
     		System.err.println("An error occured while loading the map.");
