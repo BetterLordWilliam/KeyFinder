@@ -1,0 +1,10 @@
+<!ELEMENT episode (data,mappaths)>
+
+<!ELEMENT data EMPTY>
+<!ATTLIST data id ID #REQUIRED>
+<!ATTLIST data name CDATA #REQUIRED>
+<!ATTLIST data description CDATA #REQUIRED>
+
+<!ELEMENT mappaths (mappath+)>
+<!ATTLIST mappaths id ID #REQUIRED>
+<!ELEMENT mappath (#PCDATA)>

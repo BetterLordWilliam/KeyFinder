@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="episode.dtd"?>
+
+<episode>
+    <data id="episodeData" name="Episode One" description="This episode contains the original KeyFinder levels."/>
+    <mappaths id="episodePaths">
+        <mappath>.\\res\\maps\\world01.xml</mappath>
+        <mappath>.\\res\\maps\\world02.xml</mappath>
+        <mappath>.\\res\\maps\\world03.xml</mappath>
+        <mappath>.\\res\\maps\\world04.xml</mappath>
+    </mappaths>
+</episode>
