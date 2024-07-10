@@ -3,7 +3,7 @@
 <!DOCTYPE Map SYSTEM "world.dtd">
 
 <Map>
-    <Data id="mapData" name="World One" description="The first KeyFinder Map. An Island with a mysterious structure"></Data>
+    <Data id="mapData" name="World Two" description="The second KeyFinder Map. An old mansion with keys scatter about the place."></Data>
     <Tiles id="mapTiles">
     3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3
     3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3

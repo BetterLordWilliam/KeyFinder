@@ -1,23 +1,13 @@
 package src.map;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
-
 import javax.xml.parsers.ParserConfigurationException;
-
 import org.xml.sax.SAXException;
 
 import src.main.Main;
-
-import static src.map.FileFlagConstants.NAME;
-import static src.map.FileFlagConstants.DESCRIPTION;
-import static src.map.FileFlagConstants.MAP_PATHS_START;
-import static src.map.FileFlagConstants.MAP_PATHS_END;
 
 /**
  * Episode:      Will be responsible for controlling the sequence through episodes.
@@ -32,7 +22,7 @@ public class Episode {
 	// EPISODE OBJECTS
 	private List<Map> maps = new LinkedList<>(); 
     private Map currentMap = null;
-    private File episodeData = new File(".\\res\\episodes\\episode1.txt");		// Default to the first episode
+    private File episodeData = new File(".\\res\\episodes\\episode1.xml");		// Default to the first episode
     private String episodeName = null;
     private String episodeDescription = null;
     
@@ -47,21 +37,32 @@ public class Episode {
     	
     	// TEMPORARY
 		loadEpisode();
-		mapIndexCap = maps.size() - 1;
+		mapIndexCap = maps.size();
     }
     
     /**
-     * loadEpisode:			initializes current episode.
+     * setEpisodeName:				sets the episode name to be the string 
+     * 								in parameters.
+     * 
+     * @param episodeName			String, new episode name
      */
-    private void loadEpisode() {
-    	try {
-			KFileReader.readEpisodeFile(episodeData, this);
-		} catch (ParserConfigurationException | SAXException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+    public void setEpisodeName(String episodeName) {
+    	if (episodeName != null)
+    		this.episodeName = episodeName;
     }
-
+    
+    /**
+     * setEpisodeDescription: 		sets the episode description to be the string 
+     * 								in parameters.
+     * 
+     * @param episodeDescription
+     */
+    public void setEpisodeDescription(String episodeDescription) {
+    	if (episodeDescription != null)
+    		this.episodeDescription = episodeDescription;
+    	
+    }
+    
     /**
      * getMapList:			returns the list of maps.
      * 
@@ -91,36 +92,49 @@ public class Episode {
     		return;
     	}
     	currentMap = maps.get(mapIndex);
-    	try {
-    		currentMap.loadMap();
-    	} catch (IOException e) {
-    		System.err.println("Cannot load map");
-    		e.printStackTrace();
-    		Main.terminate();
-    	}
-    	mapIndex++;
+		currentMap.loadMap();
+		mapIndex++;
     }
     
     /**
      * reloadMap:			reloads the current map.
      */
-    public void reloadMap() {
-    	try {
-    		currentMap.loadMap();
-    	} catch (IOException e) {
-    		System.err.println("Cannot load map");
-    		e.printStackTrace();
-    		Main.terminate();
-    	}
-    	mapIndex++;
+    public void reloadCurrentMap() {
+		currentMap.loadMap();
     }
-    
+
     /**
      * startEpisode:                begins current episode at first map
      */
     public void startEpisode() {
-    	mapIndex = 0;
-    	// currentMap = maps.get(mapIndex);
-    	// reloadMap();
+    	mapIndex = 0;									// Reset the map index
+    	loadNextMap();
     }
+   
+    /**
+     * loadEpisode:			initializes current episode.
+     */
+    private void loadEpisode() {
+    	try {
+			KFileReader.readEpisodeFile(episodeData, this);
+		} catch (ParserConfigurationException e) {
+			System.err.println("There was an error reading the episode file: ");
+			e.printStackTrace();
+			Main.terminate();
+		}
+    }
+    
+    /**
+     * toString:			returns string representation of the episode.
+     * 
+     * @return episode		String, episode variables
+     */
+    @Override
+    public String toString() {
+    	return (
+			episodeName + ": " + episodeDescription + "\n"
+			+ "Maps:\n" + maps.toString() + "\n"
+		); 
+    }
+    
 }

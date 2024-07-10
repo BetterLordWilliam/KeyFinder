@@ -1,15 +1,15 @@
-<!ELEMENT map (data, tiles, objects, entities)>
+<!ELEMENT Map (Data, Tiles, Objects, Entities)>
 
-<!ELEMENT data EMPTY>
-<!ATTLIST data id ID #REQUIRED>
-<!ATTLIST data name CDATA #REQUIRED>
-<!ATTLIST data description CDATA #REQUIRED>
+<!ELEMENT Data EMPTY>
+<!ATTLIST Data id ID #REQUIRED>
+<!ATTLIST Data name CDATA #REQUIRED>
+<!ATTLIST Data description CDATA #REQUIRED>
 
-<!ELEMENT tiles (#PCDATA)>
-<!ATTLIST tiles id ID #REQUIRED>
+<!ELEMENT Tiles (#PCDATA)>
+<!ATTLIST Tiles id ID #REQUIRED>
 
-<!ELEMENT objects (#PCDATA)>
-<!ATTLIST objects id ID #REQUIRED>
+<!ELEMENT Objects (#PCDATA)>
+<!ATTLIST Objects id ID #REQUIRED>
 
-<!ELEMENT entities (#PCDATA)>
-<!ATTLIST entities id ID #REQUIRED>
+<!ELEMENT Entities (#PCDATA)>
+<!ATTLIST Entities id ID #REQUIRED>

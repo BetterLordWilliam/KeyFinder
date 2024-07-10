@@ -7,19 +7,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
+
 import src.entity.Entity;
 import src.main.Main;
 import src.object.SObject;
 import src.tile.Tile;
-
-import static src.map.FileFlagConstants.NAME;
-import static src.map.FileFlagConstants.DESCRIPTION;
-import static src.map.FileFlagConstants.MAP_TILE_START;
-import static src.map.FileFlagConstants.MAP_TILE_END;
-import static src.map.FileFlagConstants.MAP_OBJECT_START;
-import static src.map.FileFlagConstants.MAP_OBJECT_END;
-import static src.map.FileFlagConstants.MAP_ENTITY_START;
-import static src.map.FileFlagConstants.MAP_ENTITY_END;
 
 /**
  * Map:         basic details for every map
@@ -44,12 +39,51 @@ public class Map {
      * @param mapInfoPath       String, the path where to the map file
      */
     public Map(File mapData) {
-		if (mapData != null)
+		if (mapData != null) {
 			this.mapData = mapData;
-		else {
-			System.err.println("Map could not be loaded");
+			try {
+				KFileReader.readMapFileDetails(mapData, this);
+			} catch (ParserConfigurationException e) {
+				System.err.println("There was an error reading the map file contents: ");
+				e.printStackTrace();
+				Main.terminate();
+			}
+		} else {
+			System.err.println("Mapdata cannot be null!");
 			Main.terminate();
 		}
+    }
+  
+    /**
+     * getMapData:		returns the mapData file.
+     * 
+     * @return mapData	File, file with the map data in it
+     */
+    public File getMapData() {
+    	return mapData;
+    }
+    
+    /**
+     * setmapName:				sets the map name to be the string 
+     * 								in parameters.
+     * 
+     * @param mapName			String, new map name
+     */
+    public void setMapName(String mapName) {
+    	if (mapName != null)
+    		this.mapName = mapName;
+    }
+    
+    /**
+     * setmapDescription: 		sets the map description to be the string 
+     * 								in parameters.
+     * 
+     * @param mapDescription
+     */
+    public void setMapDescription(String mapDescription) {
+    	if (mapDescription != null)
+    		this.mapDescription = mapDescription;
+    	
     }
     
     /**
@@ -78,74 +112,26 @@ public class Map {
     public List<Entity> getEntities() {
     	return mapEntities;
     }
-    
-    /**
-     * loadStuff:			loads stuff, tiles, objects or entities.
-     * 
-     * @param br			BufferedReader, should be currently reading the file
-     * @param stopString	String, flag that marks the end of the loading process
-     * @param loader		Loader, interface used for loading either tiles, objects or entities
-     * @throws IOException
-     */
-    private void loadStuff(BufferedReader br, String stopString,
-    		Loader<String, Integer, Integer> loader) throws IOException {
-    	int posX = 0, posY = 0;
-    	String line;
-    	while (!((line = br.readLine()).contains(stopString))) {
-    		String[] lits = line.split(",");	// Split items along comma (csv-like assumed)
-    		for (String s : lits) {
-    			System.out.print(s);
-    			loader.loadFunction(s, posX, posY);
-    			posX++;
-    		}
-    		posY++;
-    		System.out.print('\n');
-    	}
-    }
+
     
     /**
      * loadMap:  populates Tile, Objects and Entities lists.
      * 
      * @throws IOException
      */
-    public void loadMap() throws IOException {
-    	BufferedReader br = null;
-    	
+    public void loadMap() {
     	try {
-    		br = new BufferedReader(new FileReader(mapData), 256);
-    		String line;
-    		while ((line = br.readLine())!= null) {
-    			/*
-				 * Following loadStuff methods use the Loader functional 
-    			 * interface method loadFunction in their lambda expressions
-    			 */
-    			if (line.contains(MAP_TILE_START)) {
-    				loadStuff(br, MAP_TILE_END, (string, posx, posy) -> {				// Initializes map Tiles
-    					mapTiles.add(Tile.TileMaker.makeTile(string, posx, posy));});
-    			} else if (line.contains(MAP_OBJECT_START)) {
-    				loadStuff(br, MAP_OBJECT_END, (string, posx, posy) -> {				// Initializes map SObjects
-						mapObjects.add(SObject.SObjectMaker.makeSObject(string, posx, posy));});
-    			} else if (line.contains(MAP_ENTITY_START)) {
-    				loadStuff(br, MAP_ENTITY_END, (string, posx, posy) -> {				// Initializes map Entities
-    					mapEntities.add(Entity.EntityMaker.makeEntity(string, posx, posy));});
-    				
-    			} else {
-					mapName = (line != null && line.contains(NAME)) 
-							? line.split(":")[1].trim() : mapName;			// Extract the value of name
-					mapDescription = (line != null && line.contains(DESCRIPTION)) 
-							? line.split(":")[1].trim() : mapDescription;	// Extract the value of description
-    			}
-    		}
-    		
-    		System.out.printf("name: %s\n", mapName);
-    		System.out.printf("description: %s\n", mapDescription);
-    		
-    	} catch (IOException e) {
-    		System.err.println("An error occured while loading the map.");
+    		KFileReader.readMapFileContents(this);
+    	} catch (ParserConfigurationException e) {
+    		System.err.println("There was an error reading the map file contents: ");
     		e.printStackTrace();
     		Main.terminate();
-    	} finally {
-    		br.close();
     	}
+    }
+    
+    public String toString() {
+    	return (
+			mapName + "\n" + mapDescription + "\n"
+		);
     }
 }
