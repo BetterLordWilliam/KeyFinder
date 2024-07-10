@@ -78,9 +78,9 @@ public abstract class Tile implements Paintable {
 			TileType ty = null;
 			try {
 				ty = TileType.values()[Integer.parseInt(type.trim())];
-				// Retrieve the TileType based of raw data, use as index
+					// Retrieve the TileType based of raw data, use as index
 			} catch (NumberFormatException e) {
-				System.err.println("Invalid tileType encountered ("+ type + ") :");
+				System.err.println("Invalid tileType encountered ("+ type +") :");
 				e.printStackTrace();
 				Main.terminate();
 			} catch (IndexOutOfBoundsException e) {
