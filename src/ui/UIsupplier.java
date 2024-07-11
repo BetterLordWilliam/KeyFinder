@@ -13,8 +13,6 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import src.util.ComponentApplier;
-
 /**
  * UIsupplier		Supplies customised UI components for KeyFinder.
  * 

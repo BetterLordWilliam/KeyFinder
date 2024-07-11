@@ -5,7 +5,7 @@ import java.util.Map;
 import static java.util.Map.entry;
 
 import src.main.Main;
-import src.util.Paintable;
+import src.main.Paintable;
 
 interface TileFactory <T> {
 	T newInstance();

@@ -1,4 +1,4 @@
-package src.util;
+package src.main;
 
 // Basically a type flag
 public interface State {

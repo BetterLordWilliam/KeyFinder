@@ -1,4 +1,4 @@
-package src.util;
+package src.main;
 
 import java.awt.Graphics2D;
 

@@ -1,4 +1,4 @@
-package src.util;
+package src.ui;
 
 import javax.swing.JComponent;
 

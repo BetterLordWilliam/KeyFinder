@@ -16,10 +16,9 @@ import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
+
 import src.map.Episode;
 import src.ui.UIsupplier;
-import src.util.Paintable;
-import src.util.State;
 
 /**
  * Game:        State where the game happens
