@@ -125,6 +125,7 @@ public class KFileReader {
 	public static void readMapFileDetails(File mPath, Map m) throws ParserConfigurationException {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
+		
 		try {	
 			// Parse the XML file
 			Document document = builder.parse(mPath);
@@ -150,6 +151,7 @@ public class KFileReader {
 	public static void readMapFileContents(Map m) throws ParserConfigurationException {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
+		
 		try {
 			// Parse the XML file
 			Document document = builder.parse(m.getMapData());
