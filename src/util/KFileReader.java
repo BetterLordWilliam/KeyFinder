@@ -1,4 +1,4 @@
-package src.map;
+package src.util;
 
 import javax.xml.parsers.DocumentBuilder; 
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -6,11 +6,12 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 
 import src.main.Main;
+import src.map.Episode;
+import src.map.Map;
 import src.tile.Tile;
 
 import org.w3c.dom.Document; 
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import java.io.File;
 import java.io.IOException;

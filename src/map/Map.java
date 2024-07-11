@@ -11,6 +11,7 @@ import src.entity.Entity;
 import src.main.Main;
 import src.object.SObject;
 import src.tile.Tile;
+import src.util.KFileReader;
 
 /**
  * Map:         basic details for every map

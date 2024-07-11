@@ -1,6 +1,6 @@
 package src.object;
 
-import src.main.Paintable;
+import src.util.Paintable;
 
 public abstract class SObject implements Paintable {
 	public static class SObjectMaker {

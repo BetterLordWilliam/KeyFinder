@@ -6,6 +6,7 @@ import java.util.List;
 import javax.xml.parsers.ParserConfigurationException;
 
 import src.main.Main;
+import src.util.KFileReader;
 
 /**
  * Episode:      Will be responsible for controlling the sequence through episodes.

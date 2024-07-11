@@ -1,6 +1,6 @@
 package src.entity;
 
-import src.main.Paintable;
+import src.util.Paintable;
 
 public abstract class Entity implements Paintable {
     public static class EntityMaker {
