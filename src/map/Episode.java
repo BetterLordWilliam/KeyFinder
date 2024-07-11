@@ -135,5 +135,4 @@ public class Episode {
 			+ "Maps:\n" + maps.toString() + "\n"
 		); 
     }
-    
 }
