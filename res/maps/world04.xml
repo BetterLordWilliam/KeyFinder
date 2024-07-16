@@ -3,7 +3,7 @@
 <!DOCTYPE Map SYSTEM "world.dtd">
 
 <Map>
-    <Data id="mapData" name="World Four" description="The fourth KeyFinder Map. A castle with many rooms."></Data>
+    <Data id="mapData" name="World Four" xdim="" ydim="" description="The fourth KeyFinder Map. A castle with many rooms."></Data>
     <Tiles id="mapTiles">
     3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3
     3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3
