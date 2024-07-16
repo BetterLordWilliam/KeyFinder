@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE TileRegistry SYSTEM "tileDataRegistry.dtd">
+
+<!-- Registry of KeyFinder tiles 
+    tileId                  corresponds to the number that will be read to the file
+    dataFileLocation        corresponds to the file that has the data for this tile
+
+    Tiles are static, most of the time. If a tile has an animation (water tile for example) define
+    the animation texture for each of the frames within Frame elements inside of AnimationFrames element
+ -->
+<TileRegistry>
+    <TileData id="T0" name="Dirt Tile" texturePath=".\\res\\tiles\\textures\\Dirt.png" />
+    <TileData id="T1" name="Grass Tile" texturePath=".\\res\\tiles\\textures\\Grass.png" />
+    <TileData id="T2" name="Wall Tile" texturePath=".\\res\\tiles\\textures\\Wall.png" />
+    <TileData id="T3" name="Water Tile" texturePath=".\\res\\tiles\\textures\\Water.png">
+        <AnimationFrames id="animationFrames" count="2">
+            <Frame dataFileLocation="..\\textures\\Water1.png" />
+            <Frame dataFileLocation="..\\textures\\Water.png" />
+        </AnimationFrames>
+    </TileData>
+    <TileData id="T4" name="Wood Tile" texturePath=".\\res\\tiles\\textures\\Wood.png" />
+    <TileData id="T5" name="Tree Tile" texturePath=".\\res\\tiles\\textures\\Tree.png" />
+    <TileData id="T6" name="Knight Statue Tile" texturePath=".\\res\\tiles\\textures\\KnightStatue.png" />
+    <TileData id="T7" name="Benner Wall Tile" texturePath=".\\res\\tiles\\textures\\BannerWall.png" />
+    <TileData id="T8" name="Lilypad" texturePath=".\\res\\tiles\\textures\\Lilypad.png" />
+</TileRegistry>

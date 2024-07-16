@@ -100,8 +100,25 @@ public abstract class Tile implements Paintable {
 	protected int tX, tY;
 	protected TileType type;
 	
-	public abstract void setTxTy(int tX, int tY);
-	public abstract void setLocalType(TileType type);
+	/**
+	 * setTxTy:			set the position of the tile
+	 * 
+	 * @param tX		Integer, x position of the tile
+	 * @param tY		Integer, y position of the tile
+	 */
+	public void setTxTy(int tX, int tY) {
+		this.tX = tX;
+		this.tY = tY;
+	}
+	
+	/**
+	 * setLocalType:	set the type of the tile
+	 * 
+	 * @param type		TileType
+	 */
+	public void setLocalType(TileType type) {
+		this.type = type;
+	}
 	
 	// For debugging purposes
 	public String toString() {

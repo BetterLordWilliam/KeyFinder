@@ -1,0 +1,13 @@
+<!ELEMENT TileRegistry (TileData+)>
+
+<!ELEMENT TileData ANY>
+<!ATTLIST TileData id ID #REQUIRED>
+<!ATTLIST TileData name CDATA #REQUIRED>
+<!ATTLIST TileData texturePath CDATA #REQUIRED>
+
+<!ELEMENT AnimationFrames (Frame+)>
+<!ATTLIST AnimationFrames id ID #REQUIRED>
+<!ATTLIST AnimationFrames count CDATA #REQUIRED>
+
+<!ELEMENT Frame EMPTY>
+<!ATTLIST Frame dataFileLocation CDATA #REQUIRED>
