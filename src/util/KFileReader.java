@@ -8,6 +8,7 @@ import org.xml.sax.SAXException;
 import src.main.Main;
 import src.map.Episode;
 import src.map.Map;
+import src.object.SObject;
 import src.tile.Tile;
 
 import org.w3c.dom.Document; 
@@ -64,7 +65,10 @@ public class KFileReader {
      */
 	private static void loadStuff(String content,
     		Loader<String, Integer, Integer> loader) throws IOException {
-    	
+		
+		int x = 0;		// Origin X
+		int y = -1;		// Origin Y, I do not know why it seems to count some extra row, but it does
+		
     	// Parse the content using the loader interface in the parameter.
 		// Simply adds tells the map if we are scanning for tiles, obejcts or entities.
 		// Creates appropriate thing and adds to the appropriate list.
@@ -73,9 +77,14 @@ public class KFileReader {
     		String[] items = lines[scanY].split(",");
     		for (int scanX = 0; scanX < items.length; scanX++) {
     			String item = items[scanX].trim();
-    			if (!item.isBlank())
-					loader.loadFunction(item, scanX, scanY);
+    			if (!item.isBlank()) {
+					// System.out.printf("X: %d, Y: %d\n", x, y);	// For debugging purposes
+					loader.loadFunction(item, x, y);
+    			}
+    			x++;
     		}
+			x = 0;		// Reset the column counter after every row
+	    	y++;
     	}
     }
     
@@ -165,9 +174,12 @@ public class KFileReader {
 				Tile nTile = Tile.TileMaker.makeTile(string, posx, posy);
 				m.getTiles().add(nTile);
 			});
-			
+			System.out.println("--");
 			// Initialize objects
-			// ...
+			loadStuff(objectData.getTextContent(), (string, posx, posy) -> {
+				SObject nObject = SObject.SObjectMaker.makeSObject(string, posx, posy);
+				m.getObjects().add(nObject);
+			});
 			
 			// Initialize entities
 			// ...
