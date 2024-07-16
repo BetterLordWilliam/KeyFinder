@@ -66,8 +66,8 @@ public class KFileReader {
 	private static void loadStuff(String content,
     		Loader<String, Integer, Integer> loader) throws IOException {
 		
-		int x = 0;		// Origin X
-		int y = -1;		// Origin Y, I do not know why it seems to count some extra row, but it does
+		int x = 0;			// Origin X
+		int y = -1;			// Origin Y, I do not know why it seems to count some extra row, but it does
 		
     	// Parse the content using the loader interface in the parameter.
 		// Simply adds tells the map if we are scanning for tiles, obejcts or entities.
@@ -83,8 +83,7 @@ public class KFileReader {
     			}
     			x++;
     		}
-			x = 0;		// Reset the column counter after every row
-	    	y++;
+			x = 0; y++;		// Reset the column counter after every row
     	}
     }
     
