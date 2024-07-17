@@ -10,4 +10,4 @@
 <!ATTLIST AnimationFrames count CDATA #REQUIRED>
 
 <!ELEMENT Frame EMPTY>
-<!ATTLIST Frame dataFileLocation CDATA #REQUIRED>
+<!ATTLIST Frame texturePath CDATA #REQUIRED>

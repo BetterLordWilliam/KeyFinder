@@ -10,9 +10,11 @@ import src.map.Episode;
 import src.map.Map;
 import src.object.SObject;
 import src.tile.Tile;
+import src.tile.TileRegistry;
 
 import org.w3c.dom.Document; 
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import java.io.File;
 import java.io.IOException;
@@ -46,16 +48,22 @@ interface Loader<T1, T2, T3> {
 public class KFileReader {
 	// XML Element Names
 	private static final String MAP_PATH_ELEMENT = "Mappath";
-
+	private static final String TILE_DATA = "TileData";
+	private static final String ANIMATION_FRAME = "Frame";
+	private static final String ANIMATION_FRAMES = "AnimationFrames";
+	
 	// XML Attribtue Names
 	private static final String NAME = "name";
 	private static final String DESCRIPTION = "description";
+	private static final String ID = "id";
 	private static final String EPISODE_DATA_ID = "episodeData";
 	private static final String MAP_DATA_ID = "mapData";
 	private static final String MAP_TILE_LIST_ID = "mapTiles";
 	private static final String MAP_OBJECT_LIST_ID = "mapObjects";
 	private static final String MAP_ENTITY_LIST_ID = "mapEntities";
-	   
+	private static final String TEXTURE_PATH="texturePath";
+	private static final String ANIMATION_FRAMES_ID = "animationFrames";
+	
     /**
      * loadStuff:			loads stuff, tiles, objects or entities. Assumed to be CSV format.
      * 
@@ -78,7 +86,7 @@ public class KFileReader {
     		for (int scanX = 0; scanX < items.length; scanX++) {
     			String item = items[scanX].trim();
     			if (!item.isBlank()) {
-					// System.out.printf("X: %d, Y: %d\n", x, y);	// For debugging purposes
+					// System.out.printf("Literal: %s, X: %d, Y: %d\n", item, x, y);	// For debugging purposes
 					loader.loadFunction(item, x, y);
     			}
     			x++;
@@ -173,7 +181,6 @@ public class KFileReader {
 				Tile nTile = Tile.TileMaker.makeTile(string, posx, posy);
 				m.getTiles().add(nTile);
 			});
-			System.out.println("--");
 			// Initialize objects
 			loadStuff(objectData.getTextContent(), (string, posx, posy) -> {
 				SObject nObject = SObject.SObjectMaker.makeSObject(string, posx, posy);
@@ -184,6 +191,71 @@ public class KFileReader {
 			// ...
 		} catch (SAXException | IOException e) {
 			System.err.println("An exception occured while parsing the mapfile: ");
+			e.printStackTrace();
+			Main.terminate();
+		}
+	}
+	
+	/**
+	 * readTileDataChildren:		reads the child nodes of a TileData element.
+	 * 
+	 * @param childNodes			NodeList, the list of the child nodes
+	 * @param tr					TileRegistry, references to the tile registry
+	 */
+	private static void readTileDataChildren(NodeList childNodes, TileRegistry tr) {
+		for (int i = 0; i < childNodes.getLength(); i++) {
+			Node node = childNodes.item(i);
+			NodeList nodeList = node.getChildNodes();
+			if (node.getNodeName().equals(ANIMATION_FRAMES) && nodeList != null)
+				readAnimationFrames(nodeList, tr);
+		}
+	}
+	
+	/**
+	 * readAnimationFrames:			reads the data from the individual frames.
+	 * 
+	 * @param animationFrames		NodeList, the list of the animation frames
+	 * @param tr					TileRegistry, references to the tile registry
+	 */
+	private static void readAnimationFrames(NodeList animationFrames, TileRegistry tr) {
+		for (int i = 0; i < animationFrames.getLength(); i++) {
+			Node node = animationFrames.item(i);
+			if (node.getNodeName().equals(ANIMATION_FRAME)) {
+				System.out.println(node.getAttributes().getNamedItem(TEXTURE_PATH).getNodeValue());
+			}
+		}
+	}
+	
+	/**
+	 * readTileRegistry:			reads the tile registry file.
+	 * 
+	 * @param tr								TileRegistry, the registry object
+	 * @throws ParserConfigurationException
+	 */
+	public static void readTileRegistry(TileRegistry tr) throws ParserConfigurationException {
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder builder = factory.newDocumentBuilder();
+		
+		try {
+			// Parse the XML file
+			Document document = builder.parse(TileRegistry.TILE_REGISTRY_PATH);
+			NodeList nodeList = document.getElementsByTagName(TILE_DATA);
+			
+			for (int i = 0; i < nodeList.getLength(); i++) {
+				Node node = nodeList.item(i);
+				NodeList nodeSubList = node.getChildNodes();
+				
+				// Process the child nodes (if they exist)
+				if (nodeSubList != null && nodeSubList.getLength() > 0)
+					readTileDataChildren(nodeSubList, tr);
+				
+				String nodeId = node.getAttributes().getNamedItem(ID).getNodeValue();
+				String nodeTexturePath = node.getAttributes().getNamedItem(TEXTURE_PATH).getNodeValue();
+				System.out.printf("%s, %s\n", nodeId, nodeTexturePath);
+			}
+			
+		} catch (SAXException | IOException e) {
+			System.err.println("An exception occurred while parsing the mapfile: ");
 			e.printStackTrace();
 			Main.terminate();
 		}

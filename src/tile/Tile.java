@@ -4,6 +4,8 @@ import java.util.Map;
 
 import static java.util.Map.entry;
 
+import java.awt.Graphics2D;
+
 import src.main.Main;
 import src.main.Paintable;
 
@@ -19,7 +21,7 @@ interface TileFactory <T> {
  * @author		Will Otterbein
  * @version		2024-1
  */
-public abstract class Tile implements Paintable {
+public class Tile implements Paintable {
 	
 	/**
 	 * TileType:			defines the tile types in association with the
@@ -54,15 +56,15 @@ public abstract class Tile implements Paintable {
 	 * Tile factory map 
 	 */
 	private static final Map<TileType, TileFactory<? extends Tile>> tileFactories = Map.ofEntries(
-		entry(TileType.DIRT, () -> new DummyTile()),
-		entry(TileType.GRASS, () -> new DummyTile()),
-		entry(TileType.WALL, () -> new DummyTile()),
-		entry(TileType.WATER, () -> new DummyTile()),
-		entry(TileType.WOOD, () -> new DummyTile()),
-		entry(TileType.TREE, () -> new DummyTile()),
-		entry(TileType.KNIGHT_STATUE, () -> new DummyTile()),
-		entry(TileType.BANNER_WALL, () -> new DummyTile()),
-		entry(TileType.LILYPAD, () -> new DummyTile())
+		entry(TileType.DIRT, () -> new Tile()),
+		entry(TileType.GRASS, () -> new Tile()),
+		entry(TileType.WALL, () -> new Tile()),
+		entry(TileType.WATER, () -> new Tile()),
+		entry(TileType.WOOD, () -> new Tile()),
+		entry(TileType.TREE, () -> new Tile()),
+		entry(TileType.KNIGHT_STATUE, () -> new Tile()),
+		entry(TileType.BANNER_WALL, () -> new Tile()),
+		entry(TileType.LILYPAD, () -> new Tile())
 	);
 	
 	/**
@@ -77,7 +79,7 @@ public abstract class Tile implements Paintable {
 		public static Tile makeTile(String type, int tX, int tY) {
 			TileType ty = null;
 			try {
-				ty = TileType.values()[Integer.parseInt(type.trim())];
+				ty = TileType.values()[Integer.parseInt(type.replace('T', ' ').trim())];
 					// Retrieve the TileType based of raw data, use as index
 			} catch (NumberFormatException e) {
 				System.err.println("Invalid tileType encountered ("+ type +") :");
@@ -95,10 +97,19 @@ public abstract class Tile implements Paintable {
 			return newTile;
 		}
 	}
-
+	
+	// Reference to the tile registry, will be used extensively.
+	public static final TileRegistry tileRegistry = new TileRegistry();
 	
 	protected int tX, tY;
+	protected String texturePath;
 	protected TileType type;
+
+	public Tile() {}
+	
+	public Tile(String texturePath, int tX, int tY) {
+		
+	}
 	
 	/**
 	 * setTxTy:			set the position of the tile
@@ -126,5 +137,10 @@ public abstract class Tile implements Paintable {
 			"[ " + type + " | " 
 			+ tX + "," + tY + " ]"
 		);
+	}
+
+	@Override
+	public void paint(Graphics2D g2) {
+		// TODO Auto-generated method stub
 	}
 }

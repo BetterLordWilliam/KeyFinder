@@ -15,8 +15,8 @@
     <TileData id="T2" name="Wall Tile" texturePath=".\\res\\tiles\\textures\\Wall.png" />
     <TileData id="T3" name="Water Tile" texturePath=".\\res\\tiles\\textures\\Water.png">
         <AnimationFrames id="animationFrames" count="2">
-            <Frame dataFileLocation="..\\textures\\Water1.png" />
-            <Frame dataFileLocation="..\\textures\\Water.png" />
+            <Frame texturePath="..\\textures\\Water1.png" />
+            <Frame texturePath="..\\textures\\Water.png" />
         </AnimationFrames>
     </TileData>
     <TileData id="T4" name="Wood Tile" texturePath=".\\res\\tiles\\textures\\Wood.png" />

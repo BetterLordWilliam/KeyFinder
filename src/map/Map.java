@@ -128,7 +128,8 @@ public class Map {
     
     public String toString() {
     	return (
-			mapName + "\n" + mapDescription + "\n"
+			mapName + "\n" + mapDescription + "\n" +
+			mapTiles + "\n" + mapObjects + "\n" + mapEntities + "\n"
 		);
     }
 }
