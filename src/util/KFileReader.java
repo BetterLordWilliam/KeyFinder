@@ -220,9 +220,8 @@ public class KFileReader {
 	private static void readAnimationFrames(NodeList animationFrames, TileRegistry tr) {
 		for (int i = 0; i < animationFrames.getLength(); i++) {
 			Node node = animationFrames.item(i);
-			if (node.getNodeName().equals(ANIMATION_FRAME)) {
+			if (node.getNodeName().equals(ANIMATION_FRAME))
 				System.out.println(node.getAttributes().getNamedItem(TEXTURE_PATH).getNodeValue());
-			}
 		}
 	}
 	

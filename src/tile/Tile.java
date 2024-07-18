@@ -103,13 +103,17 @@ public class Tile implements Paintable {
 	
 	protected int tX, tY;
 	protected String texturePath;
+	protected String tileId;
 	protected TileType type;
 
 	public Tile() {}
 	
-	public Tile(String texturePath, int tX, int tY) {
-		
+	public Tile(String tileId, String texturePath) {
+		this.tileId = tileId;
+		this.texturePath = texturePath;
 	}
+	
+	public Tile(String texturePath, int tX, int tY) {}
 	
 	/**
 	 * setTxTy:			set the position of the tile
