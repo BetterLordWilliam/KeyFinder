@@ -3,10 +3,70 @@
 <!DOCTYPE Map SYSTEM "world.dtd">
 
 <Map>
-    <Data id="mapData" name="World Three" xdim="" ydim="" description="The third KeyFinder Map. An ancient structure with many locked doors."></Data>
+    <Data id="mapData" name="World Three" xdim="30" ydim="30" description="The third KeyFinder Map. An ancient structure with many locked doors."></Data>
     <Tiles id="mapTiles">
+    T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3
+    T3,T3,T3,T3,T3,T3,T5,T0,T1,T5,T5,T5,T1,T5,T5,T1,T1,T1,T5,T5,T1,T5,T1,T1,T1,T3,T3,T3,T3,T3
+    T3,T3,T1,T1,T1,T5,T5,T0,T1,T1,T5,T5,T1,T5,T5,T5,T1,T1,T1,T1,T1,T1,T1,T1,T5,T5,T1,T3,T3,T3
+    T3,T3,T1,T5,T5,T1,T1,T1,T0,T1,T1,T1,T1,T5,T5,T5,T1,T1,T0,T1,T1,T1,T1,T1,T1,T5,T1,T3,T3,T3
+    T3,T3,T5,T5,T5,T5,T1,T1,T0,T0,T1,T1,T1,T5,T5,T1,T0,T1,T0,T0,T1,T1,T1,T1,T1,T1,T1,T1,T3,T3
+    T3,T3,T1,T5,T5,T5,T1,T1,T1,T0,T1,T1,T1,T5,T5,T1,T0,T1,T1,T1,T1,T0,T0,T0,T1,T1,T5,T1,T3,T3
+    T3,T3,T1,T5,T5,T1,T0,T0,T0,T1,T2,T2,T7,T2,T7,T2,T4,T2,T7,T2,T7,T2,T2,T1,T1,T1,T5,T1,T3,T3
+    T3,T3,T1,T5,T5,T1,T0,T6,T0,T1,T2,T4,T4,T4,T4,T4,T4,T4,T4,T4,T4,T4,T2,T0,T1,T1,T5,T1,T3,T3
+    T3,T5,T5,T5,T5,T1,T0,T0,T1,T1,T2,T4,T4,T4,T4,T4,T4,T4,T4,T4,T4,T4,T2,T0,T1,T1,T1,T1,T1,T3
+    T8,T5,T5,T1,T1,T5,T1,T1,T0,T1,T2,T4,T4,T4,T4,T4,T4,T4,T4,T4,T4,T4,T2,T0,T1,T1,T1,T1,T1,T3
+    T3,T2,T2,T7,T2,T2,T1,T1,T0,T1,T2,T4,T4,T2,T2,T2,T4,T2,T2,T2,T4,T4,T2,T1,T1,T5,T5,T1,T1,T3
+    T8,T2,T4,T4,T4,T2,T1,T1,T1,T0,T2,T4,T4,T2,T4,T4,T4,T4,T4,T2,T4,T4,T2,T1,T0,T5,T5,T1,T1,T3
+    T8,T2,T4,T4,T4,T2,T1,T1,T1,T1,T2,T4,T4,T2,T4,T4,T4,T4,T4,T2,T4,T4,T2,T0,T1,T5,T5,T1,T1,T3
+    T3,T2,T4,T4,T4,T2,T2,T7,T2,T4,T2,T4,T4,T2,T4,T4,T6,T4,T4,T2,T4,T4,T2,T1,T1,T5,T5,T1,T1,T3
+    T3,T2,T4,T4,T4,T4,T4,T4,T4,T4,T4,T4,T4,T2,T4,T4,T4,T4,T4,T2,T4,T4,T2,T1,T0,T5,T5,T1,T1,T3
+    T3,T2,T4,T4,T4,T2,T2,T4,T2,T2,T2,T4,T4,T2,T4,T4,T4,T4,T4,T2,T4,T4,T2,T0,T0,T1,T5,T1,T1,T3
+    T3,T2,T4,T4,T4,T2,T1,T0,T1,T1,T2,T4,T4,T2,T4,T4,T4,T4,T4,T2,T4,T4,T2,T0,T1,T1,T1,T1,T5,T3
+    T8,T2,T4,T4,T4,T2,T1,T0,T1,T5,T2,T4,T4,T2,T2,T2,T2,T2,T2,T2,T4,T4,T2,T0,T1,T1,T1,T1,T1,T3
+    T8,T2,T2,T2,T2,T2,T0,T1,T5,T5,T2,T4,T4,T4,T4,T4,T4,T4,T4,T4,T4,T4,T2,T1,T1,T5,T5,T5,T1,T3
+    T8,T1,T5,T5,T1,T1,T0,T0,T5,T5,T2,T4,T4,T4,T4,T4,T4,T4,T4,T4,T4,T4,T2,T0,T1,T5,T5,T5,T1,T3
+    T3,T1,T5,T5,T1,T1,T1,T1,T5,T5,T2,T4,T4,T4,T4,T4,T4,T4,T4,T4,T4,T4,T2,T1,T1,T1,T1,T1,T1,T3
+    T3,T5,T5,T5,T1,T5,T0,T0,T1,T1,T2,T2,T2,T2,T2,T2,T4,T2,T2,T2,T2,T2,T2,T0,T2,T2,T7,T2,T2,T3
+    T3,T1,T5,T5,T5,T1,T1,T0,T1,T1,T5,T5,T1,T1,T1,T2,T4,T2,T1,T5,T1,T5,T1,T0,T2,T4,T4,T4,T2,T3
+    T8,T1,T1,T5,T5,T2,T2,T4,T2,T2,T5,T1,T1,T1,T2,T2,T4,T2,T2,T5,T1,T1,T1,T0,T4,T4,T4,T4,T2,T3
+    T3,T1,T1,T5,T5,T2,T4,T4,T4,T2,T5,T1,T1,T1,T2,T4,T4,T4,T2,T1,T5,T5,T5,T1,T2,T4,T4,T4,T2,T3
+    T3,T1,T1,T5,T5,T2,T4,T4,T4,T2,T5,T1,T1,T1,T2,T4,T4,T4,T2,T1,T5,T5,T5,T1,T2,T2,T2,T2,T2,T3
+    T3,T5,T1,T1,T1,T2,T4,T4,T4,T2,T5,T1,T1,T1,T2,T4,T4,T4,T2,T1,T1,T1,T1,T5,T1,T1,T8,T8,T3,T3
+    T3,T5,T1,T1,T1,T2,T2,T2,T2,T2,T1,T1,T1,T1,T2,T2,T2,T2,T2,T1,T1,T1,T1,T1,T1,T5,T8,T3,T8,T3
+    T3,T3,T1,T1,T1,T1,T1,T1,T8,T8,T8,T3,T3,T3,T8,T3,T3,T8,T3,T3,T1,T1,T5,T5,T5,T1,T3,T3,T3,T3
+    T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T8,T3,T3,T3,T3,T8,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3
     </Tiles>
     <Objects id="mapObjects">
+    ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    ,,,,,,,O22,,,,,,,,,,,,,,,,,,,,,,
+    ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    ,,,,,,,,,,,,,,,,O0101,,,,,,,,,,,,,
+    ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    ,,,,,,,,,,,,,,,,O0101,,,,,,,,,,,,,
+    ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    ,,,,,,,,,O11,,,,,,,,,,,,,,,,,,,,
+    ,,,O999,,O0101,,,,,O0101,,,,,,,,,,,,,,,,,,,
+    ,,,,,,,O12,,,,,,,,,,,,,,,,,,,,,,
+    ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    ,,,,,,,,,O0101,,,,,,,,,,,,,,,,,,,,
+    ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    ,,,,,,,,,,,,,,,,O0101,,,,,,,,,,,,,
+    ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    ,,,,,,,O0101,,,,,,,,,,,,,,,,,O13,,O24,,,
+    ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    ,,,,,,,O23,,,,,,,,,O21,,,,,,,,,,,,,
+    ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
     </Objects>
     <Entities id="mapEntities">
     </Entities>
