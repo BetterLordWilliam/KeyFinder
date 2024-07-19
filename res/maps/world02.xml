@@ -5,6 +5,7 @@
 <Map>
     <Data id="mapData" name="World Two" xdim="" ydim="" description="The second KeyFinder Map. An old mansion with keys scatter about the place."></Data>
     <Tiles id="mapTiles">
+    T45
     </Tiles>
     <Objects id="mapObjects">
     </Objects>

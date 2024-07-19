@@ -59,6 +59,15 @@ public class Map {
     public File getMapData() {
     	return mapData;
     }
+   
+    /**
+     * getMapName:		returns the name of the map
+     * 
+     * @return mapName 	String, the name of the map
+     */
+    public String getMapName() {
+    	return mapName;
+    }
     
     /**
      * setmapName:				sets the map name to be the string 

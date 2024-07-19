@@ -132,7 +132,6 @@ public class Episode {
     public String toString() {
     	return (
 			episodeName + ": " + episodeDescription + "\n"
-			+ "Maps:\n" + maps.toString() + "\n"
 		); 
     }
 }

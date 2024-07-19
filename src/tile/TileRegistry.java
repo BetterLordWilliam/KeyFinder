@@ -71,11 +71,12 @@ public class TileRegistry {
 		Tile result = tileRegistry.get(tileId);
 		
 		// Otherwise, return a new instance of the null tile
-		if (result == null)
+		if (result == null) {
+			System.err.println("Bad tileId: " + tileId);
 			result = createNullTile();
-		else
+		} else
 			result = result.clone();
-		
+			
 		return result;
 	}
 }

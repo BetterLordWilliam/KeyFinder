@@ -129,10 +129,11 @@ public class KFileReader {
 			er.printStackTrace();
 			Main.terminate();
 		}
+		System.out.print("Loaded " + e + "\n");
 	}
 	
 	/**
-	 * readMapFile:				reads the initilisation details of a KeyFinder
+	 * readMapFile:				reads the initialization details of a KeyFinder
 	 * 							mapFile. Name, description, player start position. 
 	 * 
 	 * @param mPath
@@ -194,6 +195,7 @@ public class KFileReader {
 			e.printStackTrace();
 			Main.terminate();
 		}
+		System.out.print("Loaded " + m + "\n");
 	}
 	
 	/**
