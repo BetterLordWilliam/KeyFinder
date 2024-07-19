@@ -202,12 +202,12 @@ public class KFileReader {
 	 * @param childNodes			NodeList, the list of the child nodes
 	 * @param tr					TileRegistry, references to the tile registry
 	 */
-	private static void readTileDataChildren(NodeList childNodes, TileRegistry tr) {
+	private static void readTileDataChildren(NodeList childNodes, Tile newTile) {
 		for (int i = 0; i < childNodes.getLength(); i++) {
 			Node node = childNodes.item(i);
 			NodeList nodeList = node.getChildNodes();
 			if (node.getNodeName().equals(ANIMATION_FRAMES) && nodeList != null)
-				readAnimationFrames(nodeList, tr);
+				readAnimationFrames(nodeList, newTile);
 		}
 	}
 	
@@ -217,7 +217,7 @@ public class KFileReader {
 	 * @param animationFrames		NodeList, the list of the animation frames
 	 * @param tr					TileRegistry, references to the tile registry
 	 */
-	private static void readAnimationFrames(NodeList animationFrames, TileRegistry tr) {
+	private static void readAnimationFrames(NodeList animationFrames, Tile newTile) {
 		for (int i = 0; i < animationFrames.getLength(); i++) {
 			Node node = animationFrames.item(i);
 			if (node.getNodeName().equals(ANIMATION_FRAME))
@@ -242,17 +242,20 @@ public class KFileReader {
 			
 			for (int i = 0; i < nodeList.getLength(); i++) {
 				Node node = nodeList.item(i);
-				NodeList nodeSubList = node.getChildNodes();
+				NodeList nodeSubList = node.getChildNodes();			// Complex node data, if it exists
+				
+				// Retrieve the data that should be in every tile.
+				String tileId = node.getAttributes().getNamedItem(ID).getNodeValue();
+				String tileTexturePath = node.getAttributes().getNamedItem(TEXTURE_PATH).getNodeValue();
+				Tile newTile = new Tile(tileId, tileTexturePath);		// New tile.
 				
 				// Process the child nodes (if they exist)
-				if (nodeSubList != null && nodeSubList.getLength() > 0)
-					readTileDataChildren(nodeSubList, tr);
+				/*if (nodeSubList != null && nodeSubList.getLength() > 0)
+					readTileDataChildren(nodeSubList, newTile);*/		// Ignore for the tile being
 				
-				String nodeId = node.getAttributes().getNamedItem(ID).getNodeValue();
-				String nodeTexturePath = node.getAttributes().getNamedItem(TEXTURE_PATH).getNodeValue();
-				System.out.printf("%s, %s\n", nodeId, nodeTexturePath);
+				tr.addTileToRegistry(tileId, newTile);					// Add the tile to the registry
+				// System.out.printf("%s\n", newTile);
 			}
-			
 		} catch (SAXException | IOException e) {
 			System.err.println("An exception occurred while parsing the mapfile: ");
 			e.printStackTrace();

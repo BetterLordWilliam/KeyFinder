@@ -1,9 +1,5 @@
 package src.tile;
 
-import java.util.Map;
-
-import static java.util.Map.entry;
-
 import java.awt.Graphics2D;
 
 import src.main.Main;
@@ -21,99 +17,72 @@ interface TileFactory <T> {
  * @author		Will Otterbein
  * @version		2024-1
  */
-public class Tile implements Paintable {
-	
-	/**
-	 * TileType:			defines the tile types in association with the
-	 * 						literals read from map files.
-	 */
-	protected static enum TileType {
-		DIRT(0), GRASS(1), WALL(2), WATER(3), WOOD(4),
-		TREE(5), KNIGHT_STATUE(6), BANNER_WALL(7), LILYPAD(8);
-		
-		private final int typeId;
-		
-		/**
-		 * TileType:		Constructs TileType.
-		 * 
-		 * @param typeId	int, assigns typeId
-		 */
-		TileType(int typeId) {
-			this.typeId = typeId;
-		}
-		
-		/**
-		 * getTypeId:		returns the typeId.
-		 * 
-		 * @return typeId	int, numeric representation
-		 */
-		public int getTypeId() {
-			return typeId;
-		}
-	}
-	
-	/*
-	 * Tile factory map 
-	 */
-	private static final Map<TileType, TileFactory<? extends Tile>> tileFactories = Map.ofEntries(
-		entry(TileType.DIRT, () -> new Tile()),
-		entry(TileType.GRASS, () -> new Tile()),
-		entry(TileType.WALL, () -> new Tile()),
-		entry(TileType.WATER, () -> new Tile()),
-		entry(TileType.WOOD, () -> new Tile()),
-		entry(TileType.TREE, () -> new Tile()),
-		entry(TileType.KNIGHT_STATUE, () -> new Tile()),
-		entry(TileType.BANNER_WALL, () -> new Tile()),
-		entry(TileType.LILYPAD, () -> new Tile())
-	);
-	
+public class Tile implements Cloneable, Paintable {	
 	/**
 	 * TileMaker:			Makes new tiles.
-	 * 
-	 * @param type			String, tile type info
-	 * @param tX			position of the tile, x-axis
-	 * @param tY			position of the tile, y-axis
-	 * @return				Tile, a new tile with the specified info
+	 *	
+	 * @author				Will OTtterbein
+	 * @version				2024-1
 	 */
 	public static class TileMaker {
-		public static Tile makeTile(String type, int tX, int tY) {
-			TileType ty = null;
+		/**
+		 * makeTile:			Creates a new tile
+		 * 
+		 * @param type			String, tile type info
+		 * @param tX			position of the tile, x-axis
+		 * @param tY			position of the tile, y-axis
+		 * @return				Tile, a new tile with the specified info
+		 */
+		public static Tile makeTile(String tileId, int tX, int tY) {	
+			Tile newTile = null;
 			try {
-				ty = TileType.values()[Integer.parseInt(type.replace('T', ' ').trim())];
-					// Retrieve the TileType based of raw data, use as index
-			} catch (NumberFormatException e) {
-				System.err.println("Invalid tileType encountered ("+ type +") :");
-				e.printStackTrace();
-				Main.terminate();
-			} catch (IndexOutOfBoundsException e) {
-				System.err.println("Unknown tileType encountered ("+ type +") :");
+				newTile = tr.cloneTileWithId(tileId);
+				newTile.setTxTy(tX, tY);		// Establish the 'X' and 'Y' positions
+			} catch (CloneNotSupportedException e) {
+				System.err.println("An exception occurred while reading tile with type: " + tileId);
 				e.printStackTrace();
 				Main.terminate();
 			}
-			
-			Tile newTile = tileFactories.get(ty).newInstance();
-			newTile.setLocalType(ty);		// Establish the type locally
-			newTile.setTxTy(tX, tY);		// Establish the 'X' and 'Y' positions
 			return newTile;
 		}
 	}
 	
-	// Reference to the tile registry, will be used extensively.
-	public static final TileRegistry tileRegistry = new TileRegistry();
+	// Registry reference
+	public static TileRegistry tr = new TileRegistry();
 	
 	protected int tX, tY;
 	protected String texturePath;
 	protected String tileId;
-	protected TileType type;
-
-	public Tile() {}
 	
+	/**
+	 * creates a new Tile object, sets the tileId and texturePath.
+	 * Required for Tile objects.
+	 * 
+	 * @param tileId			String, tileId, the same string that is in the files
+	 * @param texturePath		String, texturePath, the path to the resource that will be drawn
+	 */
 	public Tile(String tileId, String texturePath) {
 		this.tileId = tileId;
 		this.texturePath = texturePath;
 	}
 	
-	public Tile(String texturePath, int tX, int tY) {}
+	/**
+	 * getTileId:			returns the Id of a tile.
+	 * 
+	 * @return tileId		String, string that is the id of the tile
+	 */
+	public String getTileId() {
+		return tileId;
+	}
+	
+	/**
+	 * setTexturePath:		Set the texturePath for this tile
+	 * 
+	 * @param texturePath	String, the path the the texture
+	 */
+	public void setTexturePath(String texturePath) {
+		this.texturePath = texturePath;
+	}
 	
 	/**
 	 * setTxTy:			set the position of the tile
@@ -127,24 +96,26 @@ public class Tile implements Paintable {
 	}
 	
 	/**
-	 * setLocalType:	set the type of the tile
+	 * clone:			returns a tile with the same details as this one.
 	 * 
-	 * @param type		TileType
+	 * @return			Tile, returns a tile with the same instance members
 	 */
-	public void setLocalType(TileType type) {
-		this.type = type;
-	}
-	
-	// For debugging purposes
-	public String toString() {
-		return (
-			"[ " + type + " | " 
-			+ tX + "," + tY + " ]"
-		);
+	public Tile clone() {
+		return new Tile(this.tileId, this.texturePath);
 	}
 
+	/**
+	 * paint:			Used to render the tile on the screen.
+	 * 
+	 * @param g2		Graphics2D, the rendering object
+	 */
 	@Override
-	public void paint(Graphics2D g2) {
-		// TODO Auto-generated method stub
+	public void paint(Graphics2D g2) {}
+	
+	public String toString() {
+		return (
+				tileId + " " + texturePath 
+				+ " X:" + tX + " Y:" + tY + "\n"
+		);
 	}
 }

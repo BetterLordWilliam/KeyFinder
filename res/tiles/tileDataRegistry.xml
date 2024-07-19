@@ -10,6 +10,7 @@
     the animation texture for each of the frames within Frame elements inside of AnimationFrames element
  -->
 <TileRegistry>
+    <TileData id="T9999" name="Null Tile" texturePath=".\\res\\tiles\\textures\\Null.png" />
     <TileData id="T0" name="Dirt Tile" texturePath=".\\res\\tiles\\textures\\Dirt.png" />
     <TileData id="T1" name="Grass Tile" texturePath=".\\res\\tiles\\textures\\Grass.png" />
     <TileData id="T2" name="Wall Tile" texturePath=".\\res\\tiles\\textures\\Wall.png" />
