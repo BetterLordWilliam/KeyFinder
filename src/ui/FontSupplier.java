@@ -13,6 +13,8 @@ public class FontSupplier {
 	public static Font menuFont;
 	public static Font menuFontLarge;
 
+	private FontSupplier() {}			// Private constructor, cannot be initialized
+	
 	/**
 	 * loadFont:		retrieve font
 	 * @throws 			IOException 

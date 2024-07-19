@@ -45,9 +45,8 @@ public class TileRegistry {
 	 * @param tileTexturePath		The path that points to the main tile resource
 	 */
 	public void addTileToRegistry(String tileId, Tile newTile) {
-		if (tileId != null && newTile != null) {
+		if (tileId != null && newTile != null)
 			tileRegistry.put(newTile.getTileId(), newTile);
-		}
 	}
 	
 	/**
@@ -67,16 +66,9 @@ public class TileRegistry {
 	 * @throws CloneNotSupportedException
 	 */
 	public Tile cloneTileWithId(String tileId) throws CloneNotSupportedException {
-		// Return the tile instance matching key and clone it
+		// Return the tile instance matching key and
+		// Clone it if it is not null. Otherwise, return a new instance of the null tile
 		Tile result = tileRegistry.get(tileId);
-		
-		// Otherwise, return a new instance of the null tile
-		if (result == null) {
-			System.err.println("Bad tileId: " + tileId);
-			result = createNullTile();
-		} else
-			result = result.clone();
-			
-		return result;
+		return result = (result == null) ? createNullTile() : result.clone();
 	}
 }

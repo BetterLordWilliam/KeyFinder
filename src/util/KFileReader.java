@@ -3,7 +3,15 @@ package src.util;
 import javax.xml.parsers.DocumentBuilder; 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+
 import org.xml.sax.SAXException;
+import org.w3c.dom.Document; 
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import java.io.File;
+import java.io.IOException;
 
 import src.main.Main;
 import src.map.Episode;
@@ -11,13 +19,6 @@ import src.map.Map;
 import src.object.SObject;
 import src.tile.Tile;
 import src.tile.TileRegistry;
-
-import org.w3c.dom.Document; 
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import java.io.File;
-import java.io.IOException;
 
 /**
  * Loader:			used specifically during the loading of a map.
@@ -63,6 +64,8 @@ public class KFileReader {
 	private static final String MAP_ENTITY_LIST_ID = "mapEntities";
 	private static final String TEXTURE_PATH="texturePath";
 	private static final String ANIMATION_FRAMES_ID = "animationFrames";
+	
+	private KFileReader() {}		// Private constructor, cannot be initialized
 	
     /**
      * loadStuff:			loads stuff, tiles, objects or entities. Assumed to be CSV format.
@@ -253,7 +256,7 @@ public class KFileReader {
 				
 				// Process the child nodes (if they exist)
 				/*if (nodeSubList != null && nodeSubList.getLength() > 0)
-					readTileDataChildren(nodeSubList, newTile);*/		// Ignore for the tile being
+					readTileDataChildren(nodeSubList, newTile);*/		// Ignore for the time being
 				
 				tr.addTileToRegistry(tileId, newTile);					// Add the tile to the registry
 				// System.out.printf("%s\n", newTile);

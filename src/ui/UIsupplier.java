@@ -26,6 +26,8 @@ public class UIsupplier {
 	
 	// PADDINGS
 	public static final Dimension PADDING_SMALL = new Dimension(0,10);
+
+	private UIsupplier() {}			// Private constructor, cannot be initialized
 	
 	/**
 	 * setComponentBgFg:	sets the foreground and background of component
