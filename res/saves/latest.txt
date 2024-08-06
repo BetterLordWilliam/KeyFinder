@@ -1,3 +1,10 @@
-12,14
-episode
-level
+20240801-01010111 (times stamp)
+123,123 (x,y)
+...\episode-path\...
+...\map-path\... (or map name maybe)
+items:
+	item1
+	item2
+	item3
+	...	(list of the items that the player has, like keys
+		Perhaps leave this to a later implementation)
