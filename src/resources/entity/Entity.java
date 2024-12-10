@@ -1,4 +1,4 @@
-package src.entity;
+package src.resources.entity;
 
 import src.main.Paintable;
 

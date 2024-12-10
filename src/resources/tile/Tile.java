@@ -1,4 +1,4 @@
-package src.tile;
+package src.resources.tile;
 
 import java.awt.Graphics2D;
 

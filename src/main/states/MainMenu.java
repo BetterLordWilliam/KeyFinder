@@ -1,4 +1,4 @@
-package src.main;
+package src.main.states;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 
 import src.ui.FontSupplier;
 import src.ui.UIsupplier;
-
+import src.main.Main;
 
 /**
  * GamePanel:       The panel where the game happens

@@ -14,11 +14,12 @@ import java.io.File;
 import java.io.IOException;
 
 import src.main.Main;
-import src.map.Episode;
-import src.map.Map;
-import src.object.SObject;
-import src.tile.Tile;
-import src.tile.TileRegistry;
+import src.resources.ResourceManager;
+import src.resources.map.Episode;
+import src.resources.map.Map;
+import src.resources.object.SObject;
+import src.resources.tile.Tile;
+import src.resources.tile.TileRegistry;
 
 /**
  * Loader:			used specifically during the loading of a map.
@@ -47,25 +48,7 @@ interface Loader<T1, T2, T3> {
  * @version				2024-1
  */
 public class KFileReader {
-	// XML Element Names
-	private static final String MAP_PATH_ELEMENT = "Mappath";
-	private static final String TILE_DATA = "TileData";
-	private static final String ANIMATION_FRAME = "Frame";
-	private static final String ANIMATION_FRAMES = "AnimationFrames";
-	
-	// XML Attribtue Names
-	private static final String NAME = "name";
-	private static final String DESCRIPTION = "description";
-	private static final String ID = "id";
-	private static final String EPISODE_DATA_ID = "episodeData";
-	private static final String MAP_DATA_ID = "mapData";
-	private static final String MAP_TILE_LIST_ID = "mapTiles";
-	private static final String MAP_OBJECT_LIST_ID = "mapObjects";
-	private static final String MAP_ENTITY_LIST_ID = "mapEntities";
-	private static final String TEXTURE_PATH="texturePath";
-	private static final String ANIMATION_FRAMES_ID = "animationFrames";
-	
-	private KFileReader() {}		// Private constructor, cannot be initialized
+	public KFileReader() {}		// Private constructor, cannot be initialized
 	
     /**
      * loadStuff:			loads stuff, tiles, objects or entities. Assumed to be CSV format.
@@ -74,7 +57,7 @@ public class KFileReader {
      * @param loader		Loader, interface used for loading either tiles, objects or entities
      * @throws IOException
      */
-	private static void loadStuff(String content,
+	private void loadStuff(String content,
     		Loader<String, Integer, Integer> loader) throws IOException {
 		
 		int x = 0;			// Origin X
@@ -105,21 +88,21 @@ public class KFileReader {
 	 * @param e
 	 * @throws ParserConfigurationException 
 	 */
-	public static void readEpisodeFile(File ePath, Episode e) throws ParserConfigurationException {
+	public void readEpisodeFile(File ePath, Episode e) throws ParserConfigurationException {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		
 		try {
 			// Parse the XML file
 			Document document = builder.parse(ePath);
-			Element episodeData = document.getElementById(EPISODE_DATA_ID);
+			Element episodeData = document.getElementById(KFileInfo.EPISODE_DATA_ID);
 			
 			// Configure data
-			e.setEpisodeName(episodeData.getAttribute(NAME));
-			e.setEpisodeDescription(episodeData.getAttribute(DESCRIPTION));
+			e.setEpisodeName(episodeData.getAttribute(KFileInfo.NAME));
+			e.setEpisodeDescription(episodeData.getAttribute(KFileInfo.DESCRIPTION));
 			
 			// Initialize the maps
-			NodeList nodeList = document.getElementsByTagName(MAP_PATH_ELEMENT);
+			NodeList nodeList = document.getElementsByTagName(KFileInfo.MAP_PATH_ELEMENT);
 			for (int i = 0; i < nodeList.getLength(); i++) {
 				String content = nodeList.item(i).getTextContent();
 				if (!content.isBlank()) {
@@ -143,18 +126,18 @@ public class KFileReader {
 	 * @param m
 	 * @throws ParserConfigurationException
 	 */
-	public static void readMapFileDetails(File mPath, Map m) throws ParserConfigurationException {
+	public void readMapFileDetails(File mPath, Map m) throws ParserConfigurationException {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		
 		try {	
 			// Parse the XML file
 			Document document = builder.parse(mPath);
-			Element mapData = document.getElementById(MAP_DATA_ID);
+			Element mapData = document.getElementById(KFileInfo.MAP_DATA_ID);
 			
 			// Configure data
-			m.setMapName(mapData.getAttribute(NAME));
-			m.setMapDescription(mapData.getAttribute(DESCRIPTION));
+			m.setMapName(mapData.getAttribute(KFileInfo.NAME));
+			m.setMapDescription(mapData.getAttribute(KFileInfo.DESCRIPTION));
 		} catch (SAXException | IOException e) {
 			System.err.println("An exception occured while parsing the mapfile: ");
 			e.printStackTrace();
@@ -169,16 +152,16 @@ public class KFileReader {
 	 * @param m
 	 * @throws ParserConfigurationException
 	 */
-	public static void readMapFileContents(Map m) throws ParserConfigurationException {
+	public void readMapFileContents(Map m) throws ParserConfigurationException {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		
 		try {
 			// Parse the XML file
 			Document document = builder.parse(m.getMapData());
-			Element tileData = document.getElementById(MAP_TILE_LIST_ID);
-			Element objectData = document.getElementById(MAP_OBJECT_LIST_ID);
-			Element entityData = document.getElementById(MAP_ENTITY_LIST_ID);
+			Element tileData = document.getElementById(KFileInfo.MAP_TILE_LIST_ID);
+			Element objectData = document.getElementById(KFileInfo.MAP_OBJECT_LIST_ID);
+			Element entityData = document.getElementById(KFileInfo.MAP_ENTITY_LIST_ID);
 			
 			// Initialize tiles
 			loadStuff(tileData.getTextContent(), (string, posx, posy) -> {
@@ -207,11 +190,11 @@ public class KFileReader {
 	 * @param childNodes			NodeList, the list of the child nodes
 	 * @param tr					TileRegistry, references to the tile registry
 	 */
-	private static void readTileDataChildren(NodeList childNodes, Tile newTile) {
+	private void readTileDataChildren(NodeList childNodes, Tile newTile) {
 		for (int i = 0; i < childNodes.getLength(); i++) {
 			Node node = childNodes.item(i);
 			NodeList nodeList = node.getChildNodes();
-			if (node.getNodeName().equals(ANIMATION_FRAMES) && nodeList != null)
+			if (node.getNodeName().equals(KFileInfo.ANIMATION_FRAMES) && nodeList != null)
 				readAnimationFrames(nodeList, newTile);
 		}
 	}
@@ -222,11 +205,11 @@ public class KFileReader {
 	 * @param animationFrames		NodeList, the list of the animation frames
 	 * @param tr					TileRegistry, references to the tile registry
 	 */
-	private static void readAnimationFrames(NodeList animationFrames, Tile newTile) {
+	private void readAnimationFrames(NodeList animationFrames, Tile newTile) {
 		for (int i = 0; i < animationFrames.getLength(); i++) {
 			Node node = animationFrames.item(i);
-			if (node.getNodeName().equals(ANIMATION_FRAME))
-				System.out.println(node.getAttributes().getNamedItem(TEXTURE_PATH).getNodeValue());
+			if (node.getNodeName().equals(KFileInfo.ANIMATION_FRAME))
+				System.out.println(node.getAttributes().getNamedItem(KFileInfo.TEXTURE_PATH).getNodeValue());
 		}
 	}
 	
@@ -236,22 +219,22 @@ public class KFileReader {
 	 * @param tr								TileRegistry, the registry object
 	 * @throws ParserConfigurationException
 	 */
-	public static void readTileRegistry(TileRegistry tr) throws ParserConfigurationException {
+	public void readTileRegistry(TileRegistry tr) throws ParserConfigurationException {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		
 		try {
 			// Parse the XML file
-			Document document = builder.parse(TileRegistry.TILE_REGISTRY_PATH);
-			NodeList nodeList = document.getElementsByTagName(TILE_DATA);
+			Document document = builder.parse(ResourceManager.TILE_REGISTRY_PATH);
+			NodeList nodeList = document.getElementsByTagName(KFileInfo.TILE_DATA);
 			
 			for (int i = 0; i < nodeList.getLength(); i++) {
 				Node node = nodeList.item(i);
 				NodeList nodeSubList = node.getChildNodes();			// Complex node data, if it exists
 				
 				// Retrieve the data that should be in every tile.
-				String tileId = node.getAttributes().getNamedItem(ID).getNodeValue();
-				String tileTexturePath = node.getAttributes().getNamedItem(TEXTURE_PATH).getNodeValue();
+				String tileId = node.getAttributes().getNamedItem(KFileInfo.ID).getNodeValue();
+				String tileTexturePath = node.getAttributes().getNamedItem(KFileInfo.TEXTURE_PATH).getNodeValue();
 				Tile newTile = new Tile(tileId, tileTexturePath);		// New tile.
 				
 				// Process the child nodes (if they exist)

@@ -1,4 +1,4 @@
-package src.object;
+package src.resources.object;
 
 import src.main.Paintable;
 

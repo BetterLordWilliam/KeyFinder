@@ -1,4 +1,4 @@
-package src.map;
+package src.resources.map;
 
 import java.io.File;
 import java.io.IOException;
@@ -7,11 +7,10 @@ import java.util.List;
 
 import javax.xml.parsers.ParserConfigurationException;
 
-import src.entity.Entity;
 import src.main.Main;
-import src.object.SObject;
-import src.tile.Tile;
-import src.util.KFileReader;
+import src.resources.entity.Entity;
+import src.resources.object.SObject;
+import src.resources.tile.Tile;
 
 /**
  * Map:         basic details for every map
@@ -39,7 +38,8 @@ public class Map {
 		if (mapData != null) {
 			this.mapData = mapData;
 			try {
-				KFileReader.readMapFileDetails(mapData, this);
+				// KFileReader.readMapFileDetails(mapData, this);
+				throw new ParserConfigurationException();
 			} catch (ParserConfigurationException e) {
 				System.err.println("There was an error reading the map file contents: ");
 				e.printStackTrace();
@@ -127,7 +127,8 @@ public class Map {
      */
     public void loadMap() {
     	try {
-    		KFileReader.readMapFileContents(this);
+    		// KFileReader.readMapFileContents(this);
+			throw new ParserConfigurationException();
     	} catch (ParserConfigurationException e) {
     		System.err.println("There was an error reading the map file contents: ");
     		e.printStackTrace();

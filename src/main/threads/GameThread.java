@@ -1,9 +1,10 @@
-package src.main;
+package src.main.threads;
 
 import java.util.List;
 import javax.swing.JPanel;
-import src.entity.Entity;
-import src.map.Episode;
+
+import src.resources.entity.Entity;
+import src.resources.map.Episode;
 
 /**
  * GameThread:      The thread which will update and repaint during game execution.abstract 
@@ -27,18 +28,8 @@ public class GameThread implements Runnable {
      * @param rootPanel         JPanel, where graphical items are to be drawn
      * @param Episode    Episode, where the list of entities is to be retrieved
      */
-    public GameThread(JPanel rootPanel, Episode Episode) {
+    public GameThread(JPanel rootPanel) {
 		this.rootPanel = rootPanel;					// Get panel reference from Game
-        this.Episode = Episode;				// Get Episode reference from Game
-    }
-
-    /**
-     * setRootPanel:            establishes pointer to the panel.
-     * 
-     * @param rootPanel
-     */
-    public void setRootPanel(JPanel rootPanel) {
-        this.rootPanel = rootPanel;
     }
 
     /**

@@ -1,4 +1,4 @@
-package src.map;
+package src.resources.map;
 
 import java.io.File;
 import java.util.LinkedList;
@@ -6,7 +6,6 @@ import java.util.List;
 import javax.xml.parsers.ParserConfigurationException;
 
 import src.main.Main;
-import src.util.KFileReader;
 
 /**
  * Episode:      Will be responsible for controlling the sequence through episodes.
@@ -115,7 +114,8 @@ public class Episode {
      */
     private void loadEpisode() {
     	try {
-			KFileReader.readEpisodeFile(episodeData, this);
+			// KFileReader.readEpisodeFile(episodeData, this);
+    		throw new ParserConfigurationException();
 		} catch (ParserConfigurationException e) {
 			System.err.println("There was an error reading the episode file: ");
 			e.printStackTrace();

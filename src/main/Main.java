@@ -4,6 +4,9 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import src.main.states.*;
+import src.resources.ResourceManager;
+
 /**
  * Main.
  * 
@@ -36,6 +39,9 @@ public class Main {
     // KEYFINDER GAME RELATED PANELS  (basically states)
     public static final State MAIN_MENU = new MainMenu();            // instance of MainMenu state (JPanel)
     public static final State GAME = new Game();                     // Instance of GAME state (JPanel)
+   
+    // GAME OBJECTS
+    public static final ResourceManager RES_MANAGER = new ResourceManager();
     
 	/**
 	 * setState:         changes currentPanel to GAME.
@@ -51,7 +57,7 @@ public class Main {
         window.setVisible(true);
         window.revalidate();
 		window.repaint();
-	} 
+	}
 
     /**
      * terminate:		kill the KeyFinder process

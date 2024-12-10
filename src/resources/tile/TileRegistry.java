@@ -1,12 +1,7 @@
-package src.tile;
+package src.resources.tile;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.xml.parsers.ParserConfigurationException;
-
-import src.main.Main;
-import src.util.KFileReader;
 
 /**
  * TileRegistry:					The class responsible for parsing tile data from the
@@ -17,26 +12,10 @@ import src.util.KFileReader;
  * @version							2024-1
  */
 public class TileRegistry {
-	public static final String TILE_REGISTRY_PATH = ".\\res\\tiles\\tileDataRegistry.xml";
-
 	private Map<String, Tile> tileRegistry = new HashMap<>();
-	private String nullTileId = "T9999";		
-		// Id of the 'null' tile, use this instead of terminating the game
 	
-	/**
-	 * no-arg constructor
-	 */
-	public TileRegistry() {
-		try {
-			KFileReader.readTileRegistry(this);
-				// Upon initalization of class, init the registry
-				// Read the tile types from the tile registry file
-		} catch (ParserConfigurationException e) {
-			System.err.println("An exception occured while attempting to read the Tile Registry file.");
-			e.printStackTrace();
-			Main.terminate();
-		}
-	}
+	// Id of the 'null' tile, use this instead of terminating the game
+	private String nullTileId = "T9999";		
 	
 	/**
 	 * addTileToRegistry:			Adds a new tile to the registry.

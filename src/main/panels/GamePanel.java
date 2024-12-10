@@ -1,4 +1,4 @@
-package src.main;
+package src.main.panels;
 
 // import java.awt.Color;
 import java.awt.Graphics;
@@ -7,8 +7,13 @@ import java.awt.Graphics2D;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+
 import javax.swing.JPanel;
-import src.map.Episode;
+
+import src.main.Main;
+import src.main.Paintable;
+import src.resources.map.Episode;
+import src.resources.map.Map;
 
 /**
  * GamePanel:           the class responsible for drawing everything.
@@ -21,14 +26,6 @@ public class GamePanel <Ptr extends Paintable> extends JPanel  {
      * required because this is a JPanel.
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	// CONNECTIONS
-	
-	private Episode Episode;
-   
-    public GamePanel(Episode Episode) {
-        this.Episode = Episode;
-    }
 
     /**
      * paintComponent:      will be called once per frame
@@ -54,12 +51,13 @@ public class GamePanel <Ptr extends Paintable> extends JPanel  {
         // Gather the lists of items to paint
         */
         
-        List<Ptr> tList, oList, eList;				// some references 
+        List<Ptr> tList, oList, eList;
+        Map mref = Main.RES_MANAGER.getCurrentMap();
         
-        if (Episode.getCurrentMap() != null
-        		&& (tList = (List<Ptr>) Episode.getCurrentMap().getTiles()) != null
-        		&& (oList = (List<Ptr>) Episode.getCurrentMap().getObjects()) != null
-        		&& (eList = (List<Ptr>) Episode.getCurrentMap().getEntities()) != null) {
+        if (mref != null
+        		&& (tList = (List<Ptr>) mref.getTiles()) != null
+        		&& (oList = (List<Ptr>) mref.getObjects()) != null
+        		&& (eList = (List<Ptr>) mref.getEntities()) != null) {
         	List<List<Ptr>> megaList = new LinkedList<>(Arrays.asList(
         			tList, oList, eList
 			));

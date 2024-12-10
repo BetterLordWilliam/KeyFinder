@@ -1,4 +1,4 @@
-package src.main;
+package src.main.states;
 
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -17,7 +17,11 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
-import src.map.Episode;
+import src.main.Main;
+import src.main.Paintable;
+import src.main.threads.GameThread;
+import src.resources.map.Episode;
+import src.main.panels.GamePanel;
 import src.ui.UIsupplier;
 
 /**
@@ -36,10 +40,9 @@ public class Game extends JPanel implements State {
     private final GridBagLayout gb = new GridBagLayout();
     private final GridBagConstraints gb_constraints = new GridBagConstraints();
 
-    private final Episode Episode = new Episode(null);
     private final JPanel paused = new JPanel();
-    private final JPanel game = new GamePanel<Paintable>(Episode);
-    private final GameThread gameThread = new GameThread(game, Episode);
+    private final JPanel game = new GamePanel<Paintable>();
+    private final GameThread gameThread = new GameThread(game);
 
     // PAUSED MENU BUTTONS
     private final List<JComponent> pausedButtons = new ArrayList<>(Arrays.asList(
@@ -110,7 +113,7 @@ public class Game extends JPanel implements State {
     	this.grabFocus();
     	
         setKeyBindings();      				// set the bindings 
-        Episode.startEpisode();				// start the episode
+        // Episode.startEpisode();				// start the episode
     	gameThread.startGameThread();     	// start the thread
 	}
    
@@ -146,14 +149,14 @@ public class Game extends JPanel implements State {
         	private static final long serialVersionUID = 1L;
         	@Override
         	public void actionPerformed(ActionEvent e) {
-        		Episode.loadNextMap();							// Temporary advance map key
+        		// Episode.loadNextMap();							// Temporary advance map key
         	}
         };
         Action lPressed = new AbstractAction() {
         	private static final long serialVersionUID = 1l;
         	@Override
         	public void actionPerformed(ActionEvent e) {
-        		Episode.reloadCurrentMap();						// Temporary reload map key
+        		// Episode.reloadCurrentMap();						// Temporary reload map key
         	}
         };
         
@@ -170,6 +173,7 @@ public class Game extends JPanel implements State {
     		JComponent.WHEN_IN_FOCUSED_WINDOW).put(
 			KeyStroke.getKeyStroke(KeyEvent.VK_L, 0), "L"
 		);
+        
         this.getActionMap().put("ESCAPE", esc);
         this.getActionMap().put("P", pPressed);
         this.getActionMap().put("L", lPressed);

@@ -1,4 +1,4 @@
-package src.sound;
+package src.util;
 
 import java.net.URL;
 
