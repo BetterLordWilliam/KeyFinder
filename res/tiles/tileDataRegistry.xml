@@ -2,13 +2,15 @@
 
 <!DOCTYPE TileRegistry SYSTEM "tileDataRegistry.dtd">
 
-<!-- Registry of KeyFinder tiles 
-    tileId                  corresponds to the number that will be read to the file
-    dataFileLocation        corresponds to the file that has the data for this tile
+<!--
+# Registry of KeyFinder tiles 
+`id`                corresponds to the number that will be read to the file
+`name`              human-friendly name for the tile
+`texturePath`       corresponds to the file that has the data for this tile
 
-    Tiles are static, most of the time. If a tile has an animation (water tile for example) define
-    the animation texture for each of the frames within Frame elements inside of AnimationFrames element
- -->
+Tiles are static, most of the time. If a tile has an animation (water tile for example) define
+the animation texture for each of the frames within Frame elements inside of AnimationFrames element
+-->
 <TileRegistry>
     <TileData id="T9999" name="Null Tile" texturePath=".\\res\\tiles\\textures\\Null.png" />
     <TileData id="T0" name="Dirt Tile" texturePath=".\\res\\tiles\\textures\\Dirt.png" />

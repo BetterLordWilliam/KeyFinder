@@ -12,7 +12,6 @@ import javax.swing.JPanel;
 
 import src.main.Main;
 import src.main.Paintable;
-import src.resources.map.Episode;
 import src.resources.map.Map;
 
 /**
@@ -21,18 +20,20 @@ import src.resources.map.Map;
  * @author              Will Otterbein
  * @version             2024-1
  */
-public class GamePanel <Ptr extends Paintable> extends JPanel  {
+public class GamePanel<Ptr extends Paintable> extends JPanel {
     /**
      * required because this is a JPanel.
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	public GamePanel() {super();}
 
     /**
      * paintComponent:      will be called once per frame
      */
     @SuppressWarnings("unchecked")
 	@Override
-    public  void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D)g;
         super.paintComponent(g2);   			// window
 
