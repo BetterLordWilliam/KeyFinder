@@ -3,7 +3,12 @@
 <!DOCTYPE Map SYSTEM "world.dtd">
 
 <Map>
-    <Data id="mapData" name="World Four" xdim="50" ydim="50" description="The fourth KeyFinder Map. A castle with many rooms."></Data>
+    <Data
+        id="mapData"
+        name="World Four"
+        xdim="50"
+        ydim="50"
+        description="The fourth KeyFinder Map. A castle with many rooms." />
     <Tiles id="mapTiles">
     T1,T1,T5,T5,T5,T1,T5,T5,T5,T1,T1,T1,T1,T1,T2,T2,T2,T7,T2,T2,T2,T1,T1,T1,T5,T5,T5,T1,T1,T5,T5,T5,T5,T1,T5,T5,T5,T5,T5,T5,T5,T5,T1,T5,T5,T5,T1,T1,T1,T1
     T5,T1,T5,T5,T5,T1,T1,T1,T1,T1,T1,T1,T5,T1,T2,T4,T4,T4,T4,T4,T2,T1,T1,T1,T1,T1,T1,T1,T1,T1,T5,T5,T1,T1,T5,T5,T5,T5,T1,T5,T1,T1,T1,T1,T1,T5,T1,T1,T1,T1

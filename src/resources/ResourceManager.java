@@ -13,9 +13,9 @@ public class ResourceManager {
 	public static final String ENTITY_REGISTRY_PATH = "";
 	
 	// REGISTRY OBJECTS, USED DURING MAP LOADING
-	public TileRegistry tileRegistry = new TileRegistry();
-	// public EntityRegistry entityRegistry = new EntityRegistry();
-	// public ObjectRegistry objectRegistry = new ObjectRegistry();
+	private TileRegistry tileRegistry = new TileRegistry();
+	// private EntityRegistry entityRegistry = new EntityRegistry();
+	// private ObjectRegistry objectRegistry = new ObjectRegistry();
 
 	// WORKING OBJECTS
 	private Episode currentEpisode;

@@ -20,7 +20,6 @@ import javax.swing.KeyStroke;
 import src.main.Main;
 import src.main.Paintable;
 import src.main.threads.GameThread;
-import src.resources.map.Episode;
 import src.ui.UIsupplier;
 import src.main.panels.GamePanel;
 

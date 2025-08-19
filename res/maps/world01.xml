@@ -3,7 +3,12 @@
 <!DOCTYPE Map SYSTEM "world.dtd">
 
 <Map>
-    <Data id="mapData" name="World One" xdim="25" ydim="25" description="The first KeyFinder Map. An Island with a mysterious structure"></Data>
+    <Data
+        id="mapData"
+        name="World One"
+        xdim="25"
+        ydim="25"
+        description="The first KeyFinder Map. An Island with a mysterious structure" />
     <Tiles id="mapTiles">
     T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3
     T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3,T3
